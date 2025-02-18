@@ -13,9 +13,9 @@ namespace Player
             playerMovement = GetComponent<PlayerMovement>();
         }
         
-        public void Hurt()
+        public void TakeDamage(int damage)
         {
-            
+            Debug.Log($"Take Damage {damage}");
         }
 
         private void Die()

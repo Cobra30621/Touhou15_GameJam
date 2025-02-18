@@ -10,16 +10,13 @@ namespace Player
     /// </summary>
     public class PlayerSizeHandler : MonoBehaviour {
         [Header("設定")]
-        public float minSize = 1f; 
-        public float maxSize = 10.0f; 
-        public float growthRate = 0.01f;
-        
-        [Required]
-        [SerializeField] 
-        private GameObject mainObject;
+        [SerializeField] private float minSize = 1f; 
+        [SerializeField] private float maxSize = 10.0f; 
+        [SerializeField] private float growthRate = 0.01f;
         
         [Header("參數")]
         [SerializeField]
+        [LabelText("currentSize (0~1)")]
         private float currentSize = 0f;
         
         
@@ -50,7 +47,7 @@ namespace Player
         {
             currentSize = Math.Clamp(currentSize, 0f, 1f);
             var objectSize = minSize + (maxSize - minSize) * currentSize;
-            mainObject.transform.localScale = new Vector3(objectSize, objectSize, objectSize); // 应用大小
+            transform.localScale = new Vector3(objectSize, objectSize, objectSize); // 应用大小
         }
 
     }
