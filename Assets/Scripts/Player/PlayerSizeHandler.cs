@@ -17,11 +17,10 @@ namespace Player
         [Header("參數")]
         [SerializeField]
         [LabelText("currentSize (0~1)")]
-        private float currentSize = 0f;
+        public float currentSize = 1f;
         
         
         private void Update() {
-            
             GrowOverTime();
             UpdateSize();
         }
