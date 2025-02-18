@@ -14,8 +14,8 @@ namespace Map
         public BoundsInt GetBoundX()
         {
             BoundsInt filledBounds = GetFilledTileBounds();
-            Debug.Log($"{name}: {filledBounds.size.x}");
-            Debug.Log($"Filled Bounds - xMin: {filledBounds.xMin}, xMax: {filledBounds.xMax}");
+            // Debug.Log($"{name}: {filledBounds.size.x}");
+            // Debug.Log($"Filled Bounds - xMin: {filledBounds.xMin}, xMax: {filledBounds.xMax}");
             
             return filledBounds;
         }

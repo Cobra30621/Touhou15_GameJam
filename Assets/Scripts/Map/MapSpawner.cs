@@ -17,8 +17,14 @@ namespace Map
         private int currentX; 
 
         [SerializeField] private List<Room> currentRooms;
-        
-        
+
+        private void Start()
+        {
+            Init();
+            GenerateMap();
+        }
+
+
         [Button]
         public void Init()
         {
