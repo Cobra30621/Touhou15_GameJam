@@ -5,18 +5,25 @@ namespace Player
 {
     public class PlayerMovement : MonoBehaviour
     {
+        [SerializeField]private float[] speed_limit = { 10,1},forcelimit = { 10,1};
         public float moveSpeed = 5f;
         public float jumpForce = 5f;
+        private float nowSize;
         private Rigidbody2D rb;
         private bool isGrounded;
+        public PlayerSizeHandler playersize;
 
         void Start()
         {
             rb = GetComponent<Rigidbody2D>();
+            nowSize = playersize.currentSize;
         }
 
         void Update()
         {
+            nowSize = playersize.currentSize;
+            adjustSpeedForcebySize();
+
             // 移動控制
             float moveInput = Input.GetAxis("Horizontal");
             rb.velocity = new Vector2(moveInput * moveSpeed, rb.velocity.y);
@@ -44,6 +51,12 @@ namespace Player
             {
                 isGrounded = false;
             }
+        }
+
+        private void adjustSpeedForcebySize()
+        {
+            moveSpeed = (speed_limit[0] - speed_limit[1]) *nowSize +speed_limit[1];
+            jumpForce = (forcelimit[0] - forcelimit[1]) * nowSize+forcelimit[1];
         }
     }
 }
