@@ -13,6 +13,18 @@ namespace Player
             playerMovement = GetComponent<PlayerMovement>();
         }
 
+        private void Update()
+        {
+            //need to be modify later
+            detect_die();
+        }
+        private void detect_die()
+        {
+            if (sizeHandler.currentSize <= 0)
+            {
+                Die();
+            }
+        }
         /// <summary>   
         /// when player takes damage -> decrease size
         /// note : size limit is 0~1 
@@ -24,7 +36,7 @@ namespace Player
 
         private void Die()
         {
-            // 處理死亡邏輯
+            print("Player Die");
         }
     }
 }
