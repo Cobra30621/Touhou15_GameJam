@@ -22,5 +22,10 @@ namespace Player
         {
             // 處理死亡邏輯
         }
+
+        public void Grow(float amount)
+        {
+            sizeHandler.Grow(0.1f);
+        }
     }
 }

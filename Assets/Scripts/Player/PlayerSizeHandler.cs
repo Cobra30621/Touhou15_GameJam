@@ -31,7 +31,12 @@ namespace Player
         {
             currentSize -= shrink;
         }
-        
+
+        public void Grow(float grow)
+        {
+            currentSize += grow;
+        }
+
         /// <summary>
         /// Increases size over time
         /// </summary>
