@@ -1,30 +1,70 @@
 ﻿using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.Tilemaps;
 
 namespace Map
 {
     public class Room : MonoBehaviour
     {
+        /// <summary>
+        /// The Tilemap associated with this room.
+        /// </summary>
         [Required]
         [SerializeField]
-        private Tilemap _tilemap;
+        private Tilemap tilemap;
 
-        [Button]
-        public BoundsInt GetBoundX()
+        /// <summary>
+        /// The goal for this room.
+        /// </summary>
+        [Required]
+        [SerializeField] 
+        private RoomGoal roomGoal;
+
+        /// <summary>
+        /// The unique identifier for this room.
+        /// </summary>
+        [SerializeField] 
+        private int roomId;
+        
+        /// <summary>
+        /// Initializes the room with a given ID.
+        /// </summary>
+        /// <param name="id">The ID to initialize the room with.</param>
+        public void Initialize(int id)
         {
-            BoundsInt filledBounds = GetFilledTileBounds();
-            // Debug.Log($"{name}: {filledBounds.size.x}");
-            // Debug.Log($"Filled Bounds - xMin: {filledBounds.xMin}, xMax: {filledBounds.xMax}");
-            
+            roomId = id;
+            roomGoal.SetRoom(this);
+        }
+        
+        /// <summary>
+        /// Marks the room as completed.
+        /// </summary>
+        public void CompleteGoal()
+        {
+            MapManager.Instance.CompleteRoom(roomId);
+        }
+        
+        /// <summary>
+        /// Gets the bounds of the filled tiles in the Tilemap.
+        /// </summary>
+        /// <returns>The bounds of the filled tiles.</returns>
+        [Button]
+        public BoundsInt GetFilledBounds()
+        {
+            BoundsInt filledBounds = CalculateFilledTileBounds();
             return filledBounds;
         }
         
-        BoundsInt GetFilledTileBounds()
+        /// <summary>
+        /// Calculates the bounds of the filled tiles in the Tilemap.
+        /// </summary>
+        /// <returns>The bounds of the filled tiles.</returns>
+        private BoundsInt CalculateFilledTileBounds()
         {
-            if (_tilemap == null) return new BoundsInt();
+            if (tilemap == null) return new BoundsInt();
 
-            BoundsInt bounds = _tilemap.cellBounds;
+            BoundsInt bounds = tilemap.cellBounds;
             int minX = bounds.xMax, minY = bounds.yMax; // Set to maximum value to find the minimum value
             int maxX = bounds.xMin, maxY = bounds.yMin; // Set to minimum value to find the maximum value
 
@@ -36,7 +76,7 @@ namespace Map
                 for (int x = bounds.xMin; x < bounds.xMax; x++)
                 {
                     Vector3Int pos = new Vector3Int(x, y, 0);
-                    if (_tilemap.HasTile(pos))
+                    if (tilemap.HasTile(pos))
                     {
                         hasTile = true;
                         minX = Mathf.Min(minX, x);

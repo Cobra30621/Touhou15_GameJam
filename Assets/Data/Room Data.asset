@@ -12,8 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0debf68a74745be85b331330f7a24a7, type: 3}
   m_Name: Room Data
   m_EditorClassIdentifier: 
-  startRoom: {fileID: 6606513688942863030, guid: 68386afad41454d418bb3bb048a6274f, type: 3}
+  startRoom: {fileID: 6471238153555602598, guid: f334b06c4e4e937439571dbfea6efdfa, type: 3}
   normalRooms:
-  - {fileID: 2222721077841156771, guid: 5db8cc8a937e9d14a86b241295e8abc6, type: 3}
-  - {fileID: 7925372678324585161, guid: 90e1f9210d6760a4fa5e6e8e5c021985, type: 3}
-  endRoom: {fileID: 6606513688942863030, guid: 68386afad41454d418bb3bb048a6274f, type: 3}
+  - {fileID: 6471238153555602598, guid: 0e779afb8630ee9409caf307672b6605, type: 3}
+  - {fileID: 6471238153555602598, guid: 9bc167d8e69c2fc47a2423b1b3ff4d8f, type: 3}
