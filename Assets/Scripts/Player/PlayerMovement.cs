@@ -1,5 +1,4 @@
-﻿using Sirenix.OdinInspector;
-using System;
+﻿using System;
 using UnityEngine;
 
 namespace Player
@@ -12,7 +11,6 @@ namespace Player
         private float nowSize;
         private Rigidbody2D rb;
         private bool isGrounded;
-        [Required]
         public PlayerSizeHandler playersize;
 
 
