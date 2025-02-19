@@ -47,7 +47,7 @@ namespace MapObject
             if (collider.CompareTag("Player"))
             {
                 Debug.Log($"Gain Item {itemInfo}");
-                // TODO : Call Item Manager
+                ItemManager.Instance.setActivateItem(itemInfo);
                 Destroy(gameObject);
             }
         }

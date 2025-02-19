@@ -26,11 +26,11 @@ namespace Player
         }
 
         [Button]
-        public void Shrink(float shrink)
+        public void Resize(float amount)
         {
-            currentSize -= shrink;
+            currentSize += amount;
         }
-        
+
         /// <summary>
         /// Increases size over time
         /// </summary>

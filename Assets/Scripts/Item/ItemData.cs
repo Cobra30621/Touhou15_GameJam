@@ -34,7 +34,14 @@ namespace Item
             return items[UnityEngine.Random.Range(0, items.Count)];
             
         }
-        
+
+        public ItemInfo GetItemWithID(int id)
+        {
+            return ItemInfos[id];
+
+        }
+
+
         /// <summary>
         /// Gets a random item from the list of items.
         /// </summary>
@@ -62,6 +69,10 @@ namespace Item
         /// A description of the item.
         /// </summary>
         public string description;
+
+        public int intValue;
+
+        public float floatValue;
 
         /// <summary>
         /// The sprite representing the item.

@@ -14,14 +14,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ItemInfos:
   - itemType: 1
-    title: "\u8B8A\u5927 1"
+    title: "\u8B8A\u59270.1"
     description: 
+    intValue: 0
+    floatValue: 0.1
     sprite: {fileID: -1791875058, guid: 663f736f82cbd904087e30c73dd51dd8, type: 3}
   - itemType: 1
-    title: "\u8B8A\u5927 2"
+    title: "\u8B8A\u59270.3"
     description: 
+    intValue: 0
+    floatValue: 0.3
     sprite: {fileID: -1745499208, guid: 663f736f82cbd904087e30c73dd51dd8, type: 3}
   - itemType: 0
     title: "\u5565\u90FD\u6C92\u6709"
     description: 
+    intValue: 0
+    floatValue: 0
     sprite: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}

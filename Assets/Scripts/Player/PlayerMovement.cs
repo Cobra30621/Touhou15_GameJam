@@ -13,6 +13,8 @@ namespace Player
         private bool isGrounded;
         public PlayerSizeHandler playersize;
 
+
+
         void Start()
         {
             rb = GetComponent<Rigidbody2D>();
@@ -29,9 +31,14 @@ namespace Player
             rb.velocity = new Vector2(moveInput * moveSpeed, rb.velocity.y);
 
             // 跳躍控制
-            if (isGrounded && Input.GetButtonDown("Jump"))
+            if (isGrounded && (Input.GetButtonDown("Jump") || Input.GetKeyDown(KeyCode.UpArrow)))
             {
                 rb.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
+            }
+
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                UseActivateItem();
             }
         }
 
@@ -53,10 +60,16 @@ namespace Player
             }
         }
 
+
+        private void UseActivateItem() {
+            ItemManager.Instance.useActivateItem();
+        }
+        
         private void adjustSpeedForcebySize()
         {
             moveSpeed = (speed_limit[0] - speed_limit[1]) *nowSize +speed_limit[1];
             jumpForce = (forcelimit[0] - forcelimit[1]) * nowSize+forcelimit[1];
+
         }
     }
 }

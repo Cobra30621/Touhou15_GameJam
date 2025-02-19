@@ -38,5 +38,10 @@ namespace Player
         {
             print("Player Die");
         }
+
+        public void Resize(float amount)
+        {
+            sizeHandler.Resize(0.1f);
+        }
     }
 }
