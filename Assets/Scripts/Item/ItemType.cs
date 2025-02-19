@@ -6,6 +6,6 @@
     public enum ItemType
     {
         None = 0, 
-        Bigger // Become Bigger
+        Bigger = 1,
     }
 }

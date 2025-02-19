@@ -6,14 +6,22 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ItemManager : MonoBehaviour
 {
     public static ItemManager Instance;
 
-    [SerializeField] private GameObject player;
+    [SerializeField]
+    private GameObject player;
+
     private PlayerController playerController;
-    private Dictionary<ItemType, Action<PlayerController>> itemEffects;
+
+    [SerializeField]
+    private Image ActivateItemIcon;
+
+    [SerializeField]
+    private ItemInfo activatedItem;
 
 
     private void Awake()
@@ -29,10 +37,7 @@ public class ItemManager : MonoBehaviour
 
         playerController = player.GetComponent<PlayerController>();
 
-        itemEffects = new Dictionary<ItemType, Action<PlayerController>>
-        {
-            { ItemType.Bigger, playerController => playerController.Grow(0.1f) },
-        };
+        activatedItem = null;
 
     }
 
@@ -41,15 +46,29 @@ public class ItemManager : MonoBehaviour
     
     }
 
-    public void Effect(ItemInfo item) {
-        if (itemEffects.TryGetValue(item.itemType, out Action<PlayerController> effect))
+    public void setActivateItem(ItemInfo item) {
+        activatedItem = item;
+        if (activatedItem != null)
         {
-            effect(playerController);
-            Debug.Log($"¾A¥Î {item.itemType} effect");
-        }
-        else
+            ActivateItemIcon.sprite = item.sprite;
+            ActivateItemIcon.gameObject.SetActive(true);
+        } else
         {
-            Debug.LogWarning($"No effect defined for {item.itemType}.");
+            ActivateItemIcon.gameObject.SetActive(false);
         }
+    }
+
+    public void useActivateItem()
+    {
+        switch (activatedItem.itemType)
+        {
+            case ItemType.Bigger:
+                playerController.Resize(activatedItem.floatValue);
+                break;
+            default:
+                break;
+        }
+
+        setActivateItem(null);
     }
 }

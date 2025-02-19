@@ -10,6 +10,8 @@ namespace Player
         private Rigidbody2D rb;
         private bool isGrounded;
 
+
+
         void Start()
         {
             rb = GetComponent<Rigidbody2D>();
@@ -22,9 +24,14 @@ namespace Player
             rb.velocity = new Vector2(moveInput * moveSpeed, rb.velocity.y);
 
             // 跳躍控制
-            if (isGrounded && Input.GetButtonDown("Jump"))
+            if (isGrounded && (Input.GetButtonDown("Jump") || Input.GetKeyDown(KeyCode.UpArrow)))
             {
                 rb.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
+            }
+
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                UseActivateItem();
             }
         }
 
@@ -44,6 +51,10 @@ namespace Player
             {
                 isGrounded = false;
             }
+        }
+
+        private void UseActivateItem() {
+            ItemManager.Instance.useActivateItem();
         }
     }
 }

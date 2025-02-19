@@ -6,7 +6,7 @@ namespace Map
     [CreateAssetMenu(fileName = "Room Data", menuName = "RoomData")]
     public class RoomData : ScriptableObject
     {
-        public  Room startRoom;
+        public Room startRoom;
         public List<Room> normalRooms;
         public Room endRoom;
 
