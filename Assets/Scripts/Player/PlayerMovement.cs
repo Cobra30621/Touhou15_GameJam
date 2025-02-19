@@ -36,6 +36,7 @@ namespace Player
                 rb.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
             }
 
+            //使用主動道具
             if (Input.GetKeyDown(KeyCode.E))
             {
                 UseActivateItem();

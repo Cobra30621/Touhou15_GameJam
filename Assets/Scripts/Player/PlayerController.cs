@@ -31,12 +31,12 @@ namespace Player
         /// <!summary>
         public void TakeDamage(float damage)
         {
-            sizeHandler.Shrink(damage);
+            //sizeHandler.Shrink(damage);
         }
 
         private void Die()
         {
-            print("Player Die");
+            //print("Player Die");
         }
 
         public void Resize(float amount)

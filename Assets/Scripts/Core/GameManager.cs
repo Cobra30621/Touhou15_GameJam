@@ -42,6 +42,12 @@ namespace Core
         {
             timer += Time.deltaTime;
             // 更新 UI
+
+            //開啟選單
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+
+            }
         }
     }
 }
