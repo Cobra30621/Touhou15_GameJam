@@ -4,7 +4,7 @@ namespace Player
 {
     public class PlayerController : MonoBehaviour
     {
-        private PlayerSizeHandler sizeHandler;
+        public PlayerSizeHandler sizeHandler;
         private PlayerMovement playerMovement;
 
         void Start()
@@ -12,10 +12,14 @@ namespace Player
             sizeHandler = GetComponent<PlayerSizeHandler>();
             playerMovement = GetComponent<PlayerMovement>();
         }
-        
-        public void TakeDamage(int damage)
+
+        /// <summary>   
+        /// when player takes damage -> decrease size
+        /// note : size limit is 0~1 
+        /// <!summary>
+        public void TakeDamage(float damage)
         {
-            Debug.Log($"Take Damage {damage}");
+            sizeHandler.Shrink(damage);
         }
 
         private void Die()
