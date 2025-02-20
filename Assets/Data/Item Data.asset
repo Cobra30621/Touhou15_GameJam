@@ -14,20 +14,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ItemInfos:
   - itemType: 1
-    title: "\u8B8A\u59270.1"
-    description: 
-    intValue: 0
-    floatValue: 0.1
-    sprite: {fileID: -1791875058, guid: 663f736f82cbd904087e30c73dd51dd8, type: 3}
-  - itemType: 1
-    title: "\u8B8A\u59270.3"
+    title: "\u9152\u80E1\u8606"
     description: 
     intValue: 0
     floatValue: 0.3
-    sprite: {fileID: -1745499208, guid: 663f736f82cbd904087e30c73dd51dd8, type: 3}
-  - itemType: 0
-    title: "\u5565\u90FD\u6C92\u6709"
-    description: 
+    sprite: {fileID: 21300008, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
+  - itemType: 3
+    title: "\u6469\u91CC\u6C99\u7684\u6383\u5E1A"
+    description: "\u7372\u5F97\u4E00\u6BB5\u6642\u9593\u7684\u98DB\u884C\u80FD\u529B"
     intValue: 0
     floatValue: 0
-    sprite: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+    sprite: {fileID: 21300148, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
+  - itemType: 4
+    title: "\u54B2\u591C\u7684\u61F7\u8868"
+    description: "\u66AB\u505C\u6642\u9593"
+    intValue: 0
+    floatValue: 0
+    sprite: {fileID: 21300118, guid: 7810966f0f690954c87305933cabf2b0, type: 3}

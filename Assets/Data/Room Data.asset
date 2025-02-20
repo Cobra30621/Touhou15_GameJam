@@ -16,7 +16,7 @@ MonoBehaviour:
     SerializedFormat: 2
     SerializedBytes: 
     ReferencedUnityObjects:
-    - {fileID: 6471238153555602598, guid: f334b06c4e4e937439571dbfea6efdfa, type: 3}
+    - {fileID: 7023373846466837866, guid: 1f92d269c86bafd45b9eccc3cdec260b, type: 3}
     - {fileID: 6471238153555602598, guid: 0e779afb8630ee9409caf307672b6605, type: 3}
     - {fileID: 6471238153555602598, guid: 9bc167d8e69c2fc47a2423b1b3ff4d8f, type: 3}
     SerializedBytesString: 
@@ -177,16 +177,7 @@ MonoBehaviour:
       Entry: 12
       Data: 1
     - Name: 
-      Entry: 10
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
+      Entry: 6
       Data: 
     - Name: 
       Entry: 13
@@ -194,4 +185,13 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  defaultRoom: {fileID: 6471238153555602598, guid: f334b06c4e4e937439571dbfea6efdfa, type: 3}
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  defaultRoom: {fileID: 7023373846466837866, guid: 1f92d269c86bafd45b9eccc3cdec260b, type: 3}

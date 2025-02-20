@@ -35,6 +35,21 @@ namespace Item
             
         }
 
+        public ItemInfo GetRandomItemWithoutWineGourd()
+        {
+            var items = ItemInfos.Where(info => 
+                info.itemType != ItemType.WineGourd
+                ).ToList();
+
+            if (items.Count == 0)
+            {
+                Debug.LogError($"ItemData does not contain enough item");
+                return new ItemInfo();
+            }
+            
+            return items[UnityEngine.Random.Range(0, items.Count)];
+        }
+
         public ItemInfo GetItemWithID(int id)
         {
             return ItemInfos[id];

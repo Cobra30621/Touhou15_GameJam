@@ -32,7 +32,7 @@ public class ItemManager : MonoBehaviour
         }
         else
         {
-            Destroy(gameObject); // ½T«O Singleton
+            Destroy(gameObject); // ï¿½Tï¿½O Singleton
         }
 
         playerController = player.GetComponent<PlayerController>();
@@ -63,7 +63,7 @@ public class ItemManager : MonoBehaviour
         if (activatedItem == null) return;
         switch (activatedItem.itemType)
         {
-            case ItemType.Bigger:
+            case ItemType.WineGourd:
                 playerController.Resize(activatedItem.floatValue);
                 break;
             default:

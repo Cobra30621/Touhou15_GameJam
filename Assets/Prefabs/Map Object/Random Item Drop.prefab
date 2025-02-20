@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1917681919218752292}
   - component: {fileID: 683322516023550880}
   m_Layer: 0
-  m_Name: Item Drop
+  m_Name: Random Item Drop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -47,7 +47,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bd2bcf000d64ac39bc29a2246b60b31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemType: 1
+  random: 1
+  itemType: 0
   itemData: {fileID: 11400000, guid: cb0ffe813c465614f8027f1262ef3749, type: 2}
   spriteRenderer: {fileID: 4549283092699104561}
 --- !u!212 &4549283092699104561
@@ -91,7 +92,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1267847538, guid: 663f736f82cbd904087e30c73dd51dd8, type: 3}
+  m_Sprite: {fileID: -6929924221510541977, guid: 19e07f9d107e445408633f50457d456e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -164,8 +165,8 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    pivot: {x: 0.5, y: 0}
+    oldSize: {x: 0.53125, y: 0.453125}
     newSize: {x: 0.16, y: 0.16}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

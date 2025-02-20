@@ -2,6 +2,7 @@
 using Item;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace MapObject
 {
@@ -10,6 +11,8 @@ namespace MapObject
     /// </summary>
     public class ItemDrop : MonoBehaviour
     {
+        public bool random;
+        
         /// <summary>
         /// The type of item that can be dropped.
         /// </summary>
@@ -38,7 +41,14 @@ namespace MapObject
 
         private void Init()
         {
-            itemInfo = itemData.GetRandomItemWithType(itemType);
+            if (random)
+            {
+                itemInfo = itemData.GetRandomItemWithoutWineGourd();
+            }
+            else
+            {
+                itemInfo = itemData.GetRandomItemWithType(itemType);
+            }
             spriteRenderer.sprite = itemInfo.sprite;
         }
         

@@ -5,7 +5,8 @@
     /// </summary>
     public enum ItemType
     {
-        None = 0, 
-        Bigger = 1,
+        WineGourd = 1,
+        MorissaBroom = 3,
+        SakuyaClock = 4
     }
 }

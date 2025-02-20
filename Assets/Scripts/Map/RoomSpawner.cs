@@ -40,7 +40,7 @@ namespace Map
         public void Initialize()
         {
             currentSpawnId = 0;
-            currentX = 0;
+            currentX = -10;
             ClearAllRooms();
         }
         
