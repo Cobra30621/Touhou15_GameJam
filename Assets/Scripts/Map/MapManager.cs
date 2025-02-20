@@ -188,7 +188,7 @@ namespace Map
                 // Unlimited Generate Room
                 if (currentStage.RequiredRoomCount == -1)
                 {
-                    return true;
+                    return false;
                 }
                 
                 return roomsSpawnedInCurrentStage >= currentStage.RequiredRoomCount;
