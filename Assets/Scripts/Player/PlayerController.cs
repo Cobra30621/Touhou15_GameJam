@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using Unity.VisualScripting;
+using System.Collections;
+using UnityEngine;
 
 namespace Player
 {
@@ -6,6 +8,9 @@ namespace Player
     {
         public PlayerSizeHandler sizeHandler;
         private PlayerMovement playerMovement;
+        private float immortalCooldown = 1f;
+        public bool isImmortal = false;
+        [SerializeField] private SpriteRenderer spriteRenderer;
 
         void Start()
         {
@@ -15,28 +20,46 @@ namespace Player
 
         private void Update()
         {
-            //need to be modify later
-            detect_die();
-        }
-        private void detect_die()
-        {
-            if (sizeHandler.currentSize <= 0)
+            if (isImmortal) {
+                spriteRenderer.enabled = !spriteRenderer.enabled;
+            } else if (!spriteRenderer.enabled)
             {
-                Die();
+                spriteRenderer.enabled = true;
             }
+            //need to be modify later
+            //detect_die();
         }
+        //private void detect_die()
+        //{
+        //    if (sizeHandler.currentSize <= 0)
+        //    {
+        //        Die();
+        //    }
+        //}
         /// <summary>   
         /// when player takes damage -> decrease size
         /// note : size limit is 0~1 
         /// <!summary>
         public void TakeDamage(float damage)
         {
-            //sizeHandler.Shrink(damage);
+            sizeHandler.Resize(-damage);
+            StartCoroutine(Immortal());
         }
 
         private void Die()
         {
-            //print("Player Die");
+            print("Player Die");
+        }
+
+        public bool IsImmortal()
+        {
+            return isImmortal;
+        }
+        private IEnumerator Immortal()
+        {
+            isImmortal = true;
+            yield return new WaitForSeconds(immortalCooldown);
+            isImmortal = false;
         }
 
         public void Resize(float amount)
