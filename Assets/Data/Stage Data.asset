@@ -53,7 +53,79 @@ MonoBehaviour:
         mscorlib
     - Name: 
       Entry: 12
+      Data: 6
+    - Name: 
+      Entry: 7
+      Data: 3|Map.Data.Stage, Assembly-CSharp
+    - Name: StageName
+      Entry: 3
       Data: 0
+    - Name: RequiredRoomCount
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 4|Map.Data.Stage, Assembly-CSharp
+    - Name: StageName
+      Entry: 3
+      Data: 1
+    - Name: RequiredRoomCount
+      Entry: 3
+      Data: 5
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 5|Map.Data.Stage, Assembly-CSharp
+    - Name: StageName
+      Entry: 3
+      Data: 2
+    - Name: RequiredRoomCount
+      Entry: 3
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 6|Map.Data.Stage, Assembly-CSharp
+    - Name: StageName
+      Entry: 3
+      Data: 3
+    - Name: RequiredRoomCount
+      Entry: 3
+      Data: 4
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 7|Map.Data.Stage, Assembly-CSharp
+    - Name: StageName
+      Entry: 3
+      Data: 4
+    - Name: RequiredRoomCount
+      Entry: 3
+      Data: -1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 8|Map.Data.Stage, Assembly-CSharp
+    - Name: StageName
+      Entry: 3
+      Data: 5
+    - Name: RequiredRoomCount
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
     - Name: 
       Entry: 13
       Data: 
@@ -71,14 +143,14 @@ MonoBehaviour:
       Data: 1
     - Name: $v
       Entry: 7
-      Data: 3|System.Collections.Generic.List`1[[Map.Data.Stage, Assembly-CSharp]],
+      Data: 9|System.Collections.Generic.List`1[[Map.Data.Stage, Assembly-CSharp]],
         mscorlib
     - Name: 
       Entry: 12
-      Data: 3
+      Data: 4
     - Name: 
       Entry: 7
-      Data: 4|Map.Data.Stage, Assembly-CSharp
+      Data: 10|Map.Data.Stage, Assembly-CSharp
     - Name: StageName
       Entry: 3
       Data: 0
@@ -90,7 +162,7 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 7
-      Data: 5|Map.Data.Stage, Assembly-CSharp
+      Data: 11|Map.Data.Stage, Assembly-CSharp
     - Name: StageName
       Entry: 3
       Data: 1
@@ -102,13 +174,25 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 7
-      Data: 6|Map.Data.Stage, Assembly-CSharp
+      Data: 12|Map.Data.Stage, Assembly-CSharp
     - Name: StageName
       Entry: 3
       Data: 2
     - Name: RequiredRoomCount
       Entry: 3
       Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 13|Map.Data.Stage, Assembly-CSharp
+    - Name: StageName
+      Entry: 3
+      Data: 3
+    - Name: RequiredRoomCount
+      Entry: 3
+      Data: -1
     - Name: 
       Entry: 8
       Data: 

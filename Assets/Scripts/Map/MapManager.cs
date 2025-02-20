@@ -160,6 +160,11 @@ namespace Map
                 
                 currentStage = _currentStages[currentStageIndex];
                 roomsSpawnedInCurrentStage = 0;
+
+                if (IsBossStage(currentStage.StageName))
+                {
+                    IsDefeatBoss = false;
+                }
             }
             
             // Generate Room
@@ -174,7 +179,7 @@ namespace Map
         private bool ShouldChangeStage()
         {
             // If boss stage, need to defeat boss then change stage
-            if (currentStage.StageName == StageName.BigForestBoss)
+            if (IsBossStage(currentStage.StageName))
             {
                 return IsDefeatBoss;
             }
@@ -189,10 +194,22 @@ namespace Map
                 return roomsSpawnedInCurrentStage >= currentStage.RequiredRoomCount;
             }
         }
+
+        private bool IsBossStage(StageName stageName)
+        {
+            return stageName == StageName.BigForestBoss;
+        }
         
 
         #endregion
-        
+
+        /// <summary>
+        /// When DefeatBoss
+        /// </summary>
+        public void DefeatBoss()
+        {
+            IsDefeatBoss = true;
+        }
         
         /// <summary>
         /// Completes a room based on the character's arrival ID.
