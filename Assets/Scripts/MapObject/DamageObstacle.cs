@@ -26,11 +26,9 @@ namespace MapObject
                 {
                     DestroyThis();
                 }
-                else if (!controller.IsImmortal())
+                else
                 {
                     controller.TakeDamage(damage);
-                    print("Player take damage");
-                    //StartCoroutine(DamageCooldown());
                 }
             }
         }

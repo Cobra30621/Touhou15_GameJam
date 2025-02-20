@@ -1,6 +1,7 @@
 ﻿using Unity.VisualScripting;
 using System.Collections;
 using UnityEngine;
+using Weapon;
 
 namespace Player
 {
@@ -8,14 +9,21 @@ namespace Player
     {
         public PlayerSizeHandler sizeHandler;
         private PlayerMovement playerMovement;
+
+        private PlayerWeapon playerWeapon;
+        
+        [SerializeField] private SpriteRenderer spriteRenderer;
+
+        
         private float immortalCooldown = 1f;
         public bool isImmortal = false;
-        [SerializeField] private SpriteRenderer spriteRenderer;
+        public bool isDead;
 
         void Start()
         {
             sizeHandler = GetComponent<PlayerSizeHandler>();
             playerMovement = GetComponent<PlayerMovement>();
+            playerWeapon = GetComponent<PlayerWeapon>();
         }
 
         private void Update()
@@ -27,34 +35,44 @@ namespace Player
                 spriteRenderer.enabled = true;
             }
             //need to be modify later
-            //detect_die();
+            detect_die();
         }
-        //private void detect_die()
-        //{
-        //    if (sizeHandler.currentSize <= 0)
-        //    {
-        //        Die();
-        //    }
-        //}
+        
+        
+        private void detect_die()
+        {
+            if (sizeHandler.currentSize <= 0)
+            {
+                Die();
+            }
+        }
+        
+        
+        
         /// <summary>   
         /// when player takes damage -> decrease size
         /// note : size limit is 0~1 
         /// <!summary>
         public void TakeDamage(float damage)
         {
+            if(isImmortal){return;}
+            
             sizeHandler.Resize(-damage);
             StartCoroutine(Immortal());
         }
 
-        private void Die()
+        public void Die()
         {
             print("Player Die");
+            isDead = true;
         }
 
-        public bool IsImmortal()
+        public void AddBullet(Sprite sprite)
         {
-            return isImmortal;
+            
         }
+
+    
         private IEnumerator Immortal()
         {
             isImmortal = true;

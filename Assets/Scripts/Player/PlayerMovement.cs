@@ -16,11 +16,13 @@ namespace Player
         [SerializeField] private bool isJumping;
         public PlayerSizeHandler playersize;
 
+        private PlayerController _playerController;
 
 
         void Start()
         {
             rb = GetComponent<Rigidbody2D>();
+            _playerController = GetComponent<PlayerController>();
             nowSize = playersize.currentSize;
         }
 
