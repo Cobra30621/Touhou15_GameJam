@@ -6,11 +6,12 @@ namespace Player
     public class PlayerMovement : MonoBehaviour
     {
         [SerializeField]private float[] speed_limit = { 10,1},forcelimit = { 10,1};
-        public float moveSpeed = 5f;
-        public float jumpForce = 5f;
+        public float moveSpeed = 20f;
+        public float jumpForce = 20f;
         private float nowSize;
         private Rigidbody2D rb;
         private bool isGrounded;
+        private bool enableJump;
         public PlayerSizeHandler playersize;
 
 
@@ -31,9 +32,17 @@ namespace Player
             rb.velocity = new Vector2(moveInput * moveSpeed, rb.velocity.y);
 
             // 跳躍控制
-            if (isGrounded && (Input.GetButtonDown("Jump") || Input.GetKeyDown(KeyCode.UpArrow)))
+            if (isGrounded && !enableJump && (Input.GetButton("Jump") || Input.GetKey(KeyCode.UpArrow)))
             {
+                Debug.Log("Try to jump");
+                enableJump = true;
                 rb.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
+            }
+
+            // 跳躍結束控制
+            if (!isGrounded && enableJump)
+            {
+                enableJump = false;
             }
 
             //使用主動道具
