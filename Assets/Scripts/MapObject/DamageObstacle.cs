@@ -7,7 +7,7 @@ namespace MapObject
 {
     public class DamageObstacle : MonoBehaviour
     {
-        public float damage = 0.2f;
+        public float damage = 0.05f;
         private float damageCooldown = 1f;
         private bool iscooldown = false;
         [SerializeField] private float size = 0.3f;
@@ -26,11 +26,11 @@ namespace MapObject
                 {
                     DestroyThis();
                 }
-                else if (!iscooldown)
+                else if (!controller.IsImmortal())
                 {
                     controller.TakeDamage(damage);
                     print("Player take damage");
-                    StartCoroutine(DamageCooldown());
+                    //StartCoroutine(DamageCooldown());
                 }
             }
         }
