@@ -60,6 +60,7 @@ public class ItemManager : MonoBehaviour
 
     public void useActivateItem()
     {
+        if (activatedItem == null) return;
         switch (activatedItem.itemType)
         {
             case ItemType.Bigger:
