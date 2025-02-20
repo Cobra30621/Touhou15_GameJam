@@ -1,17 +1,19 @@
 ﻿using System;
+using System.Collections;
 using UnityEngine;
 
 namespace Player
 {
     public class PlayerMovement : MonoBehaviour
     {
-        [SerializeField]private float[] speed_limit = { 10,1},forcelimit = { 10,1};
-        public float moveSpeed = 20f;
-        public float jumpForce = 20f;
+        [SerializeField]private float[] speed_limit = {20,5},forcelimit = {20,5};
+        public float moveSpeed = 10f;
+        public float jumpForce = 10f;
         private float nowSize;
         private Rigidbody2D rb;
-        private bool isGrounded;
-        private bool enableJump;
+        [SerializeField] private bool isGrounded;
+        [SerializeField] private bool enableJump;
+        [SerializeField] private bool isJumping;
         public PlayerSizeHandler playersize;
 
 
@@ -31,18 +33,26 @@ namespace Player
             float moveInput = Input.GetAxis("Horizontal");
             rb.velocity = new Vector2(moveInput * moveSpeed, rb.velocity.y);
 
+            CheckGrounded();
+
             // 跳躍控制
-            if (isGrounded && !enableJump && (Input.GetButton("Jump") || Input.GetKey(KeyCode.UpArrow)))
+            if (enableJump && isGrounded && (Input.GetButton("Jump") || Input.GetKey(KeyCode.UpArrow)))
             {
-                Debug.Log("Try to jump");
-                enableJump = true;
+                enableJump = false;
+                rb.velocity = new Vector2(rb.velocity.x, 0);
                 rb.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
             }
 
-            // 跳躍結束控制
-            if (!isGrounded && enableJump)
+            // 離開地面，
+            if (!isGrounded && !enableJump)
             {
-                enableJump = false;
+                isJumping = true;
+            }
+
+            if (isGrounded && isJumping)
+            {
+                isJumping = false;
+                enableJump = true;
             }
 
             //使用主動道具
@@ -50,26 +60,21 @@ namespace Player
             {
                 UseActivateItem();
             }
+
         }
 
-        private void OnCollisionEnter2D(Collision2D collision)
+        void CheckGrounded()
         {
-            // 檢查是否接觸地面
-            if (collision.gameObject.CompareTag("Ground"))
-            {
-                isGrounded = true;
-            }
-        }
+            Bounds bounds = GetComponent<Collider2D>().bounds;
+            Vector2 boxSize = new Vector2(bounds.size.x * 0.9f, 0.1f); // 設定較寬的區域
+            Vector2 checkPosition = (Vector2)transform.position + Vector2.down * (bounds.extents.y + 0.05f);
 
-        private void OnCollisionExit2D(Collision2D collision)
-        {
-            // 離開地面
-            if (collision.gameObject.CompareTag("Ground"))
-            {
-                isGrounded = false;
-            }
-        }
+            isGrounded = Physics2D.OverlapBox(checkPosition, boxSize, 0, LayerMask.GetMask("Obstacle"));
 
+            // Debug 用
+            Debug.DrawRay(checkPosition, Vector2.down * 0.1f, Color.green);
+
+        }
 
         private void UseActivateItem() {
             ItemManager.Instance.useActivateItem();
@@ -77,8 +82,8 @@ namespace Player
         
         private void adjustSpeedForcebySize()
         {
-            moveSpeed = (speed_limit[0] - speed_limit[1]) *nowSize +speed_limit[1];
-            jumpForce = (forcelimit[0] - forcelimit[1]) * nowSize+forcelimit[1];
+            moveSpeed = (speed_limit[0] - speed_limit[1]) * nowSize + speed_limit[1];
+            jumpForce = (forcelimit[0] - forcelimit[1]) * nowSize + forcelimit[1];
 
         }
     }

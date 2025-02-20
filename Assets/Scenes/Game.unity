@@ -339,7 +339,7 @@ GameObject:
   - component: {fileID: 205970802}
   - component: {fileID: 205970803}
   - component: {fileID: 205970806}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Obstacle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -864,13 +864,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed_limit:
+  - 15
   - 10
-  - 1
   forcelimit:
+  - 15
   - 10
-  - 1
   moveSpeed: 20
   jumpForce: 20
+  isGrounded: 0
+  enableJump: 0
+  isJumping: 0
   playersize: {fileID: 1103095090}
 --- !u!50 &1103095092
 Rigidbody2D:
@@ -886,9 +889,9 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0.5
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 5cc2a4839eba59344a698d1a678d9832, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
