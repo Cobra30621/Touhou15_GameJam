@@ -36,7 +36,7 @@ namespace Player
             CheckGrounded();
 
             // 跳躍控制
-            if (enableJump && isGrounded && (Input.GetButton("Jump") || Input.GetKey(KeyCode.UpArrow)))
+            if (enableJump && isGrounded && (Input.GetButton("Jump") || Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W)))
             {
                 enableJump = false;
                 rb.velocity = new Vector2(rb.velocity.x, 0);

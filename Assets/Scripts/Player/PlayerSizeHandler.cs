@@ -28,6 +28,7 @@ namespace Player
         [Button]
         public void Resize(float amount)
         {
+            Debug.Log(amount);
             currentSize += amount;
         }
 
