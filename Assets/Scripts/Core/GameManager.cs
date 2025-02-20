@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Map.Data;
+using UnityEngine;
 
 namespace Core
 {
@@ -7,6 +8,9 @@ namespace Core
         public static GameManager Instance { get; private set; }
         private int score;
         private float timer;
+
+        public GameMode GameMode;
+        
         
         private void Awake()
         {

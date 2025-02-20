@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Map.Data;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -7,12 +8,13 @@ using Random = UnityEngine.Random;
 
 namespace Map
 {
-    public class MapSpawner : MonoBehaviour
+    public class RoomSpawner : MonoBehaviour
     {
         /// <summary>
         /// Data associated with the Room.
         /// </summary>
         [Required]
+        [InlineEditor]
         [SerializeField] private RoomData roomData;
 
         /// <summary>
@@ -41,21 +43,14 @@ namespace Map
             currentX = 0;
             ClearAllRooms();
         }
+        
 
         /// <summary>
-        /// Generates the starting room based on the room data.
+        /// Generates a room from the room data.
         /// </summary>
-        public void GenerateStartingRoom()
+        public void GenerateRoom(StageName stageName)
         {
-            GenerateRoom(roomData.startRoom);
-        }
-
-        /// <summary>
-        /// Generates a random room from the room data.
-        /// </summary>
-        public void GenerateRandomRoom()
-        {
-            Room roomPrefab = roomData.RandomRoom();
+            Room roomPrefab = roomData.RandomRoom(stageName);
             GenerateRoom(roomPrefab);
         }
 

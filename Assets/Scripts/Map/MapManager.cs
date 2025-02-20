@@ -1,11 +1,20 @@
 ﻿using System;
+using System.Collections.Generic;
+using Core;
+using Map.Data;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Serialization;
 
 namespace Map
 {
+    /// <summary>
+    /// Manages the map generation and stage transitions.
+    /// </summary>
     public class MapManager : MonoBehaviour
     {
+        #region Settings
+
         /// <summary>
         /// Singleton instance of the MapManager.
         /// </summary>
@@ -14,23 +23,74 @@ namespace Map
         /// <summary>
         /// Reference to the MapSpawner responsible for generating rooms.
         /// </summary>
-        public MapSpawner mapSpawner;
-    
+        [FormerlySerializedAs("mapSpawner")] public RoomSpawner roomSpawner;
+        
         /// <summary>
-        /// The ID of the character's arrival in the map.
+        /// Data for the current stage.
         /// </summary>
-        public int currentCharacterArrivalId;
-
+        [Required]
+        [InlineEditor]
+        public StageData StageData;
+        
         /// <summary>
         /// The initial number of rooms to spawn.
         /// </summary>
-        public int initSpawnCount;
+        [Title("Settings")]
+        public int initialRoomCount;
 
         /// <summary>
         /// The threshold for the spawn interval to generate new rooms.
         /// </summary>
         public int spawnIntervalThreshold = 2;
         
+        #endregion
+
+        #region Cache
+
+        /// <summary>
+        /// List of current stages in the game.
+        /// </summary>
+        [Title("Cache")]
+        [SerializeField]
+        private List<Stage> _currentStages;
+        
+        /// <summary>
+        /// Index of the current stage.
+        /// </summary>
+        public int currentStageIndex;
+        
+        /// <summary>
+        /// The current stage being played.
+        /// </summary>
+        public Stage currentStage;
+        
+        /// <summary>
+        /// The current spawn room ID from the map spawner.
+        /// </summary>
+        [ShowInInspector]
+        public int currentSpawnRoomId => roomSpawner.currentSpawnId;
+        
+        /// <summary>
+        /// Number of rooms spawned in the current stage.
+        /// </summary>
+        public int roomsSpawnedInCurrentStage;
+        
+        /// <summary>
+        /// The ID of the character's arrival room in the map.
+        /// </summary>
+        public int currentCharacterArrivalRoomId;
+
+        /// <summary>
+        /// Indicates if the boss has been defeated.
+        /// </summary>
+        public bool IsDefeatBoss;
+        
+
+        #endregion
+
+        #region Initialization
+
+
         /// <summary>
         /// Initializes the MapManager instance.
         /// </summary>
@@ -47,25 +107,92 @@ namespace Map
         /// </summary>
         private void Start()
         {
-            GenerateInitMap();
+            Initialize();
         }
 
+        /// <summary>
+        /// Initializes the map and stage settings.
+        /// </summary>
+        private void Initialize()
+        {
+            currentCharacterArrivalRoomId = 0;
+            roomSpawner.Initialize();
+
+            var gameMode = GameManager.Instance.GameMode;
+            _currentStages = StageData.GetStages(gameMode);
+            currentStageIndex = 0;
+            roomsSpawnedInCurrentStage = 0;
+            currentStage = _currentStages[currentStageIndex];
+
+            GenerateInitialRoom();
+        }
         
+
+        #endregion
+
+        #region Generate Room
+
         /// <summary>
         /// Generates the initial map layout.
         /// </summary>
-        private void GenerateInitMap()
+        private void GenerateInitialRoom()
         {
-            currentCharacterArrivalId = 0;
-            mapSpawner.Initialize();
-            
-            mapSpawner.GenerateStartingRoom();
-            
-            for (int i = 0; i < initSpawnCount; i++)
+            for (int i = 0; i < initialRoomCount; i++)
             {
-                mapSpawner.GenerateRandomRoom();
+                CheckAndGenerateRoom();
             }
         }
+
+        /// <summary>
+        /// Checks if the stage should change and generates a new room if necessary.
+        /// </summary>
+        private void CheckAndGenerateRoom()
+        {
+            // Check should change stage
+            if (ShouldChangeStage())
+            {
+                currentStageIndex++;
+                // If all stage complete, stop generate room
+                if (currentStageIndex >= _currentStages.Count)
+                {
+                    return;
+                }
+                
+                currentStage = _currentStages[currentStageIndex];
+                roomsSpawnedInCurrentStage = 0;
+            }
+            
+            // Generate Room
+            roomSpawner.GenerateRoom(currentStage.StageName);
+            roomsSpawnedInCurrentStage++;
+        }
+
+        /// <summary>
+        /// Determines if the stage should change based on the current conditions.
+        /// </summary>
+        /// <returns>True if the stage should change, otherwise false.</returns>
+        private bool ShouldChangeStage()
+        {
+            // If boss stage, need to defeat boss then change stage
+            if (currentStage.StageName == StageName.BigForestBoss)
+            {
+                return IsDefeatBoss;
+            }
+            else
+            {
+                // Unlimited Generate Room
+                if (currentStage.RequiredRoomCount == -1)
+                {
+                    return true;
+                }
+                
+                return roomsSpawnedInCurrentStage >= currentStage.RequiredRoomCount;
+            }
+        }
+        
+
+        #endregion
+        
         
         /// <summary>
         /// Completes a room based on the character's arrival ID.
@@ -73,12 +200,12 @@ namespace Map
         /// <param name="id">The ID of the room that has been completed.</param>
         public void CompleteRoom(int id)
         {
-            currentCharacterArrivalId = Math.Max(id, currentCharacterArrivalId);
-         
+            currentCharacterArrivalRoomId = Math.Max(id, currentCharacterArrivalRoomId);
             
-            if (mapSpawner.currentSpawnId - currentCharacterArrivalId <= spawnIntervalThreshold)
+            // Need Generate new room
+            if (currentSpawnRoomId - currentCharacterArrivalRoomId <= spawnIntervalThreshold)
             {
-                mapSpawner.GenerateRandomRoom();
+                CheckAndGenerateRoom();
             }
         }
     }
