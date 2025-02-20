@@ -32,13 +32,28 @@ public class ItemManager : MonoBehaviour
         }
         else
         {
-            Destroy(gameObject); // �T�O Singleton
+            Destroy(gameObject);
         }
+
+        player = GameObject.Find("Player");
 
         playerController = player.GetComponent<PlayerController>();
 
-        activatedItem = null;
+        GameObject uiObject = GameObject.Find("Canvas");
+        if (uiObject != null)
+        {
+            Transform actTransform = uiObject.transform.Find("ActivateItemIcon");
+            if (actTransform != null)
+            {
+                Transform imageTransform = actTransform.Find("Image");
+                if (imageTransform != null)
+                {
+                    GameObject imageObject = imageTransform.gameObject;
+                }
+            }
+        }
 
+        activatedItem = null;
     }
 
     public void Update()
