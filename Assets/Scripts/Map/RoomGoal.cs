@@ -26,6 +26,8 @@ namespace Map
             if (collider.CompareTag("Player"))
             {
                 _room.CompleteGoal();
+                
+                Destroy(gameObject);
             }
         }
     }

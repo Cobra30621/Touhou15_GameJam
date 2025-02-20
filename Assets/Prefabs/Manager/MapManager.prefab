@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6049865221699194848}
   - component: {fileID: 3805888196560135979}
   m_Layer: 0
-  m_Name: Map Spawner
+  m_Name: Room Spawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -93,7 +93,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3683590422c14957bae24609fd325ee8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mapSpawner: {fileID: 3805888196560135979}
-  currentCharacterArrivalId: 0
-  initSpawnCount: 2
-  spawnIntervalThreshold: 2
+  roomSpawner: {fileID: 3805888196560135979}
+  StageData: {fileID: 11400000, guid: 0030093318252d34a9db65833b793e72, type: 2}
+  initialRoomCount: 3
+  spawnIntervalThreshold: 1
+  _currentStages: []
+  currentStageIndex: 0
+  currentStage:
+    StageName: 0
+    RequiredRoomCount: 0
+  roomsSpawnedInCurrentStage: 0
+  currentCharacterArrivalRoomId: 0
+  IsDefeatBoss: 0
