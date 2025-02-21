@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Sirenix.OdinInspector.Editor.Validation;
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -96,6 +97,12 @@ namespace Player
             }
         }
 
+        public void Freeze()
+        {
+            rb.velocity = Vector3.zero;
+            rb.gravityScale = 0;
+        }
+
         void CheckGrounded()
         {
             Bounds bounds = GetComponent<Collider2D>().bounds;
@@ -118,6 +125,11 @@ namespace Player
             moveSpeed = (speed_limit[0] - speed_limit[1]) * nowSize + speed_limit[1];
             jumpForce = (forcelimit[0] - forcelimit[1]) * nowSize + forcelimit[1];
 
+        }
+
+        public float GetVelocityX()
+        {
+            return rb.velocity.x;
         }
     }
 }

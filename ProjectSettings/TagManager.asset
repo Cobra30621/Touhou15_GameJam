@@ -43,3 +43,6 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Reimu
+    uniqueID: 2605448593
+    locked: 0

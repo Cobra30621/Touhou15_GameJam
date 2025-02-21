@@ -4,6 +4,7 @@ using Player;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -18,7 +19,7 @@ public class ItemManager : MonoBehaviour
     private PlayerController playerController;
 
     [SerializeField]
-    private Image ActivateItemIcon;
+    private ActivateItemIcon activateItemIcon;
 
     [SerializeField]
     private ItemInfo activatedItem;
@@ -45,11 +46,7 @@ public class ItemManager : MonoBehaviour
             Transform actTransform = uiObject.transform.Find("ActivateItemIcon");
             if (actTransform != null)
             {
-                Transform imageTransform = actTransform.Find("Image");
-                if (imageTransform != null)
-                {
-                    GameObject imageObject = imageTransform.gameObject;
-                }
+                ActivateItemIcon activateItemIcon = actTransform.GetComponent<ActivateItemIcon>();
             }
         }
 
@@ -57,20 +54,14 @@ public class ItemManager : MonoBehaviour
     }
 
     public void Update()
-    { 
-    
+    {
+
     }
 
-    public void setActivateItem(ItemInfo item) {
+    public void setActivateItem(ItemInfo item)
+    {
         activatedItem = item;
-        if (activatedItem != null)
-        {
-            ActivateItemIcon.sprite = item.sprite;
-            ActivateItemIcon.gameObject.SetActive(true);
-        } else
-        {
-            ActivateItemIcon.gameObject.SetActive(false);
-        }
+        activateItemIcon.UpdateImage(item);
     }
 
     public void useActivateItem()

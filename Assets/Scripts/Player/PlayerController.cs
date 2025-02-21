@@ -85,6 +85,14 @@ namespace Player
             StartCoroutine(Immortal());
         }
 
+
+        public void Freeze()
+        {
+            playerMovement.Freeze();
+            playerMovement.enabled = false;
+            sizeHandler.enabled = false;
+        }
+
         [Button]
         public void Die()
         {
@@ -117,6 +125,12 @@ namespace Player
         {
             sizeHandler.Resize(0.1f);
         }
-        
+
+
+        public float getVelocityX()
+        {
+            return playerMovement.GetVelocityX();
+        }
+
     }
 }
