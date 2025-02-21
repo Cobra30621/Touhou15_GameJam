@@ -20,6 +20,8 @@ namespace MapObject
         public bool takeDamage;
         [ShowIf("takeDamage")] 
         public float damage = 0.05f;
+
+        public bool destroyAfterHurtPlayer;
         
         void OnCollisionEnter2D(Collision2D collision)
         {
