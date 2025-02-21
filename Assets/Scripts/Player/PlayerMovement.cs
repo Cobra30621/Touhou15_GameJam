@@ -51,23 +51,10 @@ namespace Player
             if (enableJump && isGrounded && (Input.GetButton("Jump") || Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W)))
             {
                 enableJump = false;
+                StartCoroutine(JumpCooldown());
                 rb.velocity = new Vector2(rb.velocity.x, 0);
                 rb.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
             }
-
-            // 離開地面，
-            if (!isGrounded && !enableJump)
-            {
-                isJumping = true;
-            }
-
-            if (isGrounded && isJumping)
-            {
-                isJumping = false;
-                enableJump = true;
-            }
-
-            
 
             // 玩家水平翻轉
             if (moveInput < 0) // 當玩家向左移動
@@ -95,6 +82,10 @@ namespace Player
             }
         }
 
+        public IEnumerator JumpCooldown() {
+            yield return new WaitForSeconds(1f);
+            enableJump = true;
+        }
         public void Freeze()
         {
             rb.velocity = Vector3.zero;
@@ -104,7 +95,7 @@ namespace Player
         void CheckGrounded()
         {
             Bounds bounds = GetComponent<Collider2D>().bounds;
-            Vector2 boxSize = new Vector2(bounds.size.x * 0.9f, 0.1f); // 設定較寬的區域
+            Vector2 boxSize = new Vector2(bounds.size.x * 0.8f, 0.1f); // 設定較寬的區域
             Vector2 checkPosition = (Vector2)bounds.center + Vector2.down * (bounds.extents.y + 0.05f);
 
             isGrounded = Physics2D.OverlapBox(checkPosition, boxSize, 0, LayerMask.GetMask("Obstacle"));
