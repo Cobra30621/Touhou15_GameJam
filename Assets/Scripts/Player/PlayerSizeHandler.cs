@@ -47,7 +47,9 @@ namespace Player
         {
             currentSize = Math.Clamp(currentSize, 0f, 1f);
             var objectSize = minSize + (maxSize - minSize) * currentSize;
-            transform.localScale = new Vector3(objectSize, objectSize, objectSize); // 应用大小
+
+            var xSize = PlayerController.Instance.LeftDirection ? -1 * objectSize : objectSize;
+            transform.localScale = new Vector3(xSize, objectSize, objectSize); // 应用大小
         }
 
     }
