@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3408116701683391668}
   - component: {fileID: 7467013983495820715}
   m_Layer: 3
-  m_Name: Shooting Enemy
+  m_Name: Middle Fairy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
