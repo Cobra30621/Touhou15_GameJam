@@ -48,20 +48,14 @@ namespace Map
         }
         
 
-        /// <summary>
-        /// Generates a room from the room data.
-        /// </summary>
-        public void GenerateRoom(StageName stageName)
-        {
-            Room roomPrefab = roomData.RandomRoom(stageName);
-            GenerateRoom(roomPrefab);
-        }
+
+        
 
         /// <summary>
         /// Instantiates a room prefab and adds it to the active rooms list.
         /// </summary>
         /// <param name="roomPrefab">The room prefab to instantiate.</param>
-        private void GenerateRoom(Room roomPrefab)
+        public void GenerateRoom(Room roomPrefab)
         {
             BoundsInt bounds = roomPrefab.GetFilledBounds();
             currentSpawnId++;
