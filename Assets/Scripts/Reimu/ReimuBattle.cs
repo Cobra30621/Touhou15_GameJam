@@ -1,7 +1,10 @@
 using Player;
 using System;
 using System.Collections;
+using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.Serialization;
+using Weapon;
 
 public class ReimuBattle : MonoBehaviour
 {
@@ -11,23 +14,41 @@ public class ReimuBattle : MonoBehaviour
     [SerializeField] private float chargePeriod;
     [SerializeField] private float dashPeriod;
     [SerializeField] private bool isMove = false;
-    [SerializeField] private Vector3 move;
-    [SerializeField] private Vector3 initPosition;
+
     [SerializeField] private Vector3 startPosition;
     [SerializeField] private Vector3 endPosition;
     [SerializeField] private GameObject chargeBar;
+    [SerializeField] private GameObject weapon;
 
-    private GameObject player;
-    private PlayerController playerController;
+    private ReimuMovement _reimuMovement;
 
+    
+    private Animator _animator;
 
+    public bool IsRunning;
+    
+    private bool isHit;
+
+    private Coroutine actionCoroutine;
+    
 
     void Start()
     {
-        player = GameObject.Find("Player");
-        playerController = player.GetComponent<PlayerController>();
+        _reimuMovement = GetComponent<ReimuMovement>();
+        _animator = GetComponent<Animator>();
+    }
+
+
+    public void StartMode()
+    {
+        if (IsRunning)
+        {
+            return;
+        }
+        
+        IsRunning = true;
         reimuSprite.SetActive(true);
-        StartCoroutine(ReimuActionCoroutine());
+        actionCoroutine = StartCoroutine(ReimuActionCoroutine());
     }
 
     void FollowMainCamera()
@@ -48,18 +69,17 @@ public class ReimuBattle : MonoBehaviour
         FollowMainCamera();
     }
 
-    public void ReimuAction()
-    {
-        StartCoroutine(ReimuActionCoroutine());
-    }
 
     private IEnumerator ReimuActionCoroutine()
     {
+        weapon.SetActive(true);
         yield return StartCoroutine(SmoothMoveCoroutine(startPosition, endPosition, movePeriod));
+        weapon.SetActive(false);
         yield return StartCoroutine(ChargeAttack());
         chargeBar.SetActive(false);
-        playerController.Freeze();
-        yield return StartCoroutine(SmoothMoveCoroutine(endPosition, reimu.transform.InverseTransformPoint(player.transform.position), dashPeriod));
+        PlayerController.Instance.Die();
+        yield return StartCoroutine(SmoothMoveCoroutine(endPosition, 
+            reimu.transform.InverseTransformPoint(PlayerController.Instance.transform.position), dashPeriod));
     }
 
 
@@ -68,11 +88,12 @@ public class ReimuBattle : MonoBehaviour
         float elapsedTime = 0;
         while (elapsedTime < duration)
         {
-            reimuSprite.transform.localPosition = Vector3.Lerp(startPosition, endPosition, elapsedTime / duration);
+            reimuSprite.transform.position =  Vector3.Lerp( 
+                transform.position + startPosition, transform.position + endPosition, elapsedTime / duration);
             elapsedTime += Time.deltaTime;
             yield return null;
         }
-        reimuSprite.transform.localPosition = endPosition;
+        reimuSprite.transform.position =  transform.position + endPosition;
     }
 
     private IEnumerator ChargeAttack()
@@ -89,5 +110,39 @@ public class ReimuBattle : MonoBehaviour
             yield return null;
         }
         chargeBar.transform.localScale = targetScale;
+    }
+
+    
+    [Button]
+    public void OnHit()
+    {
+        StartCoroutine(OnHitCoroutine());
+    }
+
+    private IEnumerator OnHitCoroutine()
+    {
+        StopCoroutine(actionCoroutine);
+        chargeBar.SetActive(false);
+        weapon.SetActive(false);
+        _animator.SetTrigger("Dizziness");
+        
+        yield return new WaitForSeconds(1f);
+        
+        // 平移 reimuSprite 出畫面外
+        Vector3 targetPosition = new Vector3(-15f, reimuSprite.transform.position.y, reimuSprite.transform.position.z); // 假設 -10f 是畫面外的位置
+        yield return StartCoroutine(SmoothMoveCoroutine(reimuSprite.transform.localPosition, targetPosition, 2f)); // 2 秒的平移時間
+        
+        reimuSprite.SetActive(false);
+        // End Battle Mode
+        _reimuMovement.StartMode();
+        IsRunning = false;
+    }
+
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.blue; // 設定顏色為紅色
+        Gizmos.DrawSphere(Camera.main.transform.position + startPosition, 0.1f); // 繪製 startPosition 的球體
+        Gizmos.color = Color.green; // 設定顏色為綠色
+        Gizmos.DrawSphere(Camera.main.transform.position + endPosition, 0.1f); // 繪製 endPosition 的球體
     }
 }

@@ -104,20 +104,22 @@ namespace Player
         }
 
 
-        public void Freeze()
-        {
-            playerMovement.Freeze();
-            playerMovement.enabled = false;
-            sizeHandler.enabled = false;
-        }
+        
 
         [Button]
         public void Die()
         {
             print("Player Die");
+            Freeze();
             isDead = true;
             
             _animator.SetTrigger("Die");
+        }
+        
+        public void Freeze()
+        {
+            playerMovement.Freeze();
+            sizeHandler.enabled = false;
         }
 
         public void AddBullet(BulletClip clip)

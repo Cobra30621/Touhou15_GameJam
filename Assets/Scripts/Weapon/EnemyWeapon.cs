@@ -1,6 +1,8 @@
 ﻿using Player;
 using Sirenix.OdinInspector;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 namespace Weapon
 {
@@ -34,6 +36,17 @@ namespace Weapon
         /// </summary>
         public float spreadAngle = 15f;
 
+        public int bulletWave = 3;
+
+        [SerializeField] private int currentWave = 0;
+
+        [SerializeField] private float waveCooldown = 0f;
+
+        public float waveRate = 0.5f;
+
+
+        private bool isShooting;
+
         /// <summary>
         /// Indicates whether to use the player's direction.
         /// </summary>
@@ -50,10 +63,31 @@ namespace Weapon
         /// </summary>
         void Update()
         {
-            fireCooldown -= Time.deltaTime;
-            if (fireCooldown <= 0f)
+            if (isShooting)
             {
-                Fire();
+                waveCooldown -= Time.deltaTime;
+                if (waveCooldown <= 0f)
+                {
+                    Fire();
+                    currentWave++;
+                    if (bulletWave == currentWave)
+                    {
+                        currentWave = 0;
+                        isShooting = false;
+                        return;
+                    }
+                    waveCooldown = waveRate;
+                    fireCooldown = fireRate;
+                }
+
+            } else
+            {
+                fireCooldown -= Time.deltaTime;
+                if (fireCooldown <= 0f) { 
+                    isShooting = true;
+                    waveCooldown = waveRate;
+                    currentWave = 0;
+                }
             }
         }
 
@@ -81,7 +115,7 @@ namespace Weapon
             }
             
             shooter.Fire(bulletCount, spreadAngle, dir);
-            fireCooldown = fireRate;
+            //fireCooldown = fireRate;
         }
     }
 }
