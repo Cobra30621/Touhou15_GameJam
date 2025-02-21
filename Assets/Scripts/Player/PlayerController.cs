@@ -1,7 +1,9 @@
 ﻿using System;
 using Unity.VisualScripting;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using Weapon;
 
 namespace Player
@@ -22,7 +24,9 @@ namespace Player
         public bool isImmortal = false;
         public bool isDead;
 
-
+        public UnityEvent<List<BulletClip>> OnBulletClipChanged = new UnityEvent<List<BulletClip>>();
+        
+        
         private void Awake()
         {
             if (Instance == null)
@@ -82,6 +86,7 @@ namespace Player
         public void AddBullet(BulletClip clip)
         {
             playerWeapon.AddBullet(clip);
+            OnBulletClipChanged?.Invoke(playerWeapon.bulletClips);
         }
 
     
@@ -96,5 +101,6 @@ namespace Player
         {
             sizeHandler.Resize(0.1f);
         }
+        
     }
 }

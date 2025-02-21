@@ -16,7 +16,7 @@ namespace Player
         public float fireRate = 0.5f; 
         public float spreadAngle = 15f;
 
-        [SerializeField] private List<BulletClip> bulletClips = new List<BulletClip>();
+        public List<BulletClip> bulletClips = new List<BulletClip>();
         
         
         void Update()
@@ -34,6 +34,8 @@ namespace Player
             Debug.Log("Fire");
             var bulletSprite = bulletClips[0];
             bulletClips.RemoveAt(0);
+            
+            PlayerController.Instance.OnBulletClipChanged?.Invoke(bulletClips);
             
             shooter.Fire(bulletCount, spreadAngle, bulletSprite);
             fireCooldown = fireRate;
