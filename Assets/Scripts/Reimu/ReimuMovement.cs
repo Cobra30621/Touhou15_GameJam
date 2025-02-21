@@ -17,13 +17,19 @@ public class ReimuMovement : MonoBehaviour
 
     void Start()
     {
-        distance = 30f;
         speed = 0.02f;
         playerSpeedFactor = 0.0004f;
 
         player = GameObject.Find("Player");
 
         playerController = player.GetComponent<PlayerController>();
+        
+        StartMode();
+    }
+
+    public void StartMode()
+    {
+        distance = 30f;
     }
 
     // Update is called once per frame

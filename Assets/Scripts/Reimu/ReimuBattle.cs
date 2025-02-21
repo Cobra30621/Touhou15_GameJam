@@ -23,12 +23,24 @@ public class ReimuBattle : MonoBehaviour
     private GameObject player;
     private PlayerController playerController;
 
+    private ReimuMovement _reimuMovement;
 
+
+    private bool isHit;
+    
 
     void Start()
     {
         player = GameObject.Find("Player");
         playerController = player.GetComponent<PlayerController>();
+        _reimuMovement = GetComponent<ReimuMovement>();
+        
+        StartMode();
+    }
+
+
+    public void StartMode()
+    {
         reimuSprite.SetActive(true);
         StartCoroutine(ReimuActionCoroutine());
     }
@@ -51,10 +63,6 @@ public class ReimuBattle : MonoBehaviour
         FollowMainCamera();
     }
 
-    public void ReimuAction()
-    {
-        StartCoroutine(ReimuActionCoroutine());
-    }
 
     private IEnumerator ReimuActionCoroutine()
     {
@@ -94,5 +102,19 @@ public class ReimuBattle : MonoBehaviour
             yield return null;
         }
         chargeBar.transform.localScale = targetScale;
+    }
+
+    public void OnHit()
+    {
+        StartCoroutine(OnHitCoroutine());
+    }
+
+    private IEnumerator OnHitCoroutine()
+    {
+        yield return new WaitForSeconds(1f);
+        
+        // End Battle Mode
+        _reimuMovement.StartMode();
+        enabled = false;
     }
 }

@@ -13,6 +13,14 @@ namespace Weapon
                 Debug.Log("Bullet Hit Enemy！");
                 OnHit();
             }
+            
+            if (collision.gameObject.CompareTag("Reimu"))
+            {
+                Debug.Log("Bullet Hit Reimu！");
+                var reimuBattle = collision.gameObject.GetComponent<ReimuBattle>();
+                reimuBattle.OnHit();
+                OnHit();
+            }
 
             if (collision.gameObject.layer == LayerMask.NameToLayer("Obstacle"))
             {
