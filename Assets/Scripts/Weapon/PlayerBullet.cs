@@ -1,4 +1,5 @@
 ﻿using MapObject;
+using Reimu;
 
 namespace Weapon
 {
@@ -17,8 +18,8 @@ namespace Weapon
             if (collision.gameObject.CompareTag("Reimu"))
             {
                 Debug.Log("Bullet Hit Reimu！");
-                var reimuBattle = collision.gameObject.GetComponent<ReimuBattle>();
-                reimuBattle.OnHit();
+                var hitTrigger = collision.gameObject.GetComponent<ReimuHitTrigger>();
+                hitTrigger.OnHit();
                 OnHit();
             }
 

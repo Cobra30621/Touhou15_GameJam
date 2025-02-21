@@ -57,7 +57,7 @@ public class ReimuBattle : MonoBehaviour
         if (mainCamera != null)
         {
             Vector3 targetPosition = mainCamera.transform.position;
-            targetPosition.y = 0;
+            // targetPosition.y = 0;
             targetPosition.z = 0;
             reimu.transform.position = targetPosition;
         }
