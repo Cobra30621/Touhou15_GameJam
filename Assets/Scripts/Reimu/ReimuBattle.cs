@@ -77,7 +77,7 @@ public class ReimuBattle : MonoBehaviour
         weapon.SetActive(false);
         yield return StartCoroutine(ChargeAttack());
         chargeBar.SetActive(false);
-        PlayerController.Instance.Freeze();
+        PlayerController.Instance.Die();
         yield return StartCoroutine(SmoothMoveCoroutine(endPosition, 
             reimu.transform.InverseTransformPoint(PlayerController.Instance.transform.position), dashPeriod));
     }
