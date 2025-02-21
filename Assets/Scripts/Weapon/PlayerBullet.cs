@@ -6,7 +6,7 @@ namespace Weapon
 
     public class PlayerBullet : Bullet
     {
-        void OnCollisionEnter2D(Collision2D collision)
+        void OnTriggerEnter2D(Collider2D collision)
         {
             if (collision.gameObject.CompareTag("Enemy"))
             {
