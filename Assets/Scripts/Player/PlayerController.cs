@@ -2,6 +2,7 @@
 using Unity.VisualScripting;
 using System.Collections;
 using System.Collections.Generic;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Events;
 using Weapon;
@@ -29,6 +30,8 @@ namespace Player
         public UnityEvent<List<BulletClip>> OnBulletClipChanged = new UnityEvent<List<BulletClip>>();
 
         public bool LeftDirection => playerMovement.leftDirection;
+
+        private Animator _animator;
         
         
         private void Awake()
@@ -44,6 +47,7 @@ namespace Player
             sizeHandler = GetComponent<PlayerSizeHandler>();
             playerMovement = GetComponent<PlayerMovement>();
             playerWeapon = GetComponent<PlayerWeapon>();
+            _animator = GetComponent<Animator>();   
         }
 
         private void Update()
@@ -81,10 +85,13 @@ namespace Player
             StartCoroutine(Immortal());
         }
 
+        [Button]
         public void Die()
         {
             print("Player Die");
             isDead = true;
+            
+            _animator.SetTrigger("Die");
         }
 
         public void AddBullet(BulletClip clip)

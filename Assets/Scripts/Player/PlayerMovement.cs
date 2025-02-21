@@ -17,11 +17,19 @@ namespace Player
         public PlayerSizeHandler playersize;
 
 
+        private Animator _animator;
+        
         public bool leftDirection;
+        
+        private float idleTimer = 0f; // 新增計時器
+
+        public float idleNeedWait = 0.05f;
+        
         
         void Start()
         {
             rb = GetComponent<Rigidbody2D>();
+            _animator = GetComponent<Animator>();
             nowSize = playersize.currentSize;
         }
 
@@ -63,13 +71,28 @@ namespace Player
             }
 
             // 玩家水平翻轉
-            if (Input.GetAxis("Horizontal") < 0) // 當玩家向左移動
+            if (moveInput < 0) // 當玩家向左移動
             {
                 leftDirection = true; // 水平翻轉
             }
-            else if (Input.GetAxis("Horizontal") > 0) // 當玩家向右移動
+            else if (moveInput > 0) // 當玩家向右移動
             {
                 leftDirection = false; // 恢復正常
+            }
+
+            // 更新動畫狀態
+            if (moveInput == 0)
+            {
+                idleTimer += Time.deltaTime; // 增加計時器
+                if (idleTimer >= idleNeedWait) 
+                {
+                    _animator.SetBool("Walking", false);
+                }
+            }
+            else
+            {
+                idleTimer = 0f; // 重置計時器
+                _animator.SetBool("Walking", true);
             }
         }
 
