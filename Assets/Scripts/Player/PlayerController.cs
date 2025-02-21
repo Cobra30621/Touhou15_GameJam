@@ -46,9 +46,11 @@ namespace Player
             StartCoroutine(Immortal());
         }
 
-        private void Die()
+        public void Die()
         {
-            print("Player Die");
+            playerMovement.Freeze();
+            playerMovement.enabled = false;
+            sizeHandler.enabled = false;
         }
 
         public bool IsImmortal()
@@ -65,6 +67,11 @@ namespace Player
         public void Resize(float amount)
         {
             sizeHandler.Resize(0.1f);
+        }
+
+        public float getVelocityX()
+        {
+            return playerMovement.GetVelocityX();
         }
     }
 }
