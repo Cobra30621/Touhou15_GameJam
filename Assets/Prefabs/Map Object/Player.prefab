@@ -171,6 +171,8 @@ MonoBehaviour:
   sizeHandler: {fileID: 8444743282415853165}
   spriteRenderer: {fileID: 6738054205909406371}
   destroyObstacleSize: 0.6
+  item1Key: 120
+  item2Key: 99
   isImmortal: 0
   isDead: 0
   OnBulletClipChanged:
@@ -197,7 +199,7 @@ MonoBehaviour:
   moveSpeed: 5
   jumpForce: 15
   isGrounded: 0
-  enableJump: 0
+  enableJump: 1
   isJumping: 0
   playersize: {fileID: 8444743282415853165}
   leftDirection: 0
@@ -216,6 +218,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minSize: 0.4
   maxSize: 5
+  growthRatelist:
+  - 0
+  - 1
+  growthbond:
+  - 0
+  - 1
   growthRate: 0
   currentSize: 1
 --- !u!114 &1416991743298713645
