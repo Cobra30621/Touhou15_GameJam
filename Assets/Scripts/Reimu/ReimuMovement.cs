@@ -17,7 +17,7 @@ public class ReimuMovement : MonoBehaviour
 
     void Start()
     {
-        distance = 200f;
+        distance = 30f;
         speed = 0.02f;
         playerSpeedFactor = 0.0004f;
 
