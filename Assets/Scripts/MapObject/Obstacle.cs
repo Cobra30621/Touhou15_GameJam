@@ -44,6 +44,11 @@ namespace MapObject
                 if (takeDamage)
                 {
                     controller.TakeDamage(damage);
+                    
+                    if (destroyAfterHurtPlayer)
+                    {
+                        Destroy(gameObject);
+                    }
                 }
             }
         }
