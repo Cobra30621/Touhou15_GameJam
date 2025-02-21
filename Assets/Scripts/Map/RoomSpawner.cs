@@ -17,6 +17,9 @@ namespace Map
         [InlineEditor]
         [SerializeField] private RoomData roomData;
 
+
+        public float yOffset = -12f;
+        
         /// <summary>
         /// Current spawn ID for rooms.
         /// </summary>
@@ -45,26 +48,20 @@ namespace Map
         }
         
 
-        /// <summary>
-        /// Generates a room from the room data.
-        /// </summary>
-        public void GenerateRoom(StageName stageName)
-        {
-            Room roomPrefab = roomData.RandomRoom(stageName);
-            GenerateRoom(roomPrefab);
-        }
+
+        
 
         /// <summary>
         /// Instantiates a room prefab and adds it to the active rooms list.
         /// </summary>
         /// <param name="roomPrefab">The room prefab to instantiate.</param>
-        private void GenerateRoom(Room roomPrefab)
+        public void GenerateRoom(Room roomPrefab)
         {
             BoundsInt bounds = roomPrefab.GetFilledBounds();
             currentSpawnId++;
             
             var room = Instantiate(roomPrefab, transform);
-            room.transform.position = new Vector3(currentX - bounds.xMin, 0, 0);
+            room.transform.position = new Vector3(currentX - bounds.xMin, yOffset - bounds.yMin, 0);
             room.Initialize(currentSpawnId);
             
             activeRooms.Add(room);

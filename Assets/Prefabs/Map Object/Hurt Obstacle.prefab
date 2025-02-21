@@ -9,8 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1754177724326955219}
+  - component: {fileID: 4866971975594479189}
+  - component: {fileID: 2888776945391227276}
   - component: {fileID: 2745035474420682134}
-  - component: {fileID: 327341720277359645}
   - component: {fileID: 660062253460992977}
   - component: {fileID: 8824403673809916123}
   m_Layer: 3
@@ -35,6 +36,35 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4866971975594479189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9038464408536440869}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2389d4b7e61b4e0b91363ffffb40f39c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  size: 0.3
+  _dropBulletObstacle: {fileID: 2888776945391227276}
+  takeDamage: 1
+  damage: 0.05
+--- !u!114 &2888776945391227276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9038464408536440869}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a719ade2365a4113884dd6c644422840, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dropBulletRate: 1
 --- !u!212 &2745035474420682134
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -87,20 +117,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &327341720277359645
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9038464408536440869}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef720e3ac6b94630a372b57a66ab60c0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 0
-  size: 0.3
 --- !u!61 &660062253460992977
 BoxCollider2D:
   m_ObjectHideFlags: 0
