@@ -1,9 +1,18 @@
-﻿using Player;
+﻿using MapObject;
+using Player;
+using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.Serialization;
+
 namespace Weapon
 {
     public class EnemyBullet : Bullet
     {
+        [SerializeField] private bool customSizeThreshold;
+        
+        [ShowIf("customSizeThreshold")]
+        [SerializeField] private float sizeThreshold = 0.5f;
+        
         public float damage;
         
         void OnCollisionEnter2D(Collision2D collision)
@@ -12,16 +21,25 @@ namespace Weapon
             {
                 Debug.Log("Player 被擊中！");
                 var controller = collision.gameObject.GetComponent<PlayerController>();
-                controller.TakeDamage(damage);
+                
+                if (!PlayerCanIgnoreDamage(controller))
+                {
+                    controller.TakeDamage(damage);
+                }
                 
                 OnHit();
             }
-            
-            if (collision.gameObject.layer == LayerMask.NameToLayer("Obstacle"))
+        }
+        
+        private bool PlayerCanIgnoreDamage(PlayerController controller)
+        {
+            if (customSizeThreshold)
             {
-                Debug.Log("Bullet Hit Obstacle！");
-                
-                OnHit();
+                return controller.sizeHandler.currentSize >= sizeThreshold;
+            }
+            else
+            {
+                return controller.CanDestroyObstacle();
             }
         }
         

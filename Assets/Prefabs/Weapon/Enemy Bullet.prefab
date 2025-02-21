@@ -50,6 +50,8 @@ MonoBehaviour:
   speed: 5
   spriteRenderer: {fileID: 3425248894806686052}
   lifetime: 3
+  customSizeThreshold: 0
+  sizeThreshold: 0.5
   damage: 0.1
 --- !u!212 &3425248894806686052
 SpriteRenderer:
@@ -139,7 +141,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.84375, y: 0.84375}
+    oldSize: {x: 0.421875, y: 0.421875}
     newSize: {x: 0.16, y: 0.16}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

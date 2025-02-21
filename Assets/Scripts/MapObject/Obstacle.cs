@@ -1,12 +1,18 @@
 ﻿using Player;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace MapObject
 {
     public class Obstacle : MonoBehaviour
     {
-        [SerializeField] private float size = 0.3f;
+        
+        [SerializeField] private bool customSizeThreshold;
+        
+        [FormerlySerializedAs("size")]
+        [ShowIf("customSizeThreshold")]
+        [SerializeField] private float sizeThreshold = 0.5f;
 
         [Required]
         [SerializeField] private DropBulletObstacle _dropBulletObstacle;
@@ -27,7 +33,7 @@ namespace MapObject
 
         private void OnPlayerEnter(PlayerController controller)
         {
-            if (controller.sizeHandler.currentSize > size)
+            if (PlayerCanDestroyObstacle(controller))
             {
                 DestroyByPlayer();
             }
@@ -39,6 +45,19 @@ namespace MapObject
                 }
             }
         }
+
+        private bool PlayerCanDestroyObstacle(PlayerController controller)
+        {
+            if (customSizeThreshold)
+            {
+                return controller.sizeHandler.currentSize >= sizeThreshold;
+            }
+            else
+            {
+                return controller.CanDestroyObstacle();
+            }
+        }
+        
 
         public void DestroyByPlayer()
         {

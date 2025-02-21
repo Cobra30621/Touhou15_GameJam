@@ -19,6 +19,8 @@ namespace Player
         
         [SerializeField] private SpriteRenderer spriteRenderer;
 
+
+        public float destroyObstacleSize = 0.6f;
         
         private float immortalCooldown = 1f;
         public bool isImmortal = false;
@@ -91,6 +93,11 @@ namespace Player
             OnBulletClipChanged?.Invoke(playerWeapon.bulletClips);
         }
 
+        public bool CanDestroyObstacle()
+        {
+            return sizeHandler.currentSize >= destroyObstacleSize;
+        }
+        
     
         private IEnumerator Immortal()
         {

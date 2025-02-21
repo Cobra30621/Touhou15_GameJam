@@ -23,7 +23,6 @@ namespace Weapon
                 {
                     obstacle.DestroyByPlayer();
                 }
-                
                 OnHit();
             }
         }
