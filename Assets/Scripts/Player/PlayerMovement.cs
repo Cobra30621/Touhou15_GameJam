@@ -11,6 +11,8 @@ namespace Player
         public float moveSpeed = 10f;
         public float jumpForce = 10f;
         private float nowSize;
+
+        
         private Rigidbody2D rb;
         [SerializeField] private bool isGrounded;
         [SerializeField] private bool enableJump;
@@ -65,11 +67,7 @@ namespace Player
                 enableJump = true;
             }
 
-            //使用主動道具
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                UseActivateItem();
-            }
+            
 
             // 玩家水平翻轉
             if (moveInput < 0) // 當玩家向左移動
@@ -115,10 +113,7 @@ namespace Player
             Debug.DrawRay(checkPosition, Vector2.down * 0.1f, Color.green);
 
         }
-
-        private void UseActivateItem() {
-            ItemManager.Instance.useActivateItem();
-        }
+        
         
         private void adjustSpeedForcebySize()
         {

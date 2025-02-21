@@ -22,6 +22,11 @@ namespace Player
 
 
         public float destroyObstacleSize = 0.6f;
+
+        
+        public KeyCode item1Key = KeyCode.X;
+        public KeyCode item2Key = KeyCode.C;
+
         
         private float immortalCooldown = 1f;
         public bool isImmortal = false;
@@ -59,6 +64,19 @@ namespace Player
                 spriteRenderer.enabled = true;
             }
             //need to be modify later
+            
+            //使用主動道具
+            if (Input.GetKeyDown(item1Key))
+            {
+                ItemManager.Instance.useActivateItem(0);
+            }
+            
+            if (Input.GetKeyDown(item2Key))
+            {
+                ItemManager.Instance.useActivateItem(1);
+            }
+            
+            
             detect_die();
         }
         

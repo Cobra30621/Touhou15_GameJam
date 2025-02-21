@@ -289,14 +289,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1171131914}
-  activateItemIcon: {fileID: 0}
-  activatedItem:
-    itemType: 0
-    title: 
-    description: 
-    intValue: 0
-    floatValue: 0
-    sprite: {fileID: 0}
+  maxItem: 2
+  activatedItems: []
 --- !u!4 &590171445
 Transform:
   m_ObjectHideFlags: 0
@@ -548,6 +542,38 @@ PrefabInstance:
     - target: {fileID: 678203278578900220, guid: 8046b1c47e4b9094b85bf7fbe82e3bf4, type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 1686071568244337324, guid: 8046b1c47e4b9094b85bf7fbe82e3bf4, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1686071568244337324, guid: 8046b1c47e4b9094b85bf7fbe82e3bf4, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1686071568244337324, guid: 8046b1c47e4b9094b85bf7fbe82e3bf4, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1686071568244337324, guid: 8046b1c47e4b9094b85bf7fbe82e3bf4, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6260885311705760488, guid: 8046b1c47e4b9094b85bf7fbe82e3bf4, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6260885311705760488, guid: 8046b1c47e4b9094b85bf7fbe82e3bf4, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6260885311705760488, guid: 8046b1c47e4b9094b85bf7fbe82e3bf4, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6260885311705760488, guid: 8046b1c47e4b9094b85bf7fbe82e3bf4, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8252962606391189933, guid: 8046b1c47e4b9094b85bf7fbe82e3bf4, type: 3}
       propertyPath: m_Pivot.x
