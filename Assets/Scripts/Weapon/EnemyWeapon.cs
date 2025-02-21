@@ -1,4 +1,5 @@
 ﻿using Player;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -57,13 +58,15 @@ namespace Weapon
                 if (waveCooldown <= 0f)
                 {
                     Fire();
-                    bulletWave++;
+                    currentWave++;
                     if (bulletWave == currentWave)
                     {
-                        bulletWave 
+                        currentWave = 0;
                         isShooting = false;
+                        return;
                     }
                     waveCooldown = waveRate;
+                    fireCooldown = fireRate;
                 }
 
             } else

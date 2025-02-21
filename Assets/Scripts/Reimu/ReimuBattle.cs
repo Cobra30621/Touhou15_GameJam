@@ -2,6 +2,7 @@ using Player;
 using System;
 using System.Collections;
 using UnityEngine;
+using Weapon;
 
 public class ReimuBattle : MonoBehaviour
 {
@@ -16,6 +17,8 @@ public class ReimuBattle : MonoBehaviour
     [SerializeField] private Vector3 startPosition;
     [SerializeField] private Vector3 endPosition;
     [SerializeField] private GameObject chargeBar;
+    [SerializeField] private GameObject weapon;
+
 
     private GameObject player;
     private PlayerController playerController;
@@ -55,7 +58,9 @@ public class ReimuBattle : MonoBehaviour
 
     private IEnumerator ReimuActionCoroutine()
     {
+        weapon.SetActive(true);
         yield return StartCoroutine(SmoothMoveCoroutine(startPosition, endPosition, movePeriod));
+        weapon.SetActive(false);
         yield return StartCoroutine(ChargeAttack());
         chargeBar.SetActive(false);
         playerController.Freeze();
