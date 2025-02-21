@@ -201,6 +201,7 @@ MonoBehaviour:
   isJumping: 0
   playersize: {fileID: 8444743282415853165}
   leftDirection: 0
+  idleNeedWait: 0.05
 --- !u!114 &8444743282415853165
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -252,7 +253,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 5cc2a4839eba59344a698d1a678d9832, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
