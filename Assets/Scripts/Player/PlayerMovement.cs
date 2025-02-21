@@ -107,7 +107,7 @@ namespace Player
         {
             Bounds bounds = GetComponent<Collider2D>().bounds;
             Vector2 boxSize = new Vector2(bounds.size.x * 0.9f, 0.1f); // 設定較寬的區域
-            Vector2 checkPosition = (Vector2)transform.position + Vector2.down * (bounds.extents.y + 0.05f);
+            Vector2 checkPosition = (Vector2)bounds.center + Vector2.down * (bounds.extents.y + 0.05f);
 
             isGrounded = Physics2D.OverlapBox(checkPosition, boxSize, 0, LayerMask.GetMask("Obstacle"));
 
