@@ -6,16 +6,25 @@ namespace Weapon
     {
         public float damage;
         
-        private void OnTriggerEnter2D(Collider2D collision)
+        void OnCollisionEnter2D(Collision2D collision)
         {
-            if (collision.CompareTag("Player"))
+            if (collision.gameObject.CompareTag("Player"))
             {
                 Debug.Log("Player 被擊中！");
                 var controller = collision.gameObject.GetComponent<PlayerController>();
                 controller.TakeDamage(damage);
-                Destroy(gameObject);
+                
+                OnHit();
+            }
+            
+            if (collision.gameObject.layer == LayerMask.NameToLayer("Obstacle"))
+            {
+                Debug.Log("Bullet Hit Obstacle！");
+                
+                OnHit();
             }
         }
+        
     }
 
 }
