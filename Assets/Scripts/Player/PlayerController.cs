@@ -107,7 +107,6 @@ namespace Player
         public void Freeze()
         {
             playerMovement.Freeze();
-            playerMovement.enabled = false;
             sizeHandler.enabled = false;
         }
 
