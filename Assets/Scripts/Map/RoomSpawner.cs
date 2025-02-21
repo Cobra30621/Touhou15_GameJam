@@ -17,6 +17,9 @@ namespace Map
         [InlineEditor]
         [SerializeField] private RoomData roomData;
 
+
+        public float yOffset = -12f;
+        
         /// <summary>
         /// Current spawn ID for rooms.
         /// </summary>
@@ -64,7 +67,7 @@ namespace Map
             currentSpawnId++;
             
             var room = Instantiate(roomPrefab, transform);
-            room.transform.position = new Vector3(currentX - bounds.xMin, 0, 0);
+            room.transform.position = new Vector3(currentX - bounds.xMin, yOffset - bounds.yMin, 0);
             room.Initialize(currentSpawnId);
             
             activeRooms.Add(room);
