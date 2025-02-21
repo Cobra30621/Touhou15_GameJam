@@ -17,6 +17,8 @@ namespace Player
         [SerializeField] private bool isJumping;
         public PlayerSizeHandler playersize;
 
+        private bool isDie;
+
 
         private Animator _animator;
         
@@ -29,6 +31,7 @@ namespace Player
         
         void Start()
         {
+            isDie = false;
             rb = GetComponent<Rigidbody2D>();
             _animator = GetComponent<Animator>();
             nowSize = playersize.currentSize;
@@ -39,38 +42,42 @@ namespace Player
             nowSize = playersize.currentSize;
             adjustSpeedForcebySize();
 
-            // 移動控制
             float moveInput = Input.GetAxis("Horizontal");
-            rb.velocity = new Vector2(moveInput * moveSpeed, rb.velocity.y);
 
-            CheckGrounded();
-
-            // 跳躍控制
-            if (enableJump && isGrounded && (Input.GetButton("Jump") || Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W)))
+            if (!isDie)
             {
-                enableJump = false;
-                rb.velocity = new Vector2(rb.velocity.x, 0);
-                rb.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
-            }
+                // 移動控制
 
-            // 離開地面，
-            if (!isGrounded && !enableJump)
-            {
-                isJumping = true;
-            }
+                rb.velocity = new Vector2(moveInput * moveSpeed, rb.velocity.y);
 
-            if (isGrounded && isJumping)
-            {
-                isJumping = false;
-                enableJump = true;
-            }
+                CheckGrounded();
 
-            //使用主動道具
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                UseActivateItem();
-            }
+                // 跳躍控制
+                if (enableJump && isGrounded && (Input.GetButton("Jump") || Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W)))
+                {
+                    enableJump = false;
+                    rb.velocity = new Vector2(rb.velocity.x, 0);
+                    rb.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
+                }
 
+                // 離開地面，
+                if (!isGrounded && !enableJump)
+                {
+                    isJumping = true;
+                }
+
+                if (isGrounded && isJumping)
+                {
+                    isJumping = false;
+                    enableJump = true;
+                }
+
+                //使用主動道具
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    UseActivateItem();
+                }
+            }
             // 玩家水平翻轉
             if (moveInput < 0) // 當玩家向左移動
             {
@@ -80,6 +87,7 @@ namespace Player
             {
                 leftDirection = false; // 恢復正常
             }
+
 
             // 更新動畫狀態
             if (moveInput == 0)
@@ -99,6 +107,7 @@ namespace Player
 
         public void Freeze()
         {
+            isDie = true;
             rb.velocity = Vector3.zero;
             rb.gravityScale = 0;
         }
