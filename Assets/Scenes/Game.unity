@@ -1009,7 +1009,7 @@ MonoBehaviour:
   m_ScreenY: 0.5
   m_CameraDistance: 10
   m_DeadZoneWidth: 0.24
-  m_DeadZoneHeight: 0.68
+  m_DeadZoneHeight: 0
   m_DeadZoneDepth: 0
   m_UnlimitedSoftZone: 0
   m_SoftZoneWidth: 0.8
@@ -1339,3 +1339,4 @@ SceneRoots:
   - {fileID: 967959440}
   - {fileID: 815954904}
   - {fileID: 1060279090}
+  - {fileID: 536828969}
