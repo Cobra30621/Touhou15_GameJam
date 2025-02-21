@@ -2203,7 +2203,7 @@ PrefabInstance:
     - target: {fileID: 4571731724278311782, guid: c1f1770b9cf4768418f078b2b4d7eb6b, type: 3}
       propertyPath: m_TileSpriteArray.Array.data[2].m_Data
       value: 
-      objectReference: {fileID: 21300008, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
+      objectReference: {fileID: 21300000, guid: d9a2ba9dbce687c4ab83bca8941f80bd, type: 3}
     - target: {fileID: 4571731724278311782, guid: c1f1770b9cf4768418f078b2b4d7eb6b, type: 3}
       propertyPath: m_TileSpriteArray.Array.data[3].m_Data
       value: 
@@ -2646,7 +2646,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6560959565669544424, guid: c1f1770b9cf4768418f078b2b4d7eb6b, type: 3}
       propertyPath: m_ChunkCullingBounds.y
-      value: 0.046875
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
