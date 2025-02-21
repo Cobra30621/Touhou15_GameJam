@@ -86,11 +86,12 @@ namespace Player
         }
 
 
-        public void DieX()
+        public void Freeze()
         {
             playerMovement.Freeze();
             playerMovement.enabled = false;
             sizeHandler.enabled = false;
+        }
 
         [Button]
         public void Die()

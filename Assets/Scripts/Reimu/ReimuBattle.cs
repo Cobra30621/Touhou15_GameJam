@@ -58,7 +58,7 @@ public class ReimuBattle : MonoBehaviour
         yield return StartCoroutine(SmoothMoveCoroutine(startPosition, endPosition, movePeriod));
         yield return StartCoroutine(ChargeAttack());
         chargeBar.SetActive(false);
-        playerController.Die();
+        playerController.Freeze();
         yield return StartCoroutine(SmoothMoveCoroutine(endPosition, reimu.transform.InverseTransformPoint(player.transform.position), dashPeriod));
     }
 
