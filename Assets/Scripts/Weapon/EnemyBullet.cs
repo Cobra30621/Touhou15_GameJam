@@ -1,18 +1,11 @@
 ﻿using Player;
-
+using UnityEngine;
 namespace Weapon
 {
-    using UnityEngine;
-
     public class EnemyBullet : Bullet
     {
         public float damage;
         
-        protected override void Update()
-        {
-            base.Update();
-        }
-
         private void OnTriggerEnter2D(Collider2D collision)
         {
             if (collision.CompareTag("Player"))

@@ -1,4 +1,5 @@
-﻿using UnityEngine.Serialization;
+﻿using Sirenix.OdinInspector;
+using UnityEngine.Serialization;
 
 namespace Weapon
 {
@@ -6,10 +7,11 @@ namespace Weapon
 
     public class Shooter : MonoBehaviour
     {
+        [Required]
         public GameObject bulletPrefab;
-        
+
+        [Required]
         public Transform firePoint;  
-        
         
         public void Fire(int count, float spread, BulletClip clip = null)
         {
@@ -20,7 +22,7 @@ namespace Weapon
                 float angle = startAngle + i * spread;
                 Vector2 dir = Quaternion.Euler(0, 0, angle) * Vector2.right;
 
-                GameObject bulletObj = Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
+                GameObject bulletObj = Instantiate(bulletPrefab,  GetFirePoint(), Quaternion.identity);
                 Bullet bullet = bulletObj.GetComponent<Bullet>();
 
                 if (clip != null)
@@ -33,6 +35,19 @@ namespace Weapon
                 }
             }
         }
+
+        
+        private void OnDrawGizmos()
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawSphere(GetFirePoint(), 0.1f); // 在編輯器中繪製 firePoint 的位置
+        }
+        
+        private Vector3 GetFirePoint()
+        {
+            return firePoint.position;
+        }
+
     }
 
 }

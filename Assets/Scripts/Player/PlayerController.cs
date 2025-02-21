@@ -1,4 +1,5 @@
-﻿using Unity.VisualScripting;
+﻿using System;
+using Unity.VisualScripting;
 using System.Collections;
 using UnityEngine;
 using Weapon;
@@ -7,6 +8,8 @@ namespace Player
 {
     public class PlayerController : MonoBehaviour
     {
+        public static PlayerController Instance;
+        
         public PlayerSizeHandler sizeHandler;
         private PlayerMovement playerMovement;
 
@@ -18,6 +21,15 @@ namespace Player
         private float immortalCooldown = 1f;
         public bool isImmortal = false;
         public bool isDead;
+
+
+        private void Awake()
+        {
+            if (Instance == null)
+            {
+                Instance = this;
+            }
+        }
 
         void Start()
         {
@@ -67,9 +79,9 @@ namespace Player
             isDead = true;
         }
 
-        public void AddBullet(Sprite sprite)
+        public void AddBullet(BulletClip clip)
         {
-            
+            playerWeapon.AddBullet(clip);
         }
 
     

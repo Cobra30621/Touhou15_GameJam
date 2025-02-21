@@ -1,17 +1,33 @@
-﻿namespace Weapon
+﻿using MapObject;
+
+namespace Weapon
 {
     using UnityEngine;
 
     public class PlayerBullet : Bullet
     {
-        private void OnTriggerEnter2D(Collider2D collision)
+        void OnCollisionEnter2D(Collision2D collision)
         {
-            if (collision.CompareTag("Enemy"))
+            if (collision.gameObject.CompareTag("Enemy"))
             {
-                Debug.Log("Enemy 被擊中！");
-                Destroy(gameObject);
+                Debug.Log("Bullet Hit Enemy！");
+                OnHit();
+            }
+
+            if (collision.gameObject.layer == LayerMask.NameToLayer("Obstacle"))
+            {
+                Debug.Log("Bullet Hit Obstacle！");
+                var obstacle = collision.gameObject.GetComponent<Obstacle>();
+
+                if (obstacle != null)
+                {
+                    obstacle.DestroyByPlayer();
+                }
+                
+                OnHit();
             }
         }
+
     }
 
 }

@@ -10,17 +10,19 @@ namespace Player
 
         [SerializeField] private Shooter shooter;
 
+
+        public KeyCode shootKey;
         public int bulletCount = 1;  
         public float fireRate = 0.5f; 
         public float spreadAngle = 15f;
 
-        private List<BulletClip> bulletClips = new List<BulletClip>();
+        [SerializeField] private List<BulletClip> bulletClips = new List<BulletClip>();
         
         
         void Update()
         {
             fireCooldown -= Time.deltaTime;
-            if (Input.GetKeyDown(KeyCode.Space) && fireCooldown <= 0f && bulletClips.Count > 0)
+            if (Input.GetKeyDown(shootKey) && fireCooldown <= 0f && bulletClips.Count > 0)
             {
                 Fire();
             }
@@ -29,6 +31,7 @@ namespace Player
 
         private void Fire()
         {
+            Debug.Log("Fire");
             var bulletSprite = bulletClips[0];
             bulletClips.RemoveAt(0);
             
@@ -39,6 +42,7 @@ namespace Player
         
         public void AddBullet(BulletClip clip)
         {
+            Debug.Log("Addbullet");
             bulletClips.Add(clip);
         }
     }
