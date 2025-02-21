@@ -16,13 +16,12 @@ namespace Player
         [SerializeField] private bool isJumping;
         public PlayerSizeHandler playersize;
 
-        private PlayerController _playerController;
 
-
+        public bool leftDirection;
+        
         void Start()
         {
             rb = GetComponent<Rigidbody2D>();
-            _playerController = GetComponent<PlayerController>();
             nowSize = playersize.currentSize;
         }
 
@@ -63,6 +62,15 @@ namespace Player
                 UseActivateItem();
             }
 
+            // 玩家水平翻轉
+            if (Input.GetAxis("Horizontal") < 0) // 當玩家向左移動
+            {
+                leftDirection = true; // 水平翻轉
+            }
+            else if (Input.GetAxis("Horizontal") > 0) // 當玩家向右移動
+            {
+                leftDirection = false; // 恢復正常
+            }
         }
 
         void CheckGrounded()

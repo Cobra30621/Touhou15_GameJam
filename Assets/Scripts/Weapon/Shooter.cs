@@ -13,14 +13,14 @@ namespace Weapon
         [Required]
         public Transform firePoint;  
         
-        public void Fire(int count, float spread, BulletClip clip = null)
+        public void Fire(int count, float spread, Vector2 direction, BulletClip clip = null)
         {
             float startAngle = -((count - 1) * spread / 2);
 
             for (int i = 0; i < count; i++)
             {
                 float angle = startAngle + i * spread;
-                Vector2 dir = Quaternion.Euler(0, 0, angle) * Vector2.right;
+                Vector2 dir = Quaternion.Euler(0, 0, angle) * direction;
 
                 GameObject bulletObj = Instantiate(bulletPrefab,  GetFirePoint(), Quaternion.identity);
                 Bullet bullet = bulletObj.GetComponent<Bullet>();

@@ -36,8 +36,9 @@ namespace Player
             bulletClips.RemoveAt(0);
             
             PlayerController.Instance.OnBulletClipChanged?.Invoke(bulletClips);
+            var dir = PlayerController.Instance.LeftDirection ? new Vector2(-1, 0) : new Vector2(1, 0);
             
-            shooter.Fire(bulletCount, spreadAngle, bulletSprite);
+            shooter.Fire(bulletCount, spreadAngle, dir, bulletSprite);
             fireCooldown = fireRate;
         }
         

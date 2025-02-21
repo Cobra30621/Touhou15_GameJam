@@ -25,6 +25,8 @@ namespace Player
         public bool isDead;
 
         public UnityEvent<List<BulletClip>> OnBulletClipChanged = new UnityEvent<List<BulletClip>>();
+
+        public bool LeftDirection => playerMovement.leftDirection;
         
         
         private void Awake()
