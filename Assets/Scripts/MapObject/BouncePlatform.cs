@@ -5,8 +5,9 @@
     public class BouncePlatform : MonoBehaviour
     {
         public float bounceForce = 10f; // 彈跳力度
-
-        void OnCollisionEnter2D(Collision2D collision)
+        
+        
+        void OnTriggerEnter2D(Collider2D collision)
         {
             if (collision.gameObject.CompareTag("Player")) // 確保是玩家踩到
             {
