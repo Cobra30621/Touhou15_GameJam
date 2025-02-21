@@ -289,7 +289,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1171131914}
-  ActivateItemIcon: {fileID: 793384627}
+  activateItemIcon: {fileID: 0}
   activatedItem:
     itemType: 0
     title: 
@@ -439,17 +439,6 @@ MonoBehaviour:
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &793384627 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7569771993390392580, guid: 8046b1c47e4b9094b85bf7fbe82e3bf4, type: 3}
-  m_PrefabInstance: {fileID: 1522428986146191862}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1171131914 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6152708451173887814, guid: ddd91e961b4e1714e849a8aca4244463, type: 3}
@@ -517,7 +506,7 @@ MonoBehaviour:
   m_ScreenY: 0.5
   m_CameraDistance: 10
   m_DeadZoneWidth: 0.24
-  m_DeadZoneHeight: 0.68
+  m_DeadZoneHeight: 0
   m_DeadZoneDepth: 0
   m_UnlimitedSoftZone: 0
   m_SoftZoneWidth: 0.8
