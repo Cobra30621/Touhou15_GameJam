@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roomData: {fileID: 11400000, guid: c340ebf653e0e1941903769b159e875a, type: 2}
+  yOffset: -12
   currentSpawnId: 0
   currentX: 60
   activeRooms: []
@@ -95,6 +96,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roomSpawner: {fileID: 3805888196560135979}
   StageData: {fileID: 11400000, guid: 0030093318252d34a9db65833b793e72, type: 2}
+  roomData: {fileID: 11400000, guid: c340ebf653e0e1941903769b159e875a, type: 2}
   initialRoomCount: 3
   spawnIntervalThreshold: 1
   _currentStages: []
@@ -102,6 +104,7 @@ MonoBehaviour:
   currentStage:
     StageName: 0
     RequiredRoomCount: 0
+  roomPrefabs: []
   roomsSpawnedInCurrentStage: 0
   currentCharacterArrivalRoomId: 0
   IsDefeatBoss: 0

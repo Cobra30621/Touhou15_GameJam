@@ -40,6 +40,26 @@ namespace Map.Data
         }
         
         
+        public List<Room> GetRooms(StageName stageName)
+        {
+            if (_stageRooms.ContainsKey(stageName))
+            {
+                var rooms = _stageRooms[stageName];
+                if (rooms.Count == 0)
+                {
+                    Debug.LogError($"No room found in {stageName} stage in RoomData, please set data");
+                }
+                // deep copy rooms
+                return new List<Room>(rooms);
+            }
+            else
+            {
+                Debug.LogError($"Unknown stage {stageName} in RoomData, please set data");
+            }
+
+            return new List<Room>();
+        }   
+        
         
     }
 }

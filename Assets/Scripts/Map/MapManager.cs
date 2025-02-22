@@ -33,6 +33,13 @@ namespace Map
         public StageData StageData;
         
         /// <summary>
+        /// Data associated with the Room.
+        /// </summary>
+        [Required]
+        [InlineEditor]
+        [SerializeField] private RoomData roomData;
+        
+        /// <summary>
         /// The initial number of rooms to spawn.
         /// </summary>
         [Title("Settings")]
@@ -63,6 +70,9 @@ namespace Map
         /// The current stage being played.
         /// </summary>
         public Stage currentStage;
+
+
+        [SerializeField] private List<Room> roomPrefabs;
         
         /// <summary>
         /// The current spawn room ID from the map spawner.
@@ -168,7 +178,8 @@ namespace Map
             }
             
             // Generate Room
-            roomSpawner.GenerateRoom(currentStage.StageName);
+            var roomPrefab = GetRandomRoom();
+            roomSpawner.GenerateRoom(roomPrefab);
             roomsSpawnedInCurrentStage++;
         }
 
@@ -198,6 +209,27 @@ namespace Map
         private bool IsBossStage(StageName stageName)
         {
             return stageName == StageName.BigForestBoss;
+        }
+
+
+        private Room GetRandomRoom()
+        {
+            CheckRoomPrefabsThenGenerate();
+            
+            // random _room
+            var randomIndex = UnityEngine.Random.Range(0, roomPrefabs.Count);
+            var roomPrefab = roomPrefabs[randomIndex];
+            roomPrefabs.Remove(roomPrefab);
+
+            return roomPrefab;
+        }
+
+        private void CheckRoomPrefabsThenGenerate()
+        {
+            if (roomPrefabs.Count == 0)
+            {
+                roomPrefabs = roomData.GetRooms(currentStage.StageName);
+            }
         }
         
 

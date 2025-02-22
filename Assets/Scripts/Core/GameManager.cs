@@ -1,5 +1,7 @@
 ﻿using Map.Data;
+using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Core
 {
@@ -21,10 +23,36 @@ namespace Core
             }
         }
 
+        
         void Start()
         {
             // 初始化遊戲狀態
             StartGame();
+        }
+        
+        // 更新分數與計時
+        void Update()
+        {
+            timer += Time.deltaTime;
+            // 更新 UI
+
+            //開啟選單
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+
+            }
+            
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                Restart();
+            }
+        }
+
+        
+        [Button]
+        public void Restart()
+        {
+            SceneManager.LoadScene("Game");
         }
 
         public void StartGame()
@@ -41,17 +69,6 @@ namespace Core
             // 顯示結束畫面
         }
 
-        // 更新分數與計時
-        void Update()
-        {
-            timer += Time.deltaTime;
-            // 更新 UI
-
-            //開啟選單
-            if (Input.GetKeyDown(KeyCode.Escape))
-            {
-
-            }
-        }
+        
     }
 }

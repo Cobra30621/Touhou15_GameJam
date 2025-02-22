@@ -4,8 +4,10 @@ using Player;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class ItemManager : MonoBehaviour
@@ -16,13 +18,14 @@ public class ItemManager : MonoBehaviour
     private GameObject player;
 
     private PlayerController playerController;
-
+    
+    public int maxItem = 2;
+    
     [SerializeField]
-    private Image ActivateItemIcon;
+    private List<ItemInfo> activatedItems;
 
-    [SerializeField]
-    private ItemInfo activatedItem;
 
+    public static UnityEvent<ItemInfo[]> OnItemsChanged = new UnityEvent<ItemInfo[]>();
 
     private void Awake()
     {
@@ -39,52 +42,56 @@ public class ItemManager : MonoBehaviour
 
         playerController = player.GetComponent<PlayerController>();
 
-        GameObject uiObject = GameObject.Find("Canvas");
-        if (uiObject != null)
+        
+       
+    }
+
+    private void Start()
+    {
+        activatedItems = new List<ItemInfo>(maxItem);
+        
+        for (int i = 0; i < maxItem; i++)
         {
-            Transform actTransform = uiObject.transform.Find("ActivateItemIcon");
-            if (actTransform != null)
+            activatedItems.Add(null);
+        }
+        
+        OnItemsChanged.Invoke(activatedItems.ToArray());
+    }
+
+
+    public void GainItem(ItemInfo item)
+    {
+        for (int i = 0; i < maxItem; i++)
+        {
+            if (activatedItems[i] == null)
             {
-                Transform imageTransform = actTransform.Find("Image");
-                if (imageTransform != null)
-                {
-                    GameObject imageObject = imageTransform.gameObject;
-                }
+                activatedItems[i] = item;
+                break; // 找到空位後退出循環
             }
         }
-
-        activatedItem = null;
+        
+        OnItemsChanged.Invoke(activatedItems.ToArray());
     }
-
-    public void Update()
-    { 
     
-    }
+    
 
-    public void setActivateItem(ItemInfo item) {
-        activatedItem = item;
-        if (activatedItem != null)
-        {
-            ActivateItemIcon.sprite = item.sprite;
-            ActivateItemIcon.gameObject.SetActive(true);
-        } else
-        {
-            ActivateItemIcon.gameObject.SetActive(false);
-        }
-    }
-
-    public void useActivateItem()
+    public void useActivateItem(int index)
     {
-        if (activatedItem == null) return;
-        switch (activatedItem.itemType)
+        if (index < 0 || index >= activatedItems.Count || activatedItems[index] == null) return;
+
+        var item = activatedItems[index];
+        
+        switch (item.itemType)
         {
             case ItemType.WineGourd:
-                playerController.Resize(activatedItem.floatValue);
+                playerController.Resize(item.floatValue);
                 break;
             default:
                 break;
         }
 
-        setActivateItem(null);
+        activatedItems[index] = null; // 使用道具後設置為 null
+        
+        OnItemsChanged.Invoke(activatedItems.ToArray());
     }
 }

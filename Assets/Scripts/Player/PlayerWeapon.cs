@@ -16,7 +16,7 @@ namespace Player
         public float fireRate = 0.5f; 
         public float spreadAngle = 15f;
 
-        public List<BulletClip> bulletClips = new List<BulletClip>();
+        [SerializeField] public List<BulletClip> bulletClips = new List<BulletClip>();
         
         
         void Update()

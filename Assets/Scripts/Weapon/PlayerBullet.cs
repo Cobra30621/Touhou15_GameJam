@@ -1,4 +1,5 @@
 ﻿using MapObject;
+using Reimu;
 
 namespace Weapon
 {
@@ -6,11 +7,19 @@ namespace Weapon
 
     public class PlayerBullet : Bullet
     {
-        void OnCollisionEnter2D(Collision2D collision)
+        void OnTriggerEnter2D(Collider2D collision)
         {
             if (collision.gameObject.CompareTag("Enemy"))
             {
                 Debug.Log("Bullet Hit Enemy！");
+                OnHit();
+            }
+            
+            if (collision.gameObject.CompareTag("Reimu"))
+            {
+                Debug.Log("Bullet Hit Reimu！");
+                var hitTrigger = collision.gameObject.GetComponent<ReimuHitTrigger>();
+                hitTrigger.OnHit();
                 OnHit();
             }
 
