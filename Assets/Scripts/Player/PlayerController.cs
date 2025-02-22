@@ -21,7 +21,7 @@ namespace Player
         [SerializeField] public Animator _animator;
 
         [Header("Setting")]
-        [SerializeField] private float invincibleCooldown = 1f;
+        [SerializeField] private const float invincibleCooldown = 1f;
         [SerializeField] private float idleThershold = 0.05f;
         [SerializeField] private float destroyObstacleSize = 0.6f;
 
@@ -101,10 +101,10 @@ namespace Player
             }
 
         }
-        private IEnumerator SetInvincible()
+        public IEnumerator SetInvincible(float time = invincibleCooldown)
         {
             isInvincible = true;
-            yield return new WaitForSeconds(invincibleCooldown);
+            yield return new WaitForSeconds(time);
             isInvincible = false;
         }
 

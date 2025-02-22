@@ -41,7 +41,7 @@ namespace Player
         {
             if (PlayerController.Instance.isDead) return;
             nowSize = playersize.currentSize;
-            adjustSpeedForcebySize();
+            adjustSpeedForce();
 
             // 移動控制
             moveInput = Input.GetAxis("Horizontal");
@@ -103,7 +103,7 @@ namespace Player
         }
         
         
-        private void adjustSpeedForcebySize()
+        private void adjustSpeedForce()
         {
             moveSpeed = (speed_limit[0] - speed_limit[1]) * nowSize + speed_limit[1]+speed_adjust;
             jumpForce = (forcelimit[0] - forcelimit[1]) * nowSize + forcelimit[1]+force_adjust;

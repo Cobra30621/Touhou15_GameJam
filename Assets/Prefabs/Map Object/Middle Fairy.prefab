@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 6147349526531432536}
   - component: {fileID: 3408116701683391668}
   - component: {fileID: 7467013983495820715}
+  - component: {fileID: 47775773802060447}
   m_Layer: 3
   m_Name: Middle Fairy
   m_TagString: Untagged
@@ -68,6 +69,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dropBulletRate: 1
+  _renderer: {fileID: 0}
 --- !u!212 &6147349526531432536
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -192,6 +194,21 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
+--- !u!114 &47775773802060447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 508394244882372520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e82ce2594a3a33c43b14401c8f42319a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isShooting: 0
+  weapon: {fileID: 4560785643191194956}
+  distance: 7
 --- !u!1001 &4195747831193118363
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -203,6 +220,10 @@ PrefabInstance:
     - target: {fileID: 392200251416343511, guid: 3f1d0d7a611d447488a34a8714ed6e79, type: 3}
       propertyPath: m_Name
       value: Enemy Weapon
+      objectReference: {fileID: 0}
+    - target: {fileID: 392200251416343511, guid: 3f1d0d7a611d447488a34a8714ed6e79, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5602737881765024001, guid: 3f1d0d7a611d447488a34a8714ed6e79, type: 3}
       propertyPath: m_LocalPosition.x
@@ -257,6 +278,22 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6740386835005343677, guid: 3f1d0d7a611d447488a34a8714ed6e79, type: 3}
+      propertyPath: bulletCount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6740386835005343677, guid: 3f1d0d7a611d447488a34a8714ed6e79, type: 3}
+      propertyPath: bulletSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6740386835005343677, guid: 3f1d0d7a611d447488a34a8714ed6e79, type: 3}
+      propertyPath: spreadAngle
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6740386835005343677, guid: 3f1d0d7a611d447488a34a8714ed6e79, type: 3}
+      propertyPath: waveCooldown
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6740386835005343677, guid: 3f1d0d7a611d447488a34a8714ed6e79, type: 3}
       propertyPath: customDirection.x
       value: -1
       objectReference: {fileID: 0}
@@ -269,6 +306,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3f1d0d7a611d447488a34a8714ed6e79, type: 3}
+--- !u!1 &4560785643191194956 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 392200251416343511, guid: 3f1d0d7a611d447488a34a8714ed6e79, type: 3}
+  m_PrefabInstance: {fileID: 4195747831193118363}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8428706157149928456 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5675254592174037651, guid: 3f1d0d7a611d447488a34a8714ed6e79, type: 3}

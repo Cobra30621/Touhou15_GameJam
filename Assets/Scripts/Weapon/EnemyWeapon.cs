@@ -44,6 +44,8 @@ namespace Weapon
 
         public float waveRate = 0.5f;
 
+        public float bulletSpeed = 5f;
+
 
         private bool isShooting;
 
@@ -96,7 +98,7 @@ namespace Weapon
         /// </summary>
         private void Fire()
         {
-            Debug.Log("Fire");
+           // Debug.Log("Fire");
 
             // 獲取玩家位置
             var playerPos = PlayerController.Instance.transform.position;
@@ -114,7 +116,7 @@ namespace Weapon
                 dir = customDirection; // 假設有一個 Vector3 變數 customDirection 用來定義自定義方向
             }
             
-            shooter.Fire(bulletCount, spreadAngle, dir);
+            shooter.Fire(bulletCount, spreadAngle, dir, bulletSpeed);
             //fireCooldown = fireRate;
         }
     }

@@ -10,6 +10,7 @@
         SakuyaClock = 4,
         elinPillo = 5,
         ayaSpeedUp = 6,
-        suikaWeapon = 7,
+        reimupenny = 7,
+        suikaWeapon = 8
     }
 }

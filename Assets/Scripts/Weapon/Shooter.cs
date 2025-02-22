@@ -29,7 +29,7 @@ namespace Weapon
         /// <param name="spread">The angle spread between bullets.</param>
         /// <param name="direction">The direction in which to fire the bullets.</param>
         /// <param name="clip">Optional bullet clip for additional properties.</param>
-        public void Fire(int count, float spread, Vector2 direction, BulletClip clip = null)
+        public void Fire(int count, float spread, Vector2 direction, float speed = 5,BulletClip clip = null)
         {
             float startAngle = -((count - 1) * spread / 2);
 

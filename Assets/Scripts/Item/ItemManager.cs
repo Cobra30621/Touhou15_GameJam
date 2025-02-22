@@ -47,12 +47,13 @@ public class ItemManager : MonoBehaviour
 
         itemeffect = new Dictionary<ItemType, BaseItem>()
         {
-            {ItemType.WineGourd, itemlist.GetComponent<WineGourd>()},
-            {ItemType.MarisaFly, itemlist.GetComponent<MarisaFly>()},
-            //{ItemType.SakuyaClock, itemlist.GetComponent<SakuyaClock>()},
+        {ItemType.WineGourd, itemlist.GetComponent<WineGourd>()},
+        {ItemType.MarisaFly, itemlist.GetComponent<MarisaFly>()},
+            {ItemType.SakuyaClock, itemlist.GetComponent<sakuyaclock>()},
             {ItemType.elinPillo, itemlist.GetComponent<elinPillo>()},
             {ItemType.ayaSpeedUp, itemlist.GetComponent<ayaspeedup>()},
-            {ItemType.suikaWeapon, itemlist.GetComponent<SuikaWeapon>()}
+            {ItemType.suikaWeapon, itemlist.GetComponent<SuikaWeapon>()},
+            {ItemType.reimupenny, itemlist.GetComponent<reimupenny>()  }
         };
 
     }

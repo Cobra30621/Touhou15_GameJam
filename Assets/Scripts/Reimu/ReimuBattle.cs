@@ -8,7 +8,7 @@ using Weapon;
 
 public class ReimuBattle : MonoBehaviour
 {
-    [SerializeField] private GameObject reimuSprite;
+    [SerializeField] public GameObject reimuSprite;
     [SerializeField] private GameObject reimu;
     [SerializeField] private float movePeriod;
     [SerializeField] private float chargePeriod;
@@ -121,11 +121,8 @@ public class ReimuBattle : MonoBehaviour
 
     private IEnumerator OnHitCoroutine()
     {
-        StopCoroutine(actionCoroutine);
-        chargeBar.SetActive(false);
-        weapon.SetActive(false);
-        _animator.SetTrigger("Dizziness");
-        
+        stopReimuAttack();
+
         yield return new WaitForSeconds(1f);
         
         // 平移 reimuSprite 出畫面外
@@ -145,4 +142,25 @@ public class ReimuBattle : MonoBehaviour
         Gizmos.color = Color.green; // 設定顏色為綠色
         Gizmos.DrawSphere(Camera.main.transform.position + endPosition, 0.1f); // 繪製 endPosition 的球體
     }
+
+    public void stopReimuAttack()
+    {
+        StopCoroutine(actionCoroutine);
+        chargeBar.SetActive(false);
+        weapon.SetActive(false);
+        _animator.SetTrigger("Dizziness");
+    }
+    public void startattack()
+    {
+        _animator.SetTrigger("Init"); 
+        StartCoroutine(count());
+    }
+    IEnumerator count()
+    {
+        yield return new WaitForSeconds(0.2f);
+        reimuSprite.SetActive(true);
+        StartCoroutine(ReimuActionCoroutine());
+
+    }
+
 }
