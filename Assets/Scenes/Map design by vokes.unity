@@ -582,14 +582,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  ActivateItemIcon: {fileID: 1060279091}
-  activatedItem:
-    itemType: 0
-    title: 
-    description: 
-    intValue: 0
-    floatValue: 0
-    sprite: {fileID: 0}
+  maxItem: 2
+  activatedItems: []
 --- !u!4 &470903797
 Transform:
   m_ObjectHideFlags: 0
@@ -740,6 +734,38 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 1686071568244337324, guid: 8046b1c47e4b9094b85bf7fbe82e3bf4, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1686071568244337324, guid: 8046b1c47e4b9094b85bf7fbe82e3bf4, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1686071568244337324, guid: 8046b1c47e4b9094b85bf7fbe82e3bf4, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1686071568244337324, guid: 8046b1c47e4b9094b85bf7fbe82e3bf4, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6260885311705760488, guid: 8046b1c47e4b9094b85bf7fbe82e3bf4, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6260885311705760488, guid: 8046b1c47e4b9094b85bf7fbe82e3bf4, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6260885311705760488, guid: 8046b1c47e4b9094b85bf7fbe82e3bf4, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6260885311705760488, guid: 8046b1c47e4b9094b85bf7fbe82e3bf4, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8252962606391189933, guid: 8046b1c47e4b9094b85bf7fbe82e3bf4, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -825,17 +851,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8046b1c47e4b9094b85bf7fbe82e3bf4, type: 3}
---- !u!114 &1060279091 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7569771993390392580, guid: 8046b1c47e4b9094b85bf7fbe82e3bf4, type: 3}
-  m_PrefabInstance: {fileID: 1060279090}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1130350644
 GameObject:
   m_ObjectHideFlags: 3

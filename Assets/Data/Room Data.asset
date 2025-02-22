@@ -25,6 +25,7 @@ MonoBehaviour:
     - {fileID: 6471238153555602598, guid: 8f883c48d642d5c4bb502137bd77482f, type: 3}
     - {fileID: 6471238153555602598, guid: 57d097ec790b3794f95828e5bf7fb200, type: 3}
     - {fileID: 7023373846466837866, guid: 4d8e23667cb447e4c80947bc635ebe6b, type: 3}
+    - {fileID: 6471238153555602598, guid: 2ee046e853041784da1ba7bc3557ee4e, type: 3}
     - {fileID: 6471238153555602598, guid: 9bc167d8e69c2fc47a2423b1b3ff4d8f, type: 3}
     SerializedBytesString: 
     Prefab: {fileID: 0}
@@ -86,7 +87,7 @@ MonoBehaviour:
       Data: 3|System.Collections.Generic.List`1[[Map.Room, Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 12
-      Data: 8
+      Data: 9
     - Name: 
       Entry: 10
       Data: 1
@@ -112,6 +113,9 @@ MonoBehaviour:
       Entry: 10
       Data: 8
     - Name: 
+      Entry: 10
+      Data: 9
+    - Name: 
       Entry: 13
       Data: 
     - Name: 
@@ -134,7 +138,7 @@ MonoBehaviour:
       Data: 1
     - Name: 
       Entry: 10
-      Data: 9
+      Data: 10
     - Name: 
       Entry: 13
       Data: 
@@ -182,7 +186,7 @@ MonoBehaviour:
       Data: 1
     - Name: 
       Entry: 10
-      Data: 9
+      Data: 10
     - Name: 
       Entry: 13
       Data: 
