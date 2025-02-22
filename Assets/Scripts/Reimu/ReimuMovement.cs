@@ -37,7 +37,7 @@ public class ReimuMovement : MonoBehaviour
     {
         if (distance > 0)
         {
-            distance -= (speed - PlayerController.Instance.getVelocityX() * playerSpeedFactor);
+            distance -= (speed - PlayerController.Instance.playerMovement.GetVelocityX() * playerSpeedFactor);
         }
         else
         {

@@ -7,7 +7,7 @@ namespace MapObject
     public class DropBulletObstacle : MonoBehaviour
     {
         public float dropBulletRate = 0.3f;
-        private SpriteRenderer _renderer;
+        [SerializeField] private SpriteRenderer _renderer;
         
         private void Start()
         {

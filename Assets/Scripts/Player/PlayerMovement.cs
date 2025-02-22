@@ -7,42 +7,41 @@ namespace Player
 {
     public class PlayerMovement : MonoBehaviour
     {
-        [SerializeField]private float[] speed_limit = {20,5},forcelimit = {20,5};
-        public float moveSpeed = 10f;
-        public float jumpForce = 10f;
+        [Header("Force")]
+        [SerializeField] private float[] speed_limit = {20,5},forcelimit = {20,5};
+        [SerializeField] public float moveSpeed = 10f;
+        [SerializeField] public float jumpForce = 10f;
+
         private float nowSize;
 
         
         private Rigidbody2D rb;
         [SerializeField] private bool isGrounded;
         [SerializeField] private bool enableJump;
-        [SerializeField] private bool isJumping;
         public PlayerSizeHandler playersize;
 
-
-        private Animator _animator;
         
         public bool leftDirection;
         
-        private float idleTimer = 0f; // 新增計時器
+        public float idleTimer = 0f; // 新增計時器
 
-        public float idleNeedWait = 0.05f;
+        public float moveInput;
         
         
         void Start()
         {
             rb = GetComponent<Rigidbody2D>();
-            _animator = GetComponent<Animator>();
             nowSize = playersize.currentSize;
         }
 
         void Update()
         {
+            if (PlayerController.Instance.isDead) return;
             nowSize = playersize.currentSize;
             adjustSpeedForcebySize();
 
             // 移動控制
-            float moveInput = Input.GetAxis("Horizontal");
+            moveInput = Input.GetAxis("Horizontal");
             rb.velocity = new Vector2(moveInput * moveSpeed, rb.velocity.y);
 
             CheckGrounded();
@@ -70,15 +69,10 @@ namespace Player
             if (moveInput == 0)
             {
                 idleTimer += Time.deltaTime; // 增加計時器
-                if (idleTimer >= idleNeedWait) 
-                {
-                    _animator.SetBool("Walking", false);
-                }
             }
             else
             {
                 idleTimer = 0f; // 重置計時器
-                _animator.SetBool("Walking", true);
             }
         }
 

@@ -84,7 +84,7 @@ public class ItemManager : MonoBehaviour
         switch (item.itemType)
         {
             case ItemType.WineGourd:
-                playerController.Resize(item.floatValue);
+                PlayerController.Instance.sizeHandler.Resize(item.floatValue);
                 break;
             default:
                 break;
