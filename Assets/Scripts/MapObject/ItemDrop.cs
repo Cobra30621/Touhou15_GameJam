@@ -57,8 +57,7 @@ namespace MapObject
             if (collider.CompareTag("Player"))
             {
                 Debug.Log($"Gain Item {itemInfo}");
-                ItemManager.Instance.GainItem(itemInfo);
-                Destroy(gameObject);
+                if(ItemManager.Instance.GainItem(itemInfo))Destroy(gameObject);
             }
         }
     }
