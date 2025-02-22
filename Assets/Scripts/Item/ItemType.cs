@@ -8,6 +8,7 @@
         WineGourd = 1,
         MarisaFly = 3,
         SakuyaClock = 4,
-        elinPillo = 5
+        elinPillo = 5,
+        ayaSpeedUp = 6,
     }
 }

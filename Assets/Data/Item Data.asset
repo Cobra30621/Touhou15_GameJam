@@ -18,19 +18,28 @@ MonoBehaviour:
     description: 
     intValue: 0
     floatValue: 0.3
-    itemEffect: {fileID: 0}
     sprite: {fileID: 21300000, guid: d9a2ba9dbce687c4ab83bca8941f80bd, type: 3}
   - itemType: 3
     title: "\u6469\u91CC\u6C99\u7684\u6383\u5E1A"
     description: "\u7372\u5F97\u4E00\u6BB5\u6642\u9593\u7684\u98DB\u884C\u80FD\u529B"
     intValue: 0
     floatValue: 0
-    itemEffect: {fileID: 0}
     sprite: {fileID: 21300000, guid: 3d2b359134ea3a44fa92a0b8a67cd50e, type: 3}
   - itemType: 3
     title: "\u54B2\u591C\u7684\u61F7\u8868"
     description: "\u66AB\u505C\u6642\u9593"
     intValue: 0
     floatValue: 0
-    itemEffect: {fileID: 0}
     sprite: {fileID: 21300000, guid: 561c64a7bd93b1d438506e4ae57907f9, type: 3}
+  - itemType: 5
+    title: 
+    description: 
+    intValue: 0
+    floatValue: 0
+    sprite: {fileID: 21300000, guid: 0cbd77a57e479424fa2a6656d694fc85, type: 3}
+  - itemType: 6
+    title: 
+    description: 
+    intValue: 0
+    floatValue: 0
+    sprite: {fileID: 21300000, guid: 9e44c25110791c642b7abb2ccbe9ae00, type: 3}

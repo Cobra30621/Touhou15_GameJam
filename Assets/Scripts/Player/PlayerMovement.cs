@@ -28,6 +28,8 @@ namespace Player
         public float moveInput;
         
         public bool infjump = false;
+
+        public float speed_adjust = 0f, force_adjust = 0f;
         
         void Start()
         {
@@ -103,8 +105,8 @@ namespace Player
         
         private void adjustSpeedForcebySize()
         {
-            moveSpeed = (speed_limit[0] - speed_limit[1]) * nowSize + speed_limit[1];
-            jumpForce = (forcelimit[0] - forcelimit[1]) * nowSize + forcelimit[1];
+            moveSpeed = (speed_limit[0] - speed_limit[1]) * nowSize + speed_limit[1]+speed_adjust;
+            jumpForce = (forcelimit[0] - forcelimit[1]) * nowSize + forcelimit[1]+force_adjust;
 
         }
 
