@@ -83,7 +83,7 @@ namespace Player
         }
 
         public IEnumerator JumpCooldown() {
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(0.1f);
             enableJump = true;
         }
         public void Freeze()
