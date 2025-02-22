@@ -101,7 +101,7 @@ namespace Player
             }
 
         }
-        private IEnumerator SetInvincible(float time = invincibleCooldown)
+        public IEnumerator SetInvincible(float time = invincibleCooldown)
         {
             isInvincible = true;
             yield return new WaitForSeconds(time);

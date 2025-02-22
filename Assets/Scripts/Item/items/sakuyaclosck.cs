@@ -15,6 +15,7 @@ public class sakuyaclock : BaseItem
         {
             return false;
         }
+        StartCoroutine( PlayerController.Instance.SetInvincible(existtime));
         if (reimu.GetComponent<ReimuBattle>().IsRunning)
         {
             StartCoroutine(inscreentimestop());
