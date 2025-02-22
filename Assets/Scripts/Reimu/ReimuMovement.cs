@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ReimuMovement : MonoBehaviour
 {
-    [SerializeField] private float startDistance = 30;
+    [SerializeField] private const float startDistance = 30;
     
     [SerializeField] private float distance;
     [SerializeField] private float speed;
@@ -12,6 +12,8 @@ public class ReimuMovement : MonoBehaviour
     [SerializeField] private ReimuBattle reimuBattle;
     // Start is called before the first frame update
 
+    public bool isfreeze = false;
+    public float speedFactor = 1.0f;
 
     private Animator _animator;
 
@@ -26,9 +28,9 @@ public class ReimuMovement : MonoBehaviour
     }
 
     [Button]
-    public void StartMode()
+    public void StartMode(float dis = startDistance)
     {
-        distance = startDistance;
+        distance = dis;
         _animator.SetTrigger("Init");
     }
 
@@ -37,7 +39,7 @@ public class ReimuMovement : MonoBehaviour
     {
         if (distance > 0)
         {
-            distance -= (speed - PlayerController.Instance.playerMovement.GetVelocityX() * playerSpeedFactor);
+            if (!isfreeze) distance -= (speed - PlayerController.Instance.playerMovement.GetVelocityX() * playerSpeedFactor)*speedFactor;
         }
         else
         {
