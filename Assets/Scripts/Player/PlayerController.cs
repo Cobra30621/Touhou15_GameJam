@@ -14,7 +14,7 @@ namespace Player
         public static PlayerController Instance;
         
         public PlayerSizeHandler sizeHandler;
-        private PlayerMovement playerMovement;
+        public PlayerMovement playerMovement;
 
         private PlayerWeapon playerWeapon;
         

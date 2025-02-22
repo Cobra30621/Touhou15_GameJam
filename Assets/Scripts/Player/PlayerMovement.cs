@@ -28,6 +28,7 @@ namespace Player
 
         public float idleNeedWait = 0.05f;
         
+        public bool infjump = false;
         
         void Start()
         {
@@ -48,7 +49,7 @@ namespace Player
             CheckGrounded();
 
             // 跳躍控制
-            if (enableJump && isGrounded && (Input.GetButton("Jump") || Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W)))
+            if (enableJump &&( isGrounded||infjump) && (Input.GetButton("Jump") || Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W)))
             {
                 enableJump = false;
                 StartCoroutine(JumpCooldown());

@@ -89,6 +89,8 @@ namespace Item
 
         public float floatValue;
 
+        public BaseItem itemEffect;
+
         /// <summary>
         /// The sprite representing the item.
         /// </summary>
