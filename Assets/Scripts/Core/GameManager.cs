@@ -65,8 +65,7 @@ namespace Core
 
         public void EndGame()
         {
-            // 結束遊戲邏輯
-            // 顯示結束畫面
+            SceneManager.LoadScene("end");
         }
 
         

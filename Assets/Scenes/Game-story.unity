@@ -577,10 +577,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: ItemManager
       objectReference: {fileID: 0}
-    - target: {fileID: 4608924550665406658, guid: fbf73bb4888ea964d8430c4e90abce8f, type: 3}
-      propertyPath: reimu
-      value: 
-      objectReference: {fileID: 285924948}
     - target: {fileID: 8397983607288262861, guid: fbf73bb4888ea964d8430c4e90abce8f, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.9704385
