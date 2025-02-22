@@ -29,7 +29,7 @@ namespace Weapon
         /// <param name="spread">The angle spread between bullets.</param>
         /// <param name="direction">The direction in which to fire the bullets.</param>
         /// <param name="clip">Optional bullet clip for additional properties.</param>
-        public void Fire(int count, float spread, Vector2 direction, BulletClip clip = null)
+        public void Fire(int count, float spread, Vector2 direction, float speed = 5,BulletClip clip = null)
         {
             float startAngle = -((count - 1) * spread / 2);
 
@@ -52,6 +52,7 @@ namespace Weapon
             }
         }
 
+
         /// <summary>
         /// Draws gizmos in the editor to visualize the fire point.
         /// </summary>
@@ -65,7 +66,7 @@ namespace Weapon
         /// Gets the position of the fire point.
         /// </summary>
         /// <returns>The position of the fire point as a Vector3.</returns>
-        private Vector3 GetFirePoint()
+        public Vector3 GetFirePoint()
         {
             return firePoint.position;
         }

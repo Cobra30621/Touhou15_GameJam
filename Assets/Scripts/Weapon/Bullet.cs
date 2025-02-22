@@ -26,8 +26,9 @@ namespace Weapon
             Destroy(gameObject);
         }
 
-        public virtual void Initialize(Vector2 dir, Sprite bulletSprite)
+        public virtual void Initialize(Vector2 dir, Sprite bulletSprite,float speed = 5)
         {
+            this.speed = speed;
             direction = dir.normalized;
             if (spriteRenderer != null && bulletSprite != null)
             {
@@ -35,13 +36,15 @@ namespace Weapon
             }
         }
         
-        public virtual void Initialize(Vector2 dir)
+        public virtual void Initialize(Vector2 dir,float speed = 5)
         {
+            this.speed = speed;
             direction = dir.normalized;
         }
 
         protected virtual void Update()
         {
+            Debug.Log($"{(Vector3)(direction)}, {speed} , {Time.deltaTime}");
             transform.position += (Vector3)(direction * speed * Time.deltaTime);
         }
     }
