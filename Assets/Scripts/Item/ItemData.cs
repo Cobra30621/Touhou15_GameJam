@@ -89,6 +89,7 @@ namespace Item
 
         public float floatValue;
 
+
         /// <summary>
         /// The sprite representing the item.
         /// </summary>

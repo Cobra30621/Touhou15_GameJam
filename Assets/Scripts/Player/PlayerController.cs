@@ -12,32 +12,32 @@ namespace Player
     public class PlayerController : MonoBehaviour
     {
         public static PlayerController Instance;
-        
-        public PlayerSizeHandler sizeHandler;
-        private PlayerMovement playerMovement;
 
-        private PlayerWeapon playerWeapon;
-        
-        [SerializeField] private SpriteRenderer spriteRenderer;
+        [Header("Reference")]
+        [SerializeField] public PlayerSizeHandler sizeHandler;
+        [SerializeField] public PlayerMovement playerMovement;
+        [SerializeField] public PlayerWeapon playerWeapon;
+        [SerializeField] public SpriteRenderer spriteRenderer;
+        [SerializeField] public Animator _animator;
+
+        [Header("Setting")]
+        [SerializeField] private const float invincibleCooldown = 1f;
+        [SerializeField] private float idleThershold = 0.05f;
+        [SerializeField] private float destroyObstacleSize = 0.6f;
+
+        [Header("Status")]
+        [SerializeField] public bool isInvincible = false;
+        [SerializeField] public bool isDead;
 
 
-        public float destroyObstacleSize = 0.6f;
-
-        
         public KeyCode item1Key = KeyCode.X;
         public KeyCode item2Key = KeyCode.C;
 
-        
-        private float immortalCooldown = 1f;
-        public bool isImmortal = false;
-        public bool isDead;
 
         public UnityEvent<List<BulletClip>> OnBulletClipChanged = new UnityEvent<List<BulletClip>>();
 
         public bool LeftDirection => playerMovement.leftDirection;
 
-        private Animator _animator;
-        
         
         private void Awake()
         {
@@ -52,76 +52,78 @@ namespace Player
             sizeHandler = GetComponent<PlayerSizeHandler>();
             playerMovement = GetComponent<PlayerMovement>();
             playerWeapon = GetComponent<PlayerWeapon>();
+            spriteRenderer = GetComponentInChildren<SpriteRenderer>();
             _animator = GetComponent<Animator>();   
         }
 
         private void Update()
         {
-            if (isImmortal) {
-                spriteRenderer.enabled = !spriteRenderer.enabled;
-            } else if (!spriteRenderer.enabled)
-            {
-                spriteRenderer.enabled = true;
-            }
-            //need to be modify later
-            
+            CheckImmortal();
+            UpdateAnimator();
+
             //使用主動道具
             if (Input.GetKeyDown(item1Key))
             {
                 ItemManager.Instance.useActivateItem(0);
             }
-            
+
             if (Input.GetKeyDown(item2Key))
             {
                 ItemManager.Instance.useActivateItem(1);
             }
-            
-            
-            detect_die();
         }
         
-        
-        private void detect_die()
+        private void CheckImmortal()
         {
-            if (sizeHandler.currentSize <= 0)
-            {
-                Die();
+            if (isInvincible) {
+                spriteRenderer.enabled = !spriteRenderer.enabled;
+            } else if (!spriteRenderer.enabled) {
+                spriteRenderer.enabled = true;
             }
         }
-        
-        
-        
-        /// <summary>   
-        /// when player takes damage -> decrease size
-        /// note : size limit is 0~1 
-        /// <!summary>
-        public void TakeDamage(float damage)
+
+        private void UpdateAnimator()
         {
-            if(isImmortal){return;}
-            
-            sizeHandler.Resize(-damage);
-            StartCoroutine(Immortal());
+            if (isDead)
+            {
+                _animator.SetTrigger("Die");
+                return;
+            }
+
+
+            if (playerMovement.moveInput != 0)
+            {
+                _animator.SetBool("Walking", true);
+            }
+            else if (playerMovement.idleTimer > idleThershold)
+            {
+                _animator.SetBool("Walking", false);
+            }
+
+        }
+        public IEnumerator SetInvincible(float time = invincibleCooldown)
+        {
+            isInvincible = true;
+            yield return new WaitForSeconds(time);
+            isInvincible = false;
         }
 
+        public void TakeDamage(float damage)
+        {
+            if (isInvincible) { return; }
 
-        
+            sizeHandler.Resize(-damage);
+            StartCoroutine(SetInvincible());
+        }
 
         [Button]
         public void Die()
         {
-            print("Player Die");
-            Freeze();
             isDead = true;
-            
-            _animator.SetTrigger("Die");
-        }
-        
-        public void Freeze()
-        {
             playerMovement.Freeze();
             sizeHandler.enabled = false;
         }
-
+        
         public void AddBullet(BulletClip clip)
         {
             playerWeapon.AddBullet(clip);
@@ -132,25 +134,5 @@ namespace Player
         {
             return sizeHandler.currentSize >= destroyObstacleSize;
         }
-        
-    
-        private IEnumerator Immortal()
-        {
-            isImmortal = true;
-            yield return new WaitForSeconds(immortalCooldown);
-            isImmortal = false;
-        }
-
-        public void Resize(float amount)
-        {
-            sizeHandler.Resize(0.1f);
-        }
-
-
-        public float getVelocityX()
-        {
-            return playerMovement.GetVelocityX();
-        }
-
     }
 }
