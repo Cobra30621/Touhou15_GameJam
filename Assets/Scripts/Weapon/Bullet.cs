@@ -44,7 +44,7 @@ namespace Weapon
 
         protected virtual void Update()
         {
-            Debug.Log($"{(Vector3)(direction)}, {speed} , {Time.deltaTime}");
+            //Debug.Log($"{(Vector3)(direction)}, {speed} , {Time.deltaTime}");
             transform.position += (Vector3)(direction * speed * Time.deltaTime);
         }
     }

@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 498457883097244399}
   - component: {fileID: 7944733547555215140}
   - component: {fileID: 247788698021707174}
-  - component: {fileID: 7023466060364418143}
-  - component: {fileID: 9179491977954089232}
+  - component: {fileID: 764070512233702118}
+  - component: {fileID: 4608924550665406658}
   m_Layer: 0
   m_Name: itemlist
   m_TagString: Untagged
@@ -93,20 +93,7 @@ MonoBehaviour:
   existtime: 10
   isusing: 0
   force: {x: 3, y: 1}
---- !u!114 &7023466060364418143
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 502443380118583802}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9924f745abe0d944581672810fe668a3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 5295296652591264926, guid: 372674a7acc5baa4eb027c4fb7bde5e5, type: 3}
---- !u!114 &9179491977954089232
+--- !u!114 &764070512233702118
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -123,6 +110,21 @@ MonoBehaviour:
   speedFactor: 0.4
   reimu: {fileID: 0}
   reimusprite: {fileID: 0}
+--- !u!114 &4608924550665406658
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 502443380118583802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: beb54d3a80a06c047a109cb5cddcdf7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  existtime: 5
+  isusing: 0
+  reimu: {fileID: 0}
 --- !u!1 &1890647182692032222
 GameObject:
   m_ObjectHideFlags: 0

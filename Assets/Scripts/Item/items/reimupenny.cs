@@ -30,9 +30,10 @@ public class reimupenny : BaseItem
     //create iemurator contdown for existtime
     IEnumerator Reimuslow()
     {
+        isusing = true;
         reimu.GetComponent<ReimuMovement>().speedFactor = speedFactor;
         yield return new WaitForSeconds(existtime);
         reimu.GetComponent<ReimuMovement>().speedFactor = 1f;
-
+        isusing = false;
     }
 }
