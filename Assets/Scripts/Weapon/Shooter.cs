@@ -52,6 +52,7 @@ namespace Weapon
             }
         }
 
+
         /// <summary>
         /// Draws gizmos in the editor to visualize the fire point.
         /// </summary>
@@ -65,7 +66,7 @@ namespace Weapon
         /// Gets the position of the fire point.
         /// </summary>
         /// <returns>The position of the fire point as a Vector3.</returns>
-        private Vector3 GetFirePoint()
+        public Vector3 GetFirePoint()
         {
             return firePoint.position;
         }

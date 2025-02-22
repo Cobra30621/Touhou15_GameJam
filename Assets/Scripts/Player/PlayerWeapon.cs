@@ -8,7 +8,7 @@ namespace Player
     {
         [SerializeField] private float fireCooldown = 0f;
 
-        [SerializeField] private Shooter shooter;
+        [SerializeField] public Shooter shooter;
 
 
         public KeyCode shootKey;
