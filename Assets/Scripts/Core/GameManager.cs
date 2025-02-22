@@ -52,7 +52,7 @@ namespace Core
         [Button]
         public void Restart()
         {
-            SceneManager.LoadScene("Game");
+            SceneManager.LoadScene("Game-story");
         }
 
         public void StartGame()
