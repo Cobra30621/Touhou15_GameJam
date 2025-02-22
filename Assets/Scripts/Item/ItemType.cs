@@ -6,7 +6,7 @@
     public enum ItemType
     {
         WineGourd = 1,
-        MorissaBroom = 3,
+        MarisaFly = 3,
         SakuyaClock = 4
     }
 }

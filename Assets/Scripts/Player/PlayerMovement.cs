@@ -27,6 +27,7 @@ namespace Player
 
         public float moveInput;
         
+        public bool infjump = false;
         
         void Start()
         {
@@ -47,7 +48,7 @@ namespace Player
             CheckGrounded();
 
             // 跳躍控制
-            if (enableJump && isGrounded && (Input.GetButton("Jump") || Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W)))
+            if (enableJump &&( isGrounded||infjump) && (Input.GetButton("Jump") || Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W)))
             {
                 enableJump = false;
                 StartCoroutine(JumpCooldown());
@@ -77,7 +78,7 @@ namespace Player
         }
 
         public IEnumerator JumpCooldown() {
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(0.1f);
             enableJump = true;
         }
         public void Freeze()
