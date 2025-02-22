@@ -80,6 +80,8 @@ public class ReimuBattle : MonoBehaviour
         PlayerController.Instance.Die();
         yield return StartCoroutine(SmoothMoveCoroutine(endPosition, 
             reimu.transform.InverseTransformPoint(PlayerController.Instance.transform.position), dashPeriod));
+        yield return StartCoroutine(SmoothMoveCoroutine(reimu.transform.InverseTransformPoint(PlayerController.Instance.transform.position),
+            reimu.transform.InverseTransformPoint(PlayerController.Instance.transform.position) + new Vector3(5f,0f,0f), dashPeriod));
     }
 
 
