@@ -173,11 +173,9 @@ namespace Map
             if (ShouldChangeStage())
             {
                 currentStageIndex++;
-                print($"Change stage to {currentStage.StageName}");
                 // If all stage complete, stop generate room
                 if (currentStageIndex >= _currentStages.Count)
                 {
-                    print("All stage complete gen");
                     return;
                 }
                 
@@ -264,7 +262,7 @@ namespace Map
         {
             nowRoomCount = id;
             currentCharacterArrivalRoomId = Math.Max(id, currentCharacterArrivalRoomId);
-            if(id>=all_room)
+            if(id>=all_room && GameManager.Instance.GameMode==GameMode.Story)
             {
                 GameManager.Instance.EndGame();
             }
