@@ -21,7 +21,8 @@ namespace Player
         [LabelText("currentSize (0~1)")]
         public float currentSize = 1f;
         
-        
+        public bool sizefreeze = false;
+
         private void Update() {
             GrowOverTime();
             UpdateSize();
@@ -38,7 +39,7 @@ namespace Player
         /// Increases size over time
         /// </summary>
         private void GrowOverTime(){
-             check_growthRate();    
+            check_growthRate();    
             currentSize += growthRate * Time.deltaTime; // 根据速率增加大小
         }
         
@@ -51,6 +52,7 @@ namespace Player
                     growthRate = growthRatelist[i];
                 }
             }
+            if (sizefreeze) growthRate = 0;
         }
         
         /// <summary>
