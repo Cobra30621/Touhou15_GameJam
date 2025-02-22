@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Core;
 using Map.Data;
 using Sirenix.OdinInspector;
+using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -73,6 +74,7 @@ namespace Map
         /// </summary>
         public Stage currentStage;
 
+        public int all_room;
 
         [SerializeField] private List<Room> roomPrefabs;
         
@@ -136,7 +138,12 @@ namespace Map
             currentStageIndex = 0;
             roomsSpawnedInCurrentStage = 0;
             currentStage = _currentStages[currentStageIndex];
-
+            var dict = StageData.stageDict[Map.Data.GameMode.Story];
+            all_room = 0;
+            foreach (var item in dict)
+            {
+                all_room += item.RequiredRoomCount;
+            }
             GenerateInitialRoom();
         }
         
@@ -156,6 +163,7 @@ namespace Map
             }
         }
 
+        bool change_stage = false;
         /// <summary>
         /// Checks if the stage should change and generates a new room if necessary.
         /// </summary>
@@ -165,16 +173,17 @@ namespace Map
             if (ShouldChangeStage())
             {
                 currentStageIndex++;
+                print($"Change stage to {currentStage.StageName}");
                 // If all stage complete, stop generate room
                 if (currentStageIndex >= _currentStages.Count)
                 {
-                    print("All stage complete");//end scene
+                    print("All stage complete gen");
                     return;
                 }
                 
                 currentStage = _currentStages[currentStageIndex];
                 roomsSpawnedInCurrentStage = 0;
-
+                change_stage = true;
                 if (IsBossStage(currentStage.StageName))
                 {
                     IsDefeatBoss = false;
@@ -224,13 +233,13 @@ namespace Map
             var randomIndex = UnityEngine.Random.Range(0, roomPrefabs.Count);
             var roomPrefab = roomPrefabs[randomIndex];
             roomPrefabs.Remove(roomPrefab);
-
+            change_stage = false;
             return roomPrefab;
         }
 
         private void CheckRoomPrefabsThenGenerate()
         {
-            if (roomPrefabs.Count == 0)
+            if (roomPrefabs.Count == 0 || change_stage)
             {
                 roomPrefabs = roomData.GetRooms(currentStage.StageName);
             }
@@ -255,7 +264,10 @@ namespace Map
         {
             nowRoomCount = id;
             currentCharacterArrivalRoomId = Math.Max(id, currentCharacterArrivalRoomId);
-            
+            if(id>=all_room)
+            {
+                GameManager.Instance.EndGame();
+            }
             // Need Generate new room
             if (currentSpawnRoomId - currentCharacterArrivalRoomId <= spawnIntervalThreshold)
             {
