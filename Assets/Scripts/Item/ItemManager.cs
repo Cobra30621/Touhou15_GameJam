@@ -49,6 +49,8 @@ public class ItemManager : MonoBehaviour
         {
         {ItemType.WineGourd, itemlist.GetComponent<WineGourd>()},
         {ItemType.MarisaFly, itemlist.GetComponent<MarisaFly>()},
+            //{ItemType.SakuyaClock, itemlist.GetComponent<SakuyaClock>()},
+            {ItemType.elinPillo, itemlist.GetComponent<elinPillo>()}
         };
 
     }
