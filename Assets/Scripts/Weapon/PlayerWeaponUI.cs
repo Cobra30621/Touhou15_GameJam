@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Player;
+using TMPro;
+using System.Collections;
 
 namespace Weapon
 {
@@ -23,18 +25,22 @@ namespace Weapon
             PlayerController.Instance.OnBulletClipChanged.RemoveListener(UpdateBulletUI);
         }
 
+        public int bulletCount = 0;
+        public TextMeshProUGUI bulletCountText;
+        public addbullet_mannger addbulletMannger;
+
         private void UpdateBulletUI(List<BulletClip> bulletClips)
         {
-            foreach (Transform child in bulletContainer)
+            if(bulletCount<bulletClips.Count)
             {
-                Destroy(child.gameObject);
+                addbulletMannger.CreateFloatingUI(bulletClips[bulletClips.Count - 1].Sprite);
             }
-
-            foreach (var clip in bulletClips)
-            {
-                GameObject bulletIcon = Instantiate(bulletIconPrefab, bulletContainer);
-                bulletIcon.GetComponent<Image>().sprite = clip.Sprite;
-            }
+            bulletCount = bulletClips.Count;
+            bulletCountText.text = bulletCount.ToString();
         }
+
+
+        
+
     }
 }
