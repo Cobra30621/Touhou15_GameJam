@@ -66,10 +66,6 @@ public class ItemManager : MonoBehaviour
         {
             activatedItems.Add(null);
         }
-        foreach (var item in activatedItems)
-        {
-            print(item);
-        }
 
         OnItemsChanged.Invoke(activatedItems.ToArray());
     }

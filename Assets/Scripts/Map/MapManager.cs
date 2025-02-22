@@ -49,7 +49,9 @@ namespace Map
         /// The threshold for the spawn interval to generate new rooms.
         /// </summary>
         public int spawnIntervalThreshold = 2;
-        
+
+        public int nowRoomCount = 0;
+
         #endregion
 
         #region Cache
@@ -125,6 +127,7 @@ namespace Map
         /// </summary>
         private void Initialize()
         {
+            nowRoomCount = 0;
             currentCharacterArrivalRoomId = 0;
             roomSpawner.Initialize();
 
@@ -165,6 +168,7 @@ namespace Map
                 // If all stage complete, stop generate room
                 if (currentStageIndex >= _currentStages.Count)
                 {
+                    print("All stage complete");//end scene
                     return;
                 }
                 
@@ -249,6 +253,7 @@ namespace Map
         /// <param name="id">The ID of the room that has been completed.</param>
         public void CompleteRoom(int id)
         {
+            nowRoomCount = id;
             currentCharacterArrivalRoomId = Math.Max(id, currentCharacterArrivalRoomId);
             
             // Need Generate new room
