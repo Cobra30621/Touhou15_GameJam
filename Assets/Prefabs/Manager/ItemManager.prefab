@@ -204,4 +204,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 946ad7d015af4e07ad5ab0454536d7b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  particlePrefab: {fileID: 6811810496045127516, guid: db053806e88bfe846ae930c7d02b8dd2, type: 3}
+  particlePrefab: {fileID: 1137110580073665583, guid: ab057ae993d874436b06835dce29ea53, type: 3}
