@@ -29,8 +29,11 @@ public class ReimuBattle : MonoBehaviour
     
     public bool isHit = false;
 
+    private bool isCharge = false;
+
     private Coroutine actionCoroutine;
     
+
 
     void Start()
     {
@@ -50,14 +53,14 @@ public class ReimuBattle : MonoBehaviour
         reimuSprite.SetActive(true);
         actionCoroutine = StartCoroutine(ReimuActionCoroutine());
     }
-
+    float targety;
     void FollowMainCamera()
     {
         Camera mainCamera = Camera.main;
         if (mainCamera != null)
         {
             Vector3 targetPosition = mainCamera.transform.position;
-            // targetPosition.y = 0;
+            if(isCharge) targetPosition.y = targety;
             targetPosition.z = 0;
             reimu.transform.position = targetPosition;
         }
@@ -104,6 +107,8 @@ public class ReimuBattle : MonoBehaviour
 
     private IEnumerator ChargeAttack()
     {
+        isCharge = true;
+        targety = Camera.main.transform.position.y;
         chargeBar.SetActive(true);
         Vector3 initialScale = new Vector3(0, chargeBar.transform.localScale.y, chargeBar.transform.localScale.z);
         Vector3 targetScale = new Vector3(0.5f, initialScale.y, initialScale.z);
@@ -142,6 +147,7 @@ public class ReimuBattle : MonoBehaviour
         reimuSprite.SetActive(false);
         // End Battle Mode
         _reimuMovement.StartMode();
+        isCharge = false;
         IsRunning = false;
         isHit = false;
     }
@@ -156,6 +162,7 @@ public class ReimuBattle : MonoBehaviour
 
     public void stopReimuAttack()
     {
+        isCharge = false;
         StopCoroutine(actionCoroutine);
         chargeBar.SetActive(false);
         weapon.SetActive(false);
