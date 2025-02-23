@@ -105,6 +105,7 @@ MonoBehaviour:
   shoot_cool: 0
   shoot_cool_time: 1
   shooter: {fileID: 0}
+  outShooter: {fileID: 1946985446577126021}
 --- !u!114 &3891720063772816084
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -451,7 +452,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5675254592174037651, guid: 3f1d0d7a611d447488a34a8714ed6e79, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0.5
       objectReference: {fileID: 0}
     - target: {fileID: 5675254592174037651, guid: 3f1d0d7a611d447488a34a8714ed6e79, type: 3}
       propertyPath: m_LocalRotation.w
@@ -562,6 +563,10 @@ PrefabInstance:
     - target: {fileID: 392200251416343511, guid: 3f1d0d7a611d447488a34a8714ed6e79, type: 3}
       propertyPath: m_Name
       value: Enemy Weapon
+      objectReference: {fileID: 0}
+    - target: {fileID: 392200251416343511, guid: 3f1d0d7a611d447488a34a8714ed6e79, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1625650554795283036, guid: 3f1d0d7a611d447488a34a8714ed6e79, type: 3}
       propertyPath: bulletPrefab

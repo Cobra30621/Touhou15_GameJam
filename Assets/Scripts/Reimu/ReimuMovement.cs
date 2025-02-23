@@ -19,6 +19,7 @@ public class ReimuMovement : MonoBehaviour
     public bool ismove = true,shoot_cool = false;
     public float shoot_cool_time = 1f;
     public GameObject shooter;
+    public GameObject outShooter;
 
     void Start()
     {
@@ -42,10 +43,12 @@ public class ReimuMovement : MonoBehaviour
         if (distance > 0)
         {
             if (!isfreeze) distance -= (speed- PlayerController.Instance.playerMovement.GetVelocityX() * playerSpeedFactor)*speedFactor * Time.deltaTime;
+            outShooter.SetActive(true);
         }
         else
         {
             distance = 0;
+            outShooter.SetActive(false);
             ActivateReimuBattle();
         }
 

@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5675254592174037651
 Transform:
   m_ObjectHideFlags: 0
@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 392200251416343511}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.73, y: 2.12, z: 0.15276231}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -48,6 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 5295296652591264926, guid: 360e0cfa7a40d6e47bb629db360f5932, type: 3}
   firePoint: {fileID: 5602737881765024001}
+  bindingParent: {fileID: 0}
 --- !u!114 &6740386835005343677
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -62,9 +63,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireCooldown: 0
   shooter: {fileID: 1625650554795283036}
-  bulletCount: 3
-  fireRate: 2
-  spreadAngle: 15
+  bulletCount: 1
+  fireRate: 5
+  spreadAngle: 0
+  bulletWave: 3
+  currentWave: 0
+  waveCooldown: 0.3
+  waveRate: 0.5
+  bulletSpeed: 1
+  need_rotate: 1
+  useTargetPosition: 1
+  customDirection: {x: -1, y: 0, z: 0}
+  targetDirection: {x: 0, y: 0, z: 0}
 --- !u!1 &2886865063041461398
 GameObject:
   m_ObjectHideFlags: 0

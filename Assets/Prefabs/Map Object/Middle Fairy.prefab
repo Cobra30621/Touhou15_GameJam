@@ -56,7 +56,7 @@ MonoBehaviour:
   takeDamage: 1
   damage: 0.05
   destroyAfterHurtPlayer: 1
-  destroyParticleFeedback: {fileID: 0}
+  playerCollisionFeedback: {fileID: 0}
 --- !u!114 &1623492869612764180
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -222,22 +222,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy Weapon
       objectReference: {fileID: 0}
-    - target: {fileID: 392200251416343511, guid: 3f1d0d7a611d447488a34a8714ed6e79, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1625650554795283036, guid: 3f1d0d7a611d447488a34a8714ed6e79, type: 3}
-      propertyPath: bindingParent
-      value: 
-      objectReference: {fileID: 508394244882372520}
-    - target: {fileID: 5602737881765024001, guid: 3f1d0d7a611d447488a34a8714ed6e79, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.531
-      objectReference: {fileID: 0}
-    - target: {fileID: 5602737881765024001, guid: 3f1d0d7a611d447488a34a8714ed6e79, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.007
-      objectReference: {fileID: 0}
     - target: {fileID: 5675254592174037651, guid: 3f1d0d7a611d447488a34a8714ed6e79, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -248,7 +232,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5675254592174037651, guid: 3f1d0d7a611d447488a34a8714ed6e79, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0.5
       objectReference: {fileID: 0}
     - target: {fileID: 5675254592174037651, guid: 3f1d0d7a611d447488a34a8714ed6e79, type: 3}
       propertyPath: m_LocalRotation.w
@@ -276,34 +260,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5675254592174037651, guid: 3f1d0d7a611d447488a34a8714ed6e79, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6740386835005343677, guid: 3f1d0d7a611d447488a34a8714ed6e79, type: 3}
-      propertyPath: fireRate
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6740386835005343677, guid: 3f1d0d7a611d447488a34a8714ed6e79, type: 3}
-      propertyPath: bulletCount
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6740386835005343677, guid: 3f1d0d7a611d447488a34a8714ed6e79, type: 3}
-      propertyPath: bulletSpeed
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6740386835005343677, guid: 3f1d0d7a611d447488a34a8714ed6e79, type: 3}
-      propertyPath: spreadAngle
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6740386835005343677, guid: 3f1d0d7a611d447488a34a8714ed6e79, type: 3}
-      propertyPath: waveCooldown
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6740386835005343677, guid: 3f1d0d7a611d447488a34a8714ed6e79, type: 3}
-      propertyPath: customDirection.x
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6740386835005343677, guid: 3f1d0d7a611d447488a34a8714ed6e79, type: 3}
-      propertyPath: usePlayerDirection
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
