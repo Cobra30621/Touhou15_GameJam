@@ -22,12 +22,11 @@ public class ayaspeedup : BaseItem
     IEnumerator fly()
     {
         print("MarisaFly");
-        PlayerController.Instance.playerMovement.force_adjust = force.y;
-        PlayerController.Instance.playerMovement.speed_adjust= force.x;
+        PlayerController.Instance.playerMovement.SetSpeedUp(force.y, force.x);
+        
         isusing = true;
         yield return new WaitForSeconds(existtime);
-        PlayerController.Instance.playerMovement.speed_adjust = 0;
-        PlayerController.Instance.playerMovement.force_adjust = 0;
+        PlayerController.Instance.playerMovement.ResetSpeedUp();
 
         ItemComplete();
     }
