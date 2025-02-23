@@ -1,4 +1,5 @@
-﻿using Sirenix.OdinInspector;
+﻿using Feedback;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Weapon
@@ -12,6 +13,8 @@ namespace Weapon
 
         protected Vector2 direction;
 
+        [SerializeField] private ParticleFeedback hitFeedback;
+
         private void Start()
         {
             Destroy(gameObject, lifetime);
@@ -19,8 +22,10 @@ namespace Weapon
 
         protected virtual void OnHit()
         {
-            // TODO 播放特效的代碼
-            // ... 播放特效的代碼 ...
+            if (hitFeedback != null)
+            {
+                hitFeedback.Play(transform);
+            }
             
             // 刪除子彈
             Destroy(gameObject);
