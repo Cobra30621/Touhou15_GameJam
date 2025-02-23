@@ -281,11 +281,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed_limit:
-  - 10
-  - 1
+  - 7
+  - 3
   forcelimit:
-  - 10
-  - 1
+  - 8
+  - 5
   moveSpeed: 5
   jumpForce: 15
   isGrounded: 0
@@ -295,6 +295,7 @@ MonoBehaviour:
   idleTimer: 0
   moveInput: 0
   infjump: 0
+  uplimit: 12
   speed_adjust: 0
   force_adjust: 0
   infJumpEffect: {fileID: 9088672695505540148}
@@ -314,13 +315,13 @@ MonoBehaviour:
   minSize: 0.4
   maxSize: 5
   growthRatelist:
-  - 0
-  - 1
+  - -0.01
+  - -0.03
   growthbond:
   - 0
-  - 1
-  growthRate: 0
-  stun_time: 0.5
+  - 0.6
+  growthRate: -0.05
+  stun_time: 0.8
   currentSize: 1
   smallInterval: 3
   sizefreeze: 0
