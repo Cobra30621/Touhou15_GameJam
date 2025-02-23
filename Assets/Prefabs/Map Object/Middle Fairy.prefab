@@ -56,6 +56,7 @@ MonoBehaviour:
   takeDamage: 1
   damage: 0.05
   destroyAfterHurtPlayer: 1
+  destroyParticleFeedback: {fileID: 0}
 --- !u!114 &1623492869612764180
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -283,6 +284,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6740386835005343677, guid: 3f1d0d7a611d447488a34a8714ed6e79, type: 3}
       propertyPath: bulletSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6740386835005343677, guid: 3f1d0d7a611d447488a34a8714ed6e79, type: 3}
+      propertyPath: need_rotate
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6740386835005343677, guid: 3f1d0d7a611d447488a34a8714ed6e79, type: 3}
