@@ -20,8 +20,10 @@ namespace Weapon
         /// The point from which the bullets will be fired.
         /// </summary>
         [Required]
-        public Transform firePoint;
+        public Transform firePoint;  
 
+        public GameObject bindingParent;
+        
         /// <summary>
         /// Fires a specified number of bullets in a given direction with a spread.
         /// </summary>
@@ -40,15 +42,19 @@ namespace Weapon
                 Vector2 dir = Quaternion.Euler(0, 0, angle) * direction;
 
                 GameObject bulletObj = Instantiate(bulletPrefab,  GetFirePoint(), Quaternion.identity);
-                Bullet bullet = bulletObj.GetComponent<Bullet>();
+                if (bindingParent != null)
+                {
+                    bulletObj.transform.SetParent(bindingParent.transform);
+                }
+                Bullet bullet = bulletObj.GetComponent<EnemyBullet>();
 
                 if (clip != null)
                 {
-                    bullet.Initialize(dir, clip.Sprite,speed,need_rotate);
+                    bullet.Initialize(dir, clip.Sprite, speed, need_rotate);
                 }
                 else
                 {
-                    bullet.Initialize(dir,speed, need_rotate);
+                    bullet.Initialize(dir, speed, need_rotate);
                 }
             }
         }

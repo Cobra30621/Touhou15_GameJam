@@ -1,5 +1,6 @@
 ﻿using Player;
 using Sirenix.OdinInspector;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -53,13 +54,16 @@ namespace Weapon
         /// <summary>
         /// Indicates whether to use the player's direction.
         /// </summary>
-        public bool usePlayerDirection = true;
+        public bool useTargetPosition = true;
 
         /// <summary>
         /// The custom direction to fire towards.
         /// </summary>
-        [ShowIf("@!usePlayerDirection")]
+        [ShowIf("@!useTargetPosition")]
         public Vector3 customDirection;
+
+        [ShowIf("@useTargetPosition")]
+        public Vector3 targetDirection;
 
         /// <summary>
         /// Updates the weapon's state every frame, checking if it can fire.
@@ -86,7 +90,9 @@ namespace Weapon
             } else
             {
                 fireCooldown -= Time.deltaTime;
-                if (fireCooldown <= 0f) { 
+                if (fireCooldown <= 0f) {
+                    var targetPosition = PlayerController.Instance.transform.position;
+                    targetDirection = targetPosition - shooter.firePoint.position;
                     isShooting = true;
                     waveCooldown = waveRate;
                     currentWave = 0;
@@ -102,15 +108,14 @@ namespace Weapon
            // Debug.Log("Fire");
 
             // 獲取玩家位置
-            var playerPos = PlayerController.Instance.transform.position;
 
             // 定義發射方向
             Vector3 dir;
 
             // 根據需要選擇發射方向
-            if (usePlayerDirection) // 假設有一個布林變數用來決定是否使用玩家方向
+            if (useTargetPosition) // 假設有一個布林變數用來決定是否使用玩家方向
             {
-                dir = playerPos - shooter.firePoint.position;
+                dir = targetDirection;
             }
             else
             {
@@ -120,5 +125,6 @@ namespace Weapon
             shooter.Fire(bulletCount, spreadAngle, dir, bulletSpeed,need_rotate);
             //fireCooldown = fireRate;
         }
+
     }
 }
