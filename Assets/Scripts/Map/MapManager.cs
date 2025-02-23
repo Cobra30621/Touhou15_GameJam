@@ -262,10 +262,6 @@ namespace Map
         {
             nowRoomCount = id;
             currentCharacterArrivalRoomId = Math.Max(id, currentCharacterArrivalRoomId);
-            if(id>=all_room && GameManager.Instance.GameMode==GameMode.Story)
-            {
-                GameManager.Instance.EndGame();
-            }
             // Need Generate new room
             if (currentSpawnRoomId - currentCharacterArrivalRoomId <= spawnIntervalThreshold)
             {
