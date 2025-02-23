@@ -28,6 +28,11 @@ namespace Player
         public float smallInterval = 2f;
         public bool sizefreeze = false;
         
+        
+        [SerializeField] public float destroyObstacleSize = 0.6f;
+        [SerializeField] private ParticleSystem canDestroyObstacleFeedback;
+        
+        
         [SerializeField] private ParticleFeedback smallerFeedback;
         [SerializeField] private ParticleFeedback elinPilloFeedback;
 
@@ -48,6 +53,9 @@ namespace Player
                 currentSize = 0;
                 StartCoroutine(PlayerController.Instance.stun(stun_time));
             }
+            
+            
+            UpdateCanDestroyObstacleFeedback();
         }
 
 
@@ -61,7 +69,7 @@ namespace Player
             if (growthTimer >= smallInterval)
             {
                 check_growthRate();    
-                currentSize += growthRate * smallInterval; 
+                Resize(growthRate * smallInterval);
                 
                 smallerFeedback.Play(transform, true);
                 growthTimer = 0f; // 重置计时器
@@ -102,5 +110,21 @@ namespace Player
             transform.localScale = new Vector3(xSize, objectSize, objectSize); // 应用大小
         }
 
+
+        private void UpdateCanDestroyObstacleFeedback()
+        {
+            var canDestroyObstacle = CanDestroyObstacle();
+            var wasInactive = !canDestroyObstacleFeedback.gameObject.activeSelf;
+            
+            canDestroyObstacleFeedback.gameObject.SetActive(canDestroyObstacle);
+            
+            if(canDestroyObstacle && wasInactive)
+                canDestroyObstacleFeedback.Play();
+        }
+
+        public bool CanDestroyObstacle()
+        {
+            return currentSize >= destroyObstacleSize;
+        }
     }
 }
