@@ -19,7 +19,14 @@ namespace Player
         [SerializeField] public PlayerWeapon playerWeapon;
         [SerializeField] public SpriteRenderer spriteRenderer;
         [SerializeField] public Animator _animator;
-
+        public Transform UsingItemDisplayPos;
+        
+        [Header("Input")]
+        [SerializeField] private KeyCode moveLeftKey = KeyCode.A;
+        [SerializeField] private KeyCode moveRightKey = KeyCode.D;
+        [SerializeField] private KeyCode jumpKey = KeyCode.W;
+        
+        
         [Header("Setting")]
         [SerializeField] private const float invincibleCooldown = 1f;
         [SerializeField] private float idleThershold = 0.05f;

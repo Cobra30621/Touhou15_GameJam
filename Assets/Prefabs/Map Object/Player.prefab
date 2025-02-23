@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &184426548180148969
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5937439885466853006}
+  m_Layer: 0
+  m_Name: using Item Display Pos
+  m_TagString: Untagged
+  m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5937439885466853006
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 184426548180148969}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.006, y: 0.624, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5887916255952573643}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1125518849002566670
 GameObject:
   m_ObjectHideFlags: 0
@@ -29,7 +60,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: -0.15276231}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 5937439885466853006}
   m_Father: {fileID: 6476690928999042950}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6738054205909406371
@@ -169,12 +201,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sizeHandler: {fileID: 8444743282415853165}
+  playerMovement: {fileID: 0}
+  playerWeapon: {fileID: 0}
   spriteRenderer: {fileID: 6738054205909406371}
+  _animator: {fileID: 0}
+  UsingItemDisplayPos: {fileID: 5937439885466853006}
+  moveLeftKey: 97
+  moveRightKey: 100
+  jumpKey: 119
+  idleThershold: 0.05
   destroyObstacleSize: 0.6
+  isInvincible: 0
+  isDead: 0
   item1Key: 120
   item2Key: 99
-  isImmortal: 0
-  isDead: 0
   OnBulletClipChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -200,10 +240,13 @@ MonoBehaviour:
   jumpForce: 15
   isGrounded: 0
   enableJump: 1
-  isJumping: 0
   playersize: {fileID: 8444743282415853165}
   leftDirection: 0
-  idleNeedWait: 0.05
+  idleTimer: 0
+  moveInput: 0
+  infjump: 0
+  speed_adjust: 0
+  force_adjust: 0
 --- !u!114 &8444743282415853165
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -226,6 +269,7 @@ MonoBehaviour:
   - 1
   growthRate: 0
   currentSize: 1
+  sizefreeze: 0
 --- !u!114 &1416991743298713645
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -240,6 +284,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireCooldown: 0
   shooter: {fileID: 3301798317564636802}
+  bulletSpeed: 5
   shootKey: 102
   bulletCount: 1
   fireRate: 0.5
