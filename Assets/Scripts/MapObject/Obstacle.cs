@@ -1,4 +1,5 @@
-﻿using Player;
+﻿using Feedback;
+using Player;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -22,6 +23,8 @@ namespace MapObject
         public float damage = 0.05f;
 
         public bool destroyAfterHurtPlayer;
+
+        [SerializeField] private ParticleFeedback destroyParticleFeedback;
         
         void OnCollisionEnter2D(Collision2D collision)
         {
@@ -69,6 +72,9 @@ namespace MapObject
         public void DestroyByPlayer()
         {
             _dropBulletObstacle.DestroyByPlayer();
+            
+            if(destroyParticleFeedback != null)
+                destroyParticleFeedback.Play(transform);
             
             Destroy(gameObject);
         }
