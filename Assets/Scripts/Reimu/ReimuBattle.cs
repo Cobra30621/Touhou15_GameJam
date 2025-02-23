@@ -1,6 +1,7 @@
 using Player;
 using System;
 using System.Collections;
+using Feedback;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -33,8 +34,16 @@ public class ReimuBattle : MonoBehaviour
     private bool isCharge = false;
 
     private Coroutine actionCoroutine;
+
+    [Required]
+    [SerializeField] private ParticleFeedback defeatFeedback;
+    
+    [Required]
+    [SerializeField] private ParticleSystem chargingFeedback;
     
 
+    
+    
 
     void Start()
     {
@@ -76,6 +85,7 @@ public class ReimuBattle : MonoBehaviour
 
     private IEnumerator ReimuActionCoroutine()
     {
+        PlayChargingFeedback(false);
         weapon.SetActive(true);
         print("move");
         yield return StartCoroutine(SmoothMoveCoroutine(startPosition, endPosition, movePeriod));
@@ -124,6 +134,16 @@ public class ReimuBattle : MonoBehaviour
         chargeBar.transform.localScale = targetScale;
     }
 
+    [Button]
+    private void PlayChargingFeedback(bool isCharge)
+    {
+        chargingFeedback.gameObject.SetActive(isCharge);
+        if (isCharge)
+        {
+            chargingFeedback.Play();
+        }
+    }
+
     
     [Button]
     public void OnHit()
@@ -138,6 +158,8 @@ public class ReimuBattle : MonoBehaviour
         chargeBar.SetActive(false);
         weapon.SetActive(false);
         _animator.SetTrigger("Dizziness");
+        
+        defeatFeedback.Play(reimuSprite.transform, true);
 
         yield return new WaitForSeconds(1f);
         
@@ -152,6 +174,7 @@ public class ReimuBattle : MonoBehaviour
         IsRunning = false;
         isHit = false;
     }
+
 
     void OnDrawGizmos()
     {
