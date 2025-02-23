@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ReimuMovement : MonoBehaviour
 {
-    [SerializeField] private const float startDistance = 30;
+    [SerializeField] private float startDistance;
     
     [SerializeField] private float distance;
     [SerializeField] private float speed;
@@ -31,7 +31,7 @@ public class ReimuMovement : MonoBehaviour
     }
 
     [Button]
-    public void StartMode(float dis = startDistance)
+    public void StartMode(float dis = 300f)
     {
         ismove = true;
         distance = dis;
