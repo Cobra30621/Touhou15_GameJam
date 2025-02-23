@@ -36,8 +36,13 @@ namespace Player
         [SerializeField] private ParticleFeedback smallerFeedback;
         [SerializeField] private ParticleFeedback elinPilloFeedback;
 
-        
-        
+
+        private void Start()
+        {
+            SetSize(1f);
+        }
+
+
         private void Update() {
             GrowOverTime();
             UpdateSize();
@@ -47,15 +52,19 @@ namespace Player
         public void Resize(float amount)
         {
             Debug.Log(amount);
-            currentSize += amount;
+            SetSize(currentSize + amount);
+            
+        }
+
+        private void SetSize(float size)
+        {
+            UpdateCanDestroyObstacleFeedback();
+            
             if (currentSize <= 0)
             {
                 currentSize = 0;
                 StartCoroutine(PlayerController.Instance.stun(stun_time));
             }
-            
-            
-            UpdateCanDestroyObstacleFeedback();
         }
 
 
