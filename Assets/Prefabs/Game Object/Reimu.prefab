@@ -94,10 +94,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bbe9e8509e51994ea2fd2d2c393caf4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startDistance: 300
+  startDistance: 40
   distance: 300
-  speed: 0
-  playerSpeedFactor: 0
+  speed: 10
+  playerSpeedFactor: 0.3
   reimuBattle: {fileID: 3891720063772816084}
   isfreeze: 0
   speedFactor: 1
@@ -577,8 +577,16 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6740386835005343677, guid: 3f1d0d7a611d447488a34a8714ed6e79, type: 3}
+      propertyPath: bulletSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6740386835005343677, guid: 3f1d0d7a611d447488a34a8714ed6e79, type: 3}
       propertyPath: spreadAngle
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6740386835005343677, guid: 3f1d0d7a611d447488a34a8714ed6e79, type: 3}
+      propertyPath: waveCooldown
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

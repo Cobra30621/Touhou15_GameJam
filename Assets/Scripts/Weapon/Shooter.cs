@@ -43,11 +43,11 @@ namespace Weapon
 
                 if (clip != null)
                 {
-                    bullet.Initialize(dir, clip.Sprite);
+                    bullet.Initialize(dir, clip.Sprite,speed);
                 }
                 else
                 {
-                    bullet.Initialize(dir);
+                    bullet.Initialize(dir,speed);
                 }
             }
         }

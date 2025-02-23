@@ -33,18 +33,23 @@ namespace Weapon
 
         public virtual void Initialize(Vector2 dir, Sprite bulletSprite,float speed = 5)
         {
-            this.speed = speed;
-            direction = dir.normalized;
+            _init(dir, speed);
             if (spriteRenderer != null && bulletSprite != null)
             {
                 spriteRenderer.sprite = bulletSprite;
             }
         }
-        
-        public virtual void Initialize(Vector2 dir,float speed = 5)
+
+        private void _init(Vector2 dir,float speed)
         {
             this.speed = speed;
             direction = dir.normalized;
+            transform.rotation = Quaternion.FromToRotation(Vector3.up, direction);
+        }
+        
+        public virtual void Initialize(Vector2 dir,float speed = 5)
+        {
+            _init(dir, speed);
         }
 
         protected virtual void Update()
