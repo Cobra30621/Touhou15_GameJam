@@ -7,7 +7,6 @@ using UnityEngine;
 public class reimupenny : BaseItem
 {
     [SerializeField] private float existtime = 5f;
-    [SerializeField] private bool isusing = false;
     [SerializeField] private float speedFactor = 0.4f;
     [SerializeField] private GameObject reimu;
     [SerializeField] private GameObject reimusprite;
@@ -34,6 +33,6 @@ public class reimupenny : BaseItem
         reimu.GetComponent<ReimuMovement>().speedFactor = speedFactor;
         yield return new WaitForSeconds(existtime);
         reimu.GetComponent<ReimuMovement>().speedFactor = 1f;
-        isusing = false;
+        ItemComplete();
     }
 }

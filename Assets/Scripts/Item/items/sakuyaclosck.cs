@@ -7,7 +7,6 @@ using UnityEngine;
 public class sakuyaclock : BaseItem
 {
     [SerializeField] private float existtime = 5f;
-    [SerializeField] private bool isusing = false;
     [SerializeField] private GameObject reimu;
     public override bool use()
     {
@@ -33,7 +32,7 @@ public class sakuyaclock : BaseItem
         reimu.GetComponent<ReimuMovement>().isfreeze = true;
         yield return new WaitForSeconds(existtime);
         reimu.GetComponent<ReimuMovement>().isfreeze = false;
-        isusing = false;
+        ItemComplete();
     }
 
     //create iemurator contdown for existtime
