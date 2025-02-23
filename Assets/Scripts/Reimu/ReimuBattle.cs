@@ -44,7 +44,9 @@ public class ReimuBattle : MonoBehaviour
     [Required]
     [SerializeField] private ParticleSystem chargingFeedback;
     
-    [SerializeField] private int shield = 0,shield_distance = 0;
+    [SerializeField] private int shield = 0,powerup_distance = 0;
+
+    [SerializeField] private float powerup_decrease_time = 0.5f;
 
     [SerializeField] private GameObject shield_sprite;
 
@@ -61,10 +63,12 @@ public class ReimuBattle : MonoBehaviour
         {
             return;
         }
-        if(MapManager.Instance.nowRoomCount >= shield_distance)
+        if(MapManager.Instance.nowRoomCount >= powerup_distance)
         {
             shield = 1;
             shield_sprite.SetActive(true);
+            movePeriod -= powerup_decrease_time*(int)(MapManager.Instance.nowRoomCount / powerup_distance);
+            chargePeriod -= powerup_decrease_time*(int)(MapManager.Instance.nowRoomCount / powerup_distance);
         }
         IsRunning = true;
         reimuSprite.SetActive(true);
