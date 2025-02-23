@@ -22,12 +22,10 @@ public class ReimuMovement : MonoBehaviour
 
     void Start()
     {
-        speed = 0.02f;
-        playerSpeedFactor = 0.0004f;
 
         _animator = GetComponent<Animator>();
         ismove = true;
-        StartMode();
+        StartMode(startDistance);
     }
 
     [Button]
@@ -43,7 +41,7 @@ public class ReimuMovement : MonoBehaviour
     {
         if (distance > 0)
         {
-            if (!isfreeze) distance -= (speed - PlayerController.Instance.playerMovement.GetVelocityX() * playerSpeedFactor)*speedFactor;
+            if (!isfreeze) distance -= (speed- PlayerController.Instance.playerMovement.GetVelocityX() * playerSpeedFactor)*speedFactor * Time.deltaTime;
         }
         else
         {

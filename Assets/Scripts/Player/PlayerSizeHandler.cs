@@ -1,4 +1,5 @@
 using System;
+using Feedback;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -22,7 +23,12 @@ namespace Player
         [LabelText("currentSize (0~1)")]
         public float currentSize = 1f;
         
+        private float growthTimer = 0f; // 添加计时器变量
+
+        public float smallInterval = 2f;
         public bool sizefreeze = false;
+        
+        [SerializeField] private ParticleFeedback smallerFeedback;
 
         private void Update() {
             GrowOverTime();
@@ -46,8 +52,17 @@ namespace Player
         /// Increases size over time
         /// </summary>
         private void GrowOverTime(){
-            check_growthRate();    
-            currentSize += growthRate * Time.deltaTime; // 根据速率增加大小
+            if(sizefreeze){return;}
+            
+            growthTimer += Time.deltaTime;
+            if (growthTimer >= smallInterval)
+            {
+                check_growthRate();    
+                currentSize += growthRate * smallInterval; 
+                
+                smallerFeedback.Play(transform, true);
+                growthTimer = 0f; // 重置计时器
+            }
         }
         
         private void check_growthRate()
@@ -59,7 +74,6 @@ namespace Player
                     growthRate = growthRatelist[i];
                 }
             }
-            if (sizefreeze) growthRate = 0;
         }
         
         /// <summary>

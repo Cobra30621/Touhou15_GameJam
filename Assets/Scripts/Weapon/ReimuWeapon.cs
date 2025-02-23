@@ -103,7 +103,7 @@ public class ReimuWeapon : MonoBehaviour
             dir = customDirection; // 假設有一個 Vector3 變數 customDirection 用來定義自定義方向
         }
 
-        shooter.Fire(bulletCount, spreadAngle, dir, singleBulletSpeed);
+        shooter.Fire(bulletCount, spreadAngle, dir, singleBulletSpeed ,true);
         //fireCooldown = fireRate;
     }
 }

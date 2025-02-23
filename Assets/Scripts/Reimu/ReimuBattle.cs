@@ -131,7 +131,7 @@ public class ReimuBattle : MonoBehaviour
         StartCoroutine(OnHitCoroutine());
     }
 
-    private IEnumerator OnHitCoroutine()
+    private IEnumerator OnHitCoroutine(float dis = 40)
     {
         isHit = true;
         StopCoroutine(actionCoroutine);
@@ -147,7 +147,7 @@ public class ReimuBattle : MonoBehaviour
         
         reimuSprite.SetActive(false);
         // End Battle Mode
-        _reimuMovement.StartMode();
+        _reimuMovement.StartMode(dis);
         isCharge = false;
         IsRunning = false;
         isHit = false;

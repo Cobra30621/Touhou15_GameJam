@@ -30,8 +30,9 @@ namespace Weapon
         /// <param name="count">The number of bullets to fire.</param>
         /// <param name="spread">The angle spread between bullets.</param>
         /// <param name="direction">The direction in which to fire the bullets.</param>
+        /// <param name="need_rotate">Optional bullet clip for additional properties.</param>
         /// <param name="clip">Optional bullet clip for additional properties.</param>
-        public void Fire(int count, float spread, Vector2 direction, float speed = 5,BulletClip clip = null)
+        public void Fire(int count, float spread, Vector2 direction, float speed = 5,bool need_rotate = false, BulletClip clip = null)
         {
             float startAngle = -((count - 1) * spread / 2);
 
@@ -49,11 +50,11 @@ namespace Weapon
 
                 if (clip != null)
                 {
-                    bullet.Initialize(dir, clip.Sprite, speed);
+                    bullet.Initialize(dir, clip.Sprite, speed, need_rotate);
                 }
                 else
                 {
-                    bullet.Initialize(dir, speed);
+                    bullet.Initialize(dir, speed, need_rotate);
                 }
             }
         }

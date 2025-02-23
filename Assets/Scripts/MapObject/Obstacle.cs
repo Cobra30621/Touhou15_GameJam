@@ -24,7 +24,7 @@ namespace MapObject
 
         public bool destroyAfterHurtPlayer;
 
-        [SerializeField] private ParticleFeedback destroyParticleFeedback;
+        [SerializeField] private ParticleFeedback playerCollisionFeedback;
         
         void OnCollisionEnter2D(Collision2D collision)
         {
@@ -40,6 +40,9 @@ namespace MapObject
         {
             if (PlayerCanDestroyObstacle(controller))
             {
+                if(playerCollisionFeedback != null)
+                    playerCollisionFeedback.Play(transform);
+                
                 DestroyByPlayer();
             }
             else
@@ -73,8 +76,7 @@ namespace MapObject
         {
             _dropBulletObstacle.DestroyByPlayer();
             
-            if(destroyParticleFeedback != null)
-                destroyParticleFeedback.Play(transform);
+            
             
             Destroy(gameObject);
         }
