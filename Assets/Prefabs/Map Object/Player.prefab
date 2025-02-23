@@ -818,7 +818,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6310926242992324801, guid: 57720d15ef2b509458e5dbce09501d61, type: 3}
       propertyPath: m_Name
-      value: CFXR3 Shield Leaves B (Lit)
+      value: Flying Feedback
       objectReference: {fileID: 0}
     - target: {fileID: 6310926242992324801, guid: 57720d15ef2b509458e5dbce09501d61, type: 3}
       propertyPath: m_IsActive
@@ -831,8 +831,29 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6310926242992324801, guid: 57720d15ef2b509458e5dbce09501d61, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6400377621254623439}
   m_SourcePrefab: {fileID: 100100000, guid: 57720d15ef2b509458e5dbce09501d61, type: 3}
+--- !u!1 &9088672695486893396 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6310926242992324801, guid: 57720d15ef2b509458e5dbce09501d61, type: 3}
+  m_PrefabInstance: {fileID: 3005478005791673749}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6400377621254623439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9088672695486893396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bc10dbad14548bbb787f8a5c30ee1b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parent: {fileID: 6476690928999042950}
 --- !u!4 &9088672695487189364 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6310926242991840481, guid: 57720d15ef2b509458e5dbce09501d61, type: 3}
