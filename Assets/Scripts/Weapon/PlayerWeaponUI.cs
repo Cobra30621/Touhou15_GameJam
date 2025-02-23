@@ -26,13 +26,13 @@ namespace Weapon
 
         public int bulletCount = 0;
         public TextMeshProUGUI bulletCountText;
-        public addbullet_mannger addbulletMannger;
+        public addbullet_manager addbulletManager;
 
         private void UpdateBulletUI(List<BulletClip> bulletClips)
         {
             if(bulletCount<bulletClips.Count)
             {
-                addbulletMannger.CreateFloatingUI(bulletClips[bulletClips.Count - 1].Sprite);
+                addbulletManager.CreateFloatingUI(bulletClips[bulletClips.Count - 1].Sprite);
             }
             bulletCount = bulletClips.Count;
             bulletCountText.text = bulletCount.ToString();
