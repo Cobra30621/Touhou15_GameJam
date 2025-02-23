@@ -46,7 +46,7 @@ namespace Weapon
                 {
                     bulletObj.transform.SetParent(bindingParent.transform);
                 }
-                Bullet bullet = bulletObj.GetComponent<EnemyBullet>();
+                Bullet bullet = bulletObj.GetComponent<Bullet>();
 
                 if (clip != null)
                 {
