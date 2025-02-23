@@ -8,12 +8,21 @@ namespace Feedback
         [Required]
         [SerializeField] private GameObject particlePrefab;
         
-        public void Play(Transform spawnPos)
+        public void Play(Transform spawnPos, bool spawnUnderTransform = false)
         {
             if (!particlePrefab) return;
+
+            Debug.Log($"{particlePrefab.name}, {spawnUnderTransform}");
             
-            var particle = Instantiate(particlePrefab, spawnPos.position, spawnPos.rotation);
-       
+            if (spawnUnderTransform)
+            {
+                Instantiate(particlePrefab, spawnPos);
+            }
+            else
+            {
+                Instantiate(particlePrefab, spawnPos.position, spawnPos.rotation);
+            }
+        
         }
     }
 }
