@@ -15,6 +15,7 @@ namespace Player
         [SerializeField] private float[] growthRatelist = new float[] {0,1 };
         [SerializeField] private float[] growthbond = new float[] { 0,1};
         [SerializeField] private float growthRate;
+        [SerializeField] private float stun_time = 0.5f;
 
         [Header("參數")]
         [SerializeField]
@@ -33,7 +34,13 @@ namespace Player
         {
             Debug.Log(amount);
             currentSize += amount;
+            if (currentSize <= 0)
+            {
+                currentSize = 0;
+                StartCoroutine(PlayerController.Instance.stun(stun_time));
+            }
         }
+
 
         /// <summary>
         /// Increases size over time
