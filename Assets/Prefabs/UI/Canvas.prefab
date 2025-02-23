@@ -183,7 +183,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   floatingUIPrefab: {fileID: 3002439836302879877, guid: 6b49af166db737a4db77d28c6a2ddd6b, type: 3}
-  uiCanvas: {fileID: 4955435229746708862}
+  uiCanvas: {fileID: 3620602284555535557}
 --- !u!1 &1320482699896916110
 GameObject:
   m_ObjectHideFlags: 0
