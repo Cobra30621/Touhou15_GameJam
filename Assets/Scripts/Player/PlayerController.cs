@@ -22,7 +22,10 @@ namespace Player
         [SerializeField] public SpriteRenderer spriteRenderer;
         [SerializeField] public Animator _animator;
         public Transform UsingItemDisplayPos;
+        [Required]
         [SerializeField] private ParticleFeedback deadFeedback;
+        [Required]
+        [SerializeField] private ParticleFeedback explosionFeedback;
         [Required]
         [SerializeField] private GameObject allFeedbacks;
 
@@ -156,6 +159,11 @@ namespace Player
             playerMovement.Freeze();
             sizeHandler.enabled = false;
             canControll = false;
+        }
+
+        public void PlayExplosionFeedback()
+        {
+            explosionFeedback.Play(transform, true);
         }
 
         

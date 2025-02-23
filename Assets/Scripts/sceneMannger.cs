@@ -4,25 +4,30 @@ using UnityEngine;
 
 public enum SceneType
 {
-    MainMenu,
+    StartMenu,
+    SelectMode,
     Game_inf,
-    Game_stroy,
-    GameOver
+    Game_story,
+    BadEnd,
+    GoodEnd
 }
 public class sceneMannger : MonoBehaviour
 {
-    Dictionary<SceneType, string> sceneDic = new Dictionary<SceneType, string>()
-    {   {SceneType.MainMenu, "menu" },
+    private static Dictionary<SceneType, string> sceneDic = new Dictionary<SceneType, string>()
+    {   
+        {SceneType.StartMenu, "menu0" },
+        {SceneType.SelectMode, "menu" },
         {SceneType.Game_inf, "Game-inf" },
-        { SceneType.Game_stroy, "Game-stroy" },
-        {   SceneType.GameOver, "end"}
+        { SceneType.Game_story, "Game-story" },
+        {   SceneType.BadEnd, "Bad-end"},
+        {   SceneType.GoodEnd, "Good-end"}
     };
-    public void ChangeScene(SceneType sceneType)
+    public static void ChangeScene(SceneType sceneType)
     {
         string sceneName = sceneDic[sceneType];
         UnityEngine.SceneManagement.SceneManager.LoadScene(sceneName);
     }
-    public void ChangeScene(string sceneType)
+    public static void ChangeScene(string sceneType)
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene(sceneType);
     }

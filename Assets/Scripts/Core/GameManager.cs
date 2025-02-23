@@ -73,11 +73,17 @@ namespace Core
             Time.timeScale = 1f;
         }
 
-        public void EndGame()
+        [Button]
+        public void EnterGoodEnd()
         {
-            SceneManager.LoadScene("end");
+            sceneMannger.ChangeScene(SceneType.GoodEnd);
         }
 
-        
+        [Button]
+        public void EnterBadEnd()
+        {
+            sceneMannger.ChangeScene(SceneType.BadEnd);
+        }
+
     }
 }

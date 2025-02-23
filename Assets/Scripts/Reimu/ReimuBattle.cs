@@ -1,6 +1,7 @@
 using Player;
 using System;
 using System.Collections;
+using Core;
 using Feedback;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -102,6 +103,12 @@ public class ReimuBattle : MonoBehaviour
         PlayerController.Instance.Die();
         yield return StartCoroutine(SmoothMoveCoroutine(reimu.transform.InverseTransformPoint(PlayerController.Instance.transform.position),
             playerPos+ new Vector3(5f,0f,0f), dashPeriod));
+
+        yield return new WaitForSeconds(1f);
+        PlayerController.Instance.PlayExplosionFeedback();
+        
+        yield return new WaitForSeconds(2f);
+        GameManager.Instance.EnterBadEnd();
     }
 
 

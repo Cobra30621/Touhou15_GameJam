@@ -14,7 +14,7 @@ namespace MapObject
         {
             if (collision.gameObject.CompareTag("Player"))
             {
-                GameManager.Instance.EndGame();
+                GameManager.Instance.EnterGoodEnd();
             }
         }
 
