@@ -58,6 +58,7 @@ namespace Player
 
         private void SetSize(float size)
         {
+            currentSize = size;
             UpdateCanDestroyObstacleFeedback();
             
             if (currentSize <= 0)
