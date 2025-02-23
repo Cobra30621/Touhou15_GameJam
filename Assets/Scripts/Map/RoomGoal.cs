@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Map
 {
@@ -20,15 +21,28 @@ namespace Map
         {
             _room = room;
         }
-    
+
+        private void OnTriggerStay2d(Collider2D collider)
+        {
+            if (collider.CompareTag("Player"))
+            {
+                CompleteGoal();
+            }
+        }
+
         void OnTriggerEnter2D(Collider2D collider)
         {
             if (collider.CompareTag("Player"))
             {
-                _room.CompleteGoal();
-                
-                Destroy(gameObject);
+                CompleteGoal();
             }
+        }
+
+        private void CompleteGoal()
+        {
+            _room.CompleteGoal();
+                
+            Destroy(gameObject);
         }
     }
 }

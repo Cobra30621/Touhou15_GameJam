@@ -55,7 +55,16 @@ namespace MapObject
             }
             spriteRenderer.sprite = itemInfo.sprite;
         }
-        
+
+
+        private void OnTriggerStay2D(Collider2D collider)
+        {
+            if (collider.CompareTag("Player"))
+            {
+                GainItem();
+            }
+        }
+
         void OnTriggerEnter2D(Collider2D collider)
         {
             if (collider.CompareTag("Player"))
@@ -67,9 +76,10 @@ namespace MapObject
         [Button]
         private void GainItem()
         {
-            Debug.Log($"Gain Item {itemInfo}");
+            
             if (ItemManager.Instance.GainItem(itemInfo))
             {
+                Debug.Log($"Gain Item {itemInfo}");
                 particleFeedback.Play(transform);
                 Destroy(gameObject);
             }
