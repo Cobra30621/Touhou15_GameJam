@@ -23,6 +23,11 @@ namespace Player
         [SerializeField] public Animator _animator;
         public Transform UsingItemDisplayPos;
         [SerializeField] private ParticleFeedback deadFeedback;
+        [Required]
+        [SerializeField] private GameObject allFeedbacks;
+
+
+        
         
         [Header("Input")]
         [SerializeField] private KeyCode moveLeftKey = KeyCode.A;
@@ -146,6 +151,7 @@ namespace Player
         {
             Debug.Log("Die");
             isDead = true;
+            allFeedbacks.SetActive(false);
             deadFeedback.Play(transform, true);
             playerMovement.Freeze();
             sizeHandler.enabled = false;

@@ -81,7 +81,7 @@ namespace Player
                 check_growthRate();    
                 Resize(growthRate * smallInterval);
                 
-                smallerFeedback.Play(transform, true);
+                smallerFeedback.Play(smallerFeedback.transform, true);
                 growthTimer = 0f; // 重置计时器
             }
         }
