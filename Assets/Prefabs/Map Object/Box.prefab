@@ -100,7 +100,7 @@ MonoBehaviour:
   takeDamage: 0
   damage: 0.05
   destroyAfterHurtPlayer: 0
-  destroyParticleFeedback: {fileID: 1474962400151506282}
+  playerCollisionFeedback: {fileID: 1474962400151506282}
 --- !u!114 &8052971701812413318
 MonoBehaviour:
   m_ObjectHideFlags: 0

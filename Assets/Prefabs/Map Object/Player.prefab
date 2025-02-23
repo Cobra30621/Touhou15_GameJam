@@ -147,6 +147,51 @@ Transform:
   m_Children: []
   m_Father: {fileID: 6633814137787093092}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4400707505201747324
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9141860458063593328}
+  - component: {fileID: 5079375434639328575}
+  m_Layer: 0
+  m_Name: smaller Feedback
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9141860458063593328
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4400707505201747324}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6476690928999042950}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5079375434639328575
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4400707505201747324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 946ad7d015af4e07ad5ab0454536d7b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particlePrefab: {fileID: 1124987665977510874, guid: 5046d3085fb81a842addc05956c6b9b1, type: 3}
 --- !u!1 &6152708451173887814
 GameObject:
   m_ObjectHideFlags: 0
@@ -186,6 +231,7 @@ Transform:
   m_Children:
   - {fileID: 5887916255952573643}
   - {fileID: 6633814137787093092}
+  - {fileID: 9141860458063593328}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &9018362366523556215
@@ -213,6 +259,7 @@ MonoBehaviour:
   destroyObstacleSize: 0.6
   isInvincible: 0
   isDead: 0
+  canControll: 1
   item1Key: 120
   item2Key: 99
   OnBulletClipChanged:
@@ -268,8 +315,11 @@ MonoBehaviour:
   - 0
   - 1
   growthRate: 0
+  stun_time: 0.5
   currentSize: 1
+  smallInterval: 3
   sizefreeze: 0
+  smallerFeedback: {fileID: 5079375434639328575}
 --- !u!114 &1416991743298713645
 MonoBehaviour:
   m_ObjectHideFlags: 0
