@@ -25,12 +25,6 @@ MonoBehaviour:
     intValue: 0
     floatValue: 0
     sprite: {fileID: 21300000, guid: 3d2b359134ea3a44fa92a0b8a67cd50e, type: 3}
-  - itemType: 4
-    title: "\u54B2\u591C\u7684\u61F7\u8868"
-    description: "\u66AB\u505C\u6642\u9593"
-    intValue: 0
-    floatValue: 0
-    sprite: {fileID: 21300000, guid: 561c64a7bd93b1d438506e4ae57907f9, type: 3}
   - itemType: 5
     title: 
     description: 
@@ -43,12 +37,6 @@ MonoBehaviour:
     intValue: 0
     floatValue: 0
     sprite: {fileID: 21300000, guid: 9e44c25110791c642b7abb2ccbe9ae00, type: 3}
-  - itemType: 8
-    title: "\u8403\u9999\u7684\u5B50\u5F48"
-    description: 
-    intValue: 0
-    floatValue: 0
-    sprite: {fileID: 21300000, guid: a762b5707dbfe814ca224b515c485438, type: 3}
   - itemType: 7
     title: 
     description: 

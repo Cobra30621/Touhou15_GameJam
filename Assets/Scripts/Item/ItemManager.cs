@@ -66,12 +66,12 @@ public class ItemManager : MonoBehaviour
         {
             activatedItems.Add(null);
         }
-
+        
         OnItemsChanged.Invoke(activatedItems.ToArray());
     }
 
 
-    public void GainItem(ItemInfo item)
+    public bool GainItem(ItemInfo item)
     {
         for (int i = 0; i < maxItem; i++)
         {
@@ -79,11 +79,13 @@ public class ItemManager : MonoBehaviour
             {
                 print(item.itemType + "gain");
                 activatedItems[i] = item;
-                break; // 找到空位後退出循環
+                OnItemsChanged.Invoke(activatedItems.ToArray());
+                return true; // 找到空位後退出循環
             }
         }
 
         OnItemsChanged.Invoke(activatedItems.ToArray());
+        return false;
     }
 
 

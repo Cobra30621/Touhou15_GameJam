@@ -8,9 +8,11 @@ namespace Reimu
         [Required]
         [SerializeField] private ReimuBattle _reimuBattle;
 
-        public void OnHit()
+        public bool OnHit()
         {
+            if (_reimuBattle.isHit) return false;
             _reimuBattle.OnHit();
+            return true;
         }
         
     }

@@ -52,7 +52,7 @@ namespace Core
         [Button]
         public void Restart()
         {
-            SceneManager.LoadScene("Game");
+            SceneManager.LoadScene("Game-story");
         }
 
         public void StartGame()
@@ -65,8 +65,7 @@ namespace Core
 
         public void EndGame()
         {
-            // 結束遊戲邏輯
-            // 顯示結束畫面
+            SceneManager.LoadScene("end");
         }
 
         

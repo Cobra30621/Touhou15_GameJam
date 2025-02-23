@@ -27,7 +27,7 @@ public class ReimuBattle : MonoBehaviour
 
     public bool IsRunning;
     
-    private bool isHit;
+    public bool isHit = false;
 
     private Coroutine actionCoroutine;
     
@@ -73,9 +73,13 @@ public class ReimuBattle : MonoBehaviour
     private IEnumerator ReimuActionCoroutine()
     {
         weapon.SetActive(true);
+        print("move");
         yield return StartCoroutine(SmoothMoveCoroutine(startPosition, endPosition, movePeriod));
         weapon.SetActive(false);
-        yield return StartCoroutine(ChargeAttack());
+        print("Charge Attack");
+         yield return StartCoroutine(ChargeAttack());
+
+        print("Die");
         chargeBar.SetActive(false);
         PlayerController.Instance.Die();
         yield return StartCoroutine(SmoothMoveCoroutine(endPosition, 
@@ -123,7 +127,11 @@ public class ReimuBattle : MonoBehaviour
 
     private IEnumerator OnHitCoroutine()
     {
-        stopReimuAttack();
+        isHit = true;
+        StopCoroutine(actionCoroutine);
+        chargeBar.SetActive(false);
+        weapon.SetActive(false);
+        _animator.SetTrigger("Dizziness");
 
         yield return new WaitForSeconds(1f);
         
@@ -135,6 +143,7 @@ public class ReimuBattle : MonoBehaviour
         // End Battle Mode
         _reimuMovement.StartMode();
         IsRunning = false;
+        isHit = false;
     }
 
     void OnDrawGizmos()
@@ -162,7 +171,6 @@ public class ReimuBattle : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
         reimuSprite.SetActive(true);
         StartCoroutine(ReimuActionCoroutine());
-
     }
 
 }
