@@ -93,13 +93,15 @@ public class ReimuBattle : MonoBehaviour
         print("Charge Attack");
         yield return StartCoroutine(ChargeAttack());
         reimuCollider.enabled = false;
-        print("Die");
         chargeBar.SetActive(false);
+        
+        var playerPos = reimu.transform.InverseTransformPoint(PlayerController.Instance.transform.position);
+        yield return StartCoroutine(SmoothMoveCoroutine(endPosition, playerPos
+            , dashPeriod));
+        
         PlayerController.Instance.Die();
-        yield return StartCoroutine(SmoothMoveCoroutine(endPosition, 
-            reimu.transform.InverseTransformPoint(PlayerController.Instance.transform.position), dashPeriod));
         yield return StartCoroutine(SmoothMoveCoroutine(reimu.transform.InverseTransformPoint(PlayerController.Instance.transform.position),
-            reimu.transform.InverseTransformPoint(PlayerController.Instance.transform.position) + new Vector3(5f,0f,0f), dashPeriod));
+            playerPos+ new Vector3(5f,0f,0f), dashPeriod));
     }
 
 
@@ -120,6 +122,7 @@ public class ReimuBattle : MonoBehaviour
     {
         isCharge = true;
         targety = Camera.main.transform.position.y;
+        PlayChargingFeedback(true);
         chargeBar.SetActive(true);
         Vector3 initialScale = new Vector3(0, chargeBar.transform.localScale.y, chargeBar.transform.localScale.z);
         Vector3 targetScale = new Vector3(0.5f, initialScale.y, initialScale.z);
@@ -134,15 +137,7 @@ public class ReimuBattle : MonoBehaviour
         chargeBar.transform.localScale = targetScale;
     }
 
-    [Button]
-    private void PlayChargingFeedback(bool isCharge)
-    {
-        chargingFeedback.gameObject.SetActive(isCharge);
-        if (isCharge)
-        {
-            chargingFeedback.Play();
-        }
-    }
+    
 
     
     [Button]
@@ -160,6 +155,7 @@ public class ReimuBattle : MonoBehaviour
         _animator.SetTrigger("Dizziness");
         
         defeatFeedback.Play(reimuSprite.transform, true);
+        PlayChargingFeedback(false);
 
         yield return new WaitForSeconds(1f);
         
@@ -175,6 +171,16 @@ public class ReimuBattle : MonoBehaviour
         isHit = false;
     }
 
+    
+    [Button]
+    private void PlayChargingFeedback(bool isCharge)
+    {
+        chargingFeedback.gameObject.SetActive(isCharge);
+        if (isCharge)
+        {
+            chargingFeedback.Play();
+        }
+    }
 
     void OnDrawGizmos()
     {

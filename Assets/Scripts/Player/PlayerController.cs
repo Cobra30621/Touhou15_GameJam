@@ -7,6 +7,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using Weapon;
 using Core;
+using Feedback;
 
 namespace Player
 {
@@ -21,6 +22,7 @@ namespace Player
         [SerializeField] public SpriteRenderer spriteRenderer;
         [SerializeField] public Animator _animator;
         public Transform UsingItemDisplayPos;
+        [SerializeField] private ParticleFeedback deadFeedback;
         
         [Header("Input")]
         [SerializeField] private KeyCode moveLeftKey = KeyCode.A;
@@ -142,11 +144,14 @@ namespace Player
         [Button]
         public void Die()
         {
+            Debug.Log("Die");
             isDead = true;
+            deadFeedback.Play(transform, true);
             playerMovement.Freeze();
             sizeHandler.enabled = false;
             canControll = false;
         }
+
         
         public void AddBullet(BulletClip clip)
         {
