@@ -1,6 +1,7 @@
 ﻿using Sirenix.OdinInspector.Editor.Validation;
 using System;
 using System.Collections;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Player
@@ -29,15 +30,23 @@ namespace Player
         
         public bool infjump = false;
         
-        public ParticleSystem infJumpEffect;
+        
 
         public float speed_adjust = 0f, force_adjust = 0f;
+        
+        [Required]
+        public ParticleSystem infJumpEffect;
+        [Required]
+        public ParticleSystem speedUpEffect;
         
         void Start()
         {
             rb = GetComponent<Rigidbody2D>();
             nowSize = playersize.currentSize;
         }
+
+
+        
 
         void Update()
         {
@@ -111,6 +120,23 @@ namespace Player
             infJumpEffect.gameObject.SetActive(enable);
             
             infJumpEffect.Play();
+        }
+        
+        public void SetSpeedUp(float speed, float force)
+        {
+            speed_adjust = speed;
+            force_adjust = force;
+            
+            speedUpEffect.gameObject.SetActive(true);
+            speedUpEffect.Play();
+        }
+
+        public void ResetSpeedUp()
+        {
+            speed_adjust = 0;
+            force_adjust = 0;
+            
+            speedUpEffect.gameObject.SetActive(false);
         }
         
         

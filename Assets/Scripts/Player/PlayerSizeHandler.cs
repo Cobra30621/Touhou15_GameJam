@@ -29,7 +29,10 @@ namespace Player
         public bool sizefreeze = false;
         
         [SerializeField] private ParticleFeedback smallerFeedback;
+        [SerializeField] private ParticleFeedback elinPilloFeedback;
 
+        
+        
         private void Update() {
             GrowOverTime();
             UpdateSize();
@@ -74,6 +77,17 @@ namespace Player
                     growthRate = growthRatelist[i];
                 }
             }
+        }
+
+        [Button]
+        public void SetSizeFreeze(bool value)
+        {
+            sizefreeze = value;
+            if (value)
+            {
+                elinPilloFeedback.Play(transform, true);
+            }
+            
         }
         
         /// <summary>

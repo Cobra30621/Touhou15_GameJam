@@ -21,10 +21,10 @@ public class elinPillo : BaseItem
     IEnumerator sizefreeze()
     {
         print("elin");
-        PlayerController.Instance.sizeHandler.sizefreeze = true;
+        PlayerController.Instance.sizeHandler.SetSizeFreeze(true);
         isusing = true;
         yield return new WaitForSeconds(existtime);
-        PlayerController.Instance.sizeHandler.sizefreeze = false;
+        PlayerController.Instance.sizeHandler.SetSizeFreeze(false);
         ItemComplete();
     }
 }
