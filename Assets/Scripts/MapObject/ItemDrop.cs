@@ -1,4 +1,5 @@
 ﻿using System;
+using Feedback;
 using Item;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -34,6 +35,9 @@ namespace MapObject
         /// </summary>
         private ItemInfo itemInfo;
 
+        [SerializeField]
+        private Feedback.ParticleFeedback particleFeedback;
+
         private void Awake()
         {
             Init();
@@ -56,8 +60,18 @@ namespace MapObject
         {
             if (collider.CompareTag("Player"))
             {
-                Debug.Log($"Gain Item {itemInfo}");
-                if(ItemManager.Instance.GainItem(itemInfo))Destroy(gameObject);
+                GainItem();
+            }
+        }
+
+        [Button]
+        private void GainItem()
+        {
+            Debug.Log($"Gain Item {itemInfo}");
+            if (ItemManager.Instance.GainItem(itemInfo))
+            {
+                particleFeedback.Play(transform);
+                Destroy(gameObject);
             }
         }
     }
