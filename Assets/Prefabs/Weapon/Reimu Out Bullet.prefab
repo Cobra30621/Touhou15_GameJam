@@ -50,6 +50,7 @@ MonoBehaviour:
   speed: 20
   spriteRenderer: {fileID: 1332207967198534267}
   lifetime: 20
+  hitFeedback: {fileID: 0}
   customSizeThreshold: 0
   sizeThreshold: 0.5
   damage: 0.1

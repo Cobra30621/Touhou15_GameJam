@@ -12,7 +12,7 @@ namespace Feedback
         {
             if (!particlePrefab) return;
 
-            Debug.Log($"{particlePrefab.name}, {spawnUnderTransform}");
+            Debug.Log($"Particle : {particlePrefab.name}, {spawnUnderTransform}");
             
             if (spawnUnderTransform)
             {
