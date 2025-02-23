@@ -127,6 +127,7 @@ MonoBehaviour:
   endPosition: {x: -4.28, y: 1, z: 0}
   chargeBar: {fileID: 4389673490644137176}
   weapon: {fileID: 7565515216258311845}
+  reimuCollider: {fileID: 5735188284921105958}
   IsRunning: 0
   isHit: 0
 --- !u!95 &2301517675145637298

@@ -19,6 +19,7 @@ public class ReimuBattle : MonoBehaviour
     [SerializeField] private Vector3 endPosition;
     [SerializeField] private GameObject chargeBar;
     [SerializeField] private GameObject weapon;
+    [SerializeField] private BoxCollider2D reimuCollider;
 
     private ReimuMovement _reimuMovement;
 
@@ -80,8 +81,8 @@ public class ReimuBattle : MonoBehaviour
         yield return StartCoroutine(SmoothMoveCoroutine(startPosition, endPosition, movePeriod));
         weapon.SetActive(false);
         print("Charge Attack");
-         yield return StartCoroutine(ChargeAttack());
-
+        yield return StartCoroutine(ChargeAttack());
+        reimuCollider.enabled = false;
         print("Die");
         chargeBar.SetActive(false);
         PlayerController.Instance.Die();
