@@ -76,10 +76,10 @@ namespace Weapon
                     {
                         currentWave = 0;
                         isShooting = false;
+                        fireCooldown = fireRate;
                         return;
                     }
                     waveCooldown = waveRate;
-                    fireCooldown = fireRate;
                 }
 
             } else

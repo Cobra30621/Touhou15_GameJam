@@ -63,6 +63,16 @@ namespace Core
             // 顯示 UI
         }
 
+        public void PauseGame()
+        {
+            Time.timeScale = 0f;
+        }
+
+        public void ResumeGame()
+        {
+            Time.timeScale = 1f;
+        }
+
         public void EndGame()
         {
             SceneManager.LoadScene("end");
