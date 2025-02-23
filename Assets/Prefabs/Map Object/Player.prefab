@@ -341,7 +341,7 @@ MonoBehaviour:
   fireCooldown: 0
   shooter: {fileID: 3301798317564636802}
   bulletSpeed: 5
-  shootKey: 102
+  shootKey: 122
   bulletCount: 1
   fireRate: 0.5
   spreadAngle: 15
