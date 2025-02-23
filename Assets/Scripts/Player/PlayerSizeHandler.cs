@@ -61,7 +61,7 @@ namespace Player
             currentSize = size;
             UpdateCanDestroyObstacleFeedback();
             
-            if (currentSize <= 0)
+            if (currentSize < 0)
             {
                 currentSize = 0;
                 StartCoroutine(PlayerController.Instance.stun(stun_time));
@@ -88,9 +88,10 @@ namespace Player
         
         private void check_growthRate()
         {
+            growthRate = 0;
             for (int i = 0; i < growthbond.Length; i++)
             {
-                if (currentSize >= growthbond[i])
+                if (currentSize > growthbond[i])
                 {
                     growthRate = growthRatelist[i];
                 }
