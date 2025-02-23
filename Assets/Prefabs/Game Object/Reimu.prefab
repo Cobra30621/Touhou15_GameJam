@@ -263,8 +263,9 @@ MonoBehaviour:
   defeatFeedback: {fileID: 5626681824359526237}
   chargingFeedback: {fileID: 1571327120518171031}
   shield: 0
-  shield_distance: 8
-  shield_sprite: {fileID: 0}
+  powerup_distance: 6
+  powerup_decrease_time: 0.5
+  shield_sprite: {fileID: 1027600905216583860}
 --- !u!95 &2301517675145637298
 Animator:
   serializedVersion: 5
