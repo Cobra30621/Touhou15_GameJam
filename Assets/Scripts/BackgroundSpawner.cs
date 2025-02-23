@@ -18,16 +18,9 @@ public class BackgroundSpawner : MonoBehaviour
     void Start()
     {
         nextBackgroundPosition = startPosition;
-        isStoryMode = false;
-        if (isStoryMode)
-        {
-
-        }
-        else {
-            GenerateBackgroundinEndless(startBackground);
-            GenerateBackgroundinEndless(processBackground);
-            GenerateBackgroundinEndless(processBackground);
-        }
+        GenerateBackgroundinEndless(startBackground);
+        GenerateBackgroundinEndless(processBackground);
+        GenerateBackgroundinEndless(processBackground);
     }
 
 
@@ -36,14 +29,7 @@ public class BackgroundSpawner : MonoBehaviour
     {
         if (Player.PlayerController.Instance.transform.position.x > nextBackgroundPosition.x - 30f)
         {
-            if (isStoryMode)
-            {
-
-            }
-            else
-            {
-                GenerateBackgroundinEndless(processBackground);
-            }
+            GenerateBackgroundinEndless(processBackground);
         }
     }
 
