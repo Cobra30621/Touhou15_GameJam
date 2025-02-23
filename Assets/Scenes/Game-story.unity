@@ -909,6 +909,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 2182957350509172443, guid: b299696b2771cf7438f1d2e0c6710be3, type: 3}
+      propertyPath: addbulletManager
+      value: 
+      objectReference: {fileID: 1840164548}
     - target: {fileID: 4331437596066293304, guid: b299696b2771cf7438f1d2e0c6710be3, type: 3}
       propertyPath: mapManager
       value: 
@@ -1025,10 +1029,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1880453179325553062, guid: b299696b2771cf7438f1d2e0c6710be3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1282153165380671617, guid: b299696b2771cf7438f1d2e0c6710be3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1840164548}
   m_SourcePrefab: {fileID: 100100000, guid: b299696b2771cf7438f1d2e0c6710be3, type: 3}
 --- !u!1 &1130350644
 GameObject:
@@ -1118,6 +1126,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!224 &1342653578 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 4955435229746708862, guid: b299696b2771cf7438f1d2e0c6710be3, type: 3}
+  m_PrefabInstance: {fileID: 1060279090}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1392015424 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3922270474749319503, guid: ff23e9c48e470714fb594ef950d077fd, type: 3}
@@ -1408,6 +1421,25 @@ MonoBehaviour:
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1 &1840164546 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1282153165380671617, guid: b299696b2771cf7438f1d2e0c6710be3, type: 3}
+  m_PrefabInstance: {fileID: 1060279090}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1840164548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1840164546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a08e5d259a7b784f8e96dca3db2c462, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  floatingUIPrefab: {fileID: 3002439836302879877, guid: 6b49af166db737a4db77d28c6a2ddd6b, type: 3}
+  uiCanvas: {fileID: 1342653578}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

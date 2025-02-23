@@ -179,11 +179,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1282153165380671617}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2496539873f5ca246afacac886bff0a6, type: 3}
+  m_Script: {fileID: 11500000, guid: 7a08e5d259a7b784f8e96dca3db2c462, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   floatingUIPrefab: {fileID: 3002439836302879877, guid: 6b49af166db737a4db77d28c6a2ddd6b, type: 3}
-  uiCanvas: {fileID: 4955435229746708862}
+  uiCanvas: {fileID: 3620602284555535557}
 --- !u!1 &1320482699896916110
 GameObject:
   m_ObjectHideFlags: 0
@@ -778,7 +778,7 @@ MonoBehaviour:
   bulletIconPrefab: {fileID: 1861891855104076710, guid: 74ce069ab330396408856596fbc9dcb7, type: 3}
   bulletCount: 0
   bulletCountText: {fileID: 3224946536034923330}
-  addbulletMannger: {fileID: 1880453179325553062}
+  addbulletManager: {fileID: 1880453179325553062}
 --- !u!1 &4921672450809826541
 GameObject:
   m_ObjectHideFlags: 0
