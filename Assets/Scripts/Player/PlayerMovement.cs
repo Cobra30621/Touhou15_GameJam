@@ -29,7 +29,8 @@ namespace Player
         public float moveInput;
         
         public bool infjump = false;
-        
+
+        public float uplimit;
         
 
         public float speed_adjust = 0f, force_adjust = 0f;
@@ -89,6 +90,11 @@ namespace Player
             {
                 idleTimer = 0f; // 重置計時器
             }
+
+            if(transform.position.y > uplimit)
+            {
+                transform.position = new Vector2(transform.position.x, uplimit);
+            }   
         }
 
         public IEnumerator JumpCooldown() {
