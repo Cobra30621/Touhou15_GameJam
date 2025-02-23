@@ -163,7 +163,7 @@ namespace Player
 
         public void PlayExplosionFeedback()
         {
-            explosionFeedback.Play(transform, true);
+            explosionFeedback.Play(transform);
         }
 
         
