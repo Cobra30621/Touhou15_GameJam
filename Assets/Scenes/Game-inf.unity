@@ -762,6 +762,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Reimu
       objectReference: {fileID: 0}
+    - target: {fileID: 3891720063772816084, guid: ff23e9c48e470714fb594ef950d077fd, type: 3}
+      propertyPath: shield_sprite
+      value: 
+      objectReference: {fileID: 1349114840}
     - target: {fileID: 3922270474749319503, guid: ff23e9c48e470714fb594ef950d077fd, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -1446,6 +1450,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uiText: {fileID: 1275983464}
+--- !u!1 &1349114840 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1027600905216583860, guid: ff23e9c48e470714fb594ef950d077fd, type: 3}
+  m_PrefabInstance: {fileID: 536828969}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1392015424 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3922270474749319503, guid: ff23e9c48e470714fb594ef950d077fd, type: 3}

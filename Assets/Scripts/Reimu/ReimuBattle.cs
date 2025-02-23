@@ -6,6 +6,8 @@ using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Serialization;
 using Weapon;
+using Unity.VisualScripting.Antlr3.Runtime.Misc;
+using Map;
 
 public class ReimuBattle : MonoBehaviour
 {
@@ -41,9 +43,9 @@ public class ReimuBattle : MonoBehaviour
     [Required]
     [SerializeField] private ParticleSystem chargingFeedback;
     
+    [SerializeField] private int shield = 0,shield_distance = 0;
 
-    
-    
+    [SerializeField] private GameObject shield_sprite;
 
     void Start()
     {
@@ -58,7 +60,11 @@ public class ReimuBattle : MonoBehaviour
         {
             return;
         }
-        
+        if(MapManager.Instance.nowRoomCount >= shield_distance)
+        {
+            shield = 1;
+            shield_sprite.SetActive(true);
+        }
         IsRunning = true;
         reimuSprite.SetActive(true);
         actionCoroutine = StartCoroutine(ReimuActionCoroutine());
@@ -138,12 +144,20 @@ public class ReimuBattle : MonoBehaviour
     }
 
     
-
-    
+    //if shield cause error call egg
     [Button]
     public void OnHit()
     {
-        StartCoroutine(OnHitCoroutine());
+        if (shield<0)ErrorManager.Error("shield is negative");
+        if (shield==0)StartCoroutine(OnHitCoroutine());
+        if(shield > 0)
+        {
+            shield--;
+            if(shield == 0)
+            {
+                shield_sprite.SetActive(false);
+            }
+        }
     }
 
     private IEnumerator OnHitCoroutine(float dis = 40)
