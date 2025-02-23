@@ -30,16 +30,16 @@ MonoBehaviour:
     description: 
     intValue: 0
     floatValue: 0
-    sprite: {fileID: 21300000, guid: 0cbd77a57e479424fa2a6656d694fc85, type: 3}
+    sprite: {fileID: 21300000, guid: b4e3727e056e5404ba84a4c2a9f6e6ca, type: 3}
   - itemType: 6
     title: 
     description: 
     intValue: 0
     floatValue: 0
-    sprite: {fileID: 21300000, guid: 9e44c25110791c642b7abb2ccbe9ae00, type: 3}
+    sprite: {fileID: 21300000, guid: e6663d139806f7640898f7e0869b58e5, type: 3}
   - itemType: 7
     title: 
     description: 
     intValue: 0
     floatValue: 0
-    sprite: {fileID: -1475709859, guid: 7232be4638860b1449faae1d73d6d678, type: 3}
+    sprite: {fileID: 21300000, guid: 321a5f1c6b7b1f547bdc143268ba79a1, type: 3}
