@@ -815,6 +815,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ff23e9c48e470714fb594ef950d077fd, type: 3}
+--- !u!114 &630957397 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8614578470294185339, guid: b299696b2771cf7438f1d2e0c6710be3, type: 3}
+  m_PrefabInstance: {fileID: 1060279090}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a08e5d259a7b784f8e96dca3db2c462, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &815954904
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1026,6 +1037,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 2182957350509172443, guid: b299696b2771cf7438f1d2e0c6710be3, type: 3}
+      propertyPath: addbulletManager
+      value: 
+      objectReference: {fileID: 630957397}
     - target: {fileID: 4955435229746708862, guid: b299696b2771cf7438f1d2e0c6710be3, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -1056,6 +1071,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4955435229746708862, guid: b299696b2771cf7438f1d2e0c6710be3, type: 3}
       propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4955435229746708862, guid: b299696b2771cf7438f1d2e0c6710be3, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4955435229746708862, guid: b299696b2771cf7438f1d2e0c6710be3, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4955435229746708862, guid: b299696b2771cf7438f1d2e0c6710be3, type: 3}
+      propertyPath: m_LocalScale.z
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4955435229746708862, guid: b299696b2771cf7438f1d2e0c6710be3, type: 3}
@@ -1306,7 +1333,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 807, y: 371}
+  m_AnchoredPosition: {x: 807, y: 192}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1275983464
