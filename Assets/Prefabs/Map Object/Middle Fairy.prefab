@@ -56,6 +56,7 @@ MonoBehaviour:
   takeDamage: 1
   damage: 0.05
   destroyAfterHurtPlayer: 1
+  destroyParticleFeedback: {fileID: 0}
 --- !u!114 &1623492869612764180
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -225,6 +226,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1625650554795283036, guid: 3f1d0d7a611d447488a34a8714ed6e79, type: 3}
+      propertyPath: bindingParent
+      value: 
+      objectReference: {fileID: 508394244882372520}
     - target: {fileID: 5602737881765024001, guid: 3f1d0d7a611d447488a34a8714ed6e79, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.531
