@@ -89,17 +89,22 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3532198937772473971}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6bbe9e8509e51994ea2fd2d2c393caf4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distance: 40000
+  startDistance: 300
+  distance: 300
   speed: 0
   playerSpeedFactor: 0
   reimuBattle: {fileID: 3891720063772816084}
   isfreeze: 0
   speedFactor: 1
+  ismove: 1
+  shoot_cool: 0
+  shoot_cool_time: 1
+  shooter: {fileID: 0}
 --- !u!114 &3891720063772816084
 MonoBehaviour:
   m_ObjectHideFlags: 0
