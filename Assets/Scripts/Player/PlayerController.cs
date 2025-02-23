@@ -31,7 +31,7 @@ namespace Player
         [Header("Setting")]
         [SerializeField] private const float invincibleCooldown = 1f;
         [SerializeField] private float idleThershold = 0.05f;
-        [SerializeField] private float destroyObstacleSize = 0.6f;
+        
 
         [Header("Status")]
         [SerializeField] public bool isInvincible = false;
@@ -156,7 +156,7 @@ namespace Player
 
         public bool CanDestroyObstacle()
         {
-            return sizeHandler.currentSize >= destroyObstacleSize;
+            return sizeHandler.CanDestroyObstacle();
         }
 
         public IEnumerator stun(float time)
