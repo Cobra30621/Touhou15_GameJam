@@ -6,7 +6,6 @@ using UnityEngine;
 public class elinPillo : BaseItem
 {
     [SerializeField] private float existtime = 5f;
-    [SerializeField] private bool isusing = false;
     public override bool use()
     {
         if (isusing)
@@ -26,6 +25,6 @@ public class elinPillo : BaseItem
         isusing = true;
         yield return new WaitForSeconds(existtime);
         PlayerController.Instance.sizeHandler.sizefreeze = false;
-        isusing = false;
+        ItemComplete();
     }
 }

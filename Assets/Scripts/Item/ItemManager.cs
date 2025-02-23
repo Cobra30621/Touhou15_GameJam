@@ -5,6 +5,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using Sirenix.OdinInspector;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
@@ -30,6 +31,10 @@ public class ItemManager : MonoBehaviour
 
     public static UnityEvent<ItemInfo[]> OnItemsChanged = new UnityEvent<ItemInfo[]>();
 
+    
+    public static UnityEvent<Dictionary<ItemType, BaseItem>> OnUsingItemChanged = 
+        new UnityEvent<Dictionary<ItemType, BaseItem>>();
+    
     private void Awake()
     {
         if (Instance == null)
@@ -49,10 +54,10 @@ public class ItemManager : MonoBehaviour
         {
             {ItemType.WineGourd, itemlist.GetComponent<WineGourd>()},
             {ItemType.MarisaFly, itemlist.GetComponent<MarisaFly>()},
-            {ItemType.SakuyaClock, itemlist.GetComponent<sakuyaclock>()},
+            // {ItemType.SakuyaClock, itemlist.GetComponent<sakuyaclock>()},
             {ItemType.elinPillo, itemlist.GetComponent<elinPillo>()},
             {ItemType.ayaSpeedUp, itemlist.GetComponent<ayaspeedup>()},
-            {ItemType.suikaWeapon, itemlist.GetComponent<SuikaWeapon>()},
+            // {ItemType.suikaWeapon, itemlist.GetComponent<SuikaWeapon>()},
             {ItemType.reimupenny, itemlist.GetComponent<reimupenny>()  }
         };
 
@@ -89,7 +94,7 @@ public class ItemManager : MonoBehaviour
     }
 
 
-
+    
     public void useActivateItem(int index)
     {
         if (index < 0 || index >= activatedItems.Count || activatedItems[index] == null) return;
@@ -101,5 +106,20 @@ public class ItemManager : MonoBehaviour
             activatedItems[index] = null; // 使用道具後設置為 null
         }
         OnItemsChanged.Invoke(activatedItems.ToArray());
+        
+        InvokeActiveItemChanged();
+    }
+
+    [Button]
+    public void Test_UseItem(ItemType itemType)
+    {
+        itemeffect[itemType].use();
+        
+        InvokeActiveItemChanged();
+    }
+    
+    public void InvokeActiveItemChanged()
+    {
+        OnUsingItemChanged.Invoke(itemeffect);
     }
 }

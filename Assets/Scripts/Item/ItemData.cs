@@ -56,6 +56,19 @@ namespace Item
 
         }
 
+        public ItemInfo GetItemInfo(ItemType itemType)
+        {
+            var items = ItemInfos.Where(info => info.itemType == itemType).ToList();
+
+            if (items.Count == 0)
+            {
+                Debug.LogError($"ItemData does not contain item with {itemType} ItemType");
+                return new ItemInfo();
+            }
+            
+            return items[0];
+        }
+
 
         /// <summary>
         /// Gets a random item from the list of items.

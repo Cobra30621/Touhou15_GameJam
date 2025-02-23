@@ -20,7 +20,14 @@ namespace Player
         [SerializeField] public PlayerWeapon playerWeapon;
         [SerializeField] public SpriteRenderer spriteRenderer;
         [SerializeField] public Animator _animator;
-
+        public Transform UsingItemDisplayPos;
+        
+        [Header("Input")]
+        [SerializeField] private KeyCode moveLeftKey = KeyCode.A;
+        [SerializeField] private KeyCode moveRightKey = KeyCode.D;
+        [SerializeField] private KeyCode jumpKey = KeyCode.W;
+        
+        
         [Header("Setting")]
         [SerializeField] private const float invincibleCooldown = 1f;
         [SerializeField] private float idleThershold = 0.05f;
@@ -29,6 +36,7 @@ namespace Player
         [Header("Status")]
         [SerializeField] public bool isInvincible = false;
         [SerializeField] public bool isDead;
+        [SerializeField] public bool canControll = true;
 
 
         public KeyCode item1Key = KeyCode.X;
@@ -61,16 +69,18 @@ namespace Player
         {
             CheckImmortal();
             UpdateAnimator();
-
-            //使用主動道具
-            if (Input.GetKeyDown(item1Key))
+            if (canControll)
             {
-                ItemManager.Instance.useActivateItem(0);
-            }
+                //使用主動道具
+                if (Input.GetKeyDown(item1Key))
+                {
+                    ItemManager.Instance.useActivateItem(0);
+                }
 
-            if (Input.GetKeyDown(item2Key))
-            {
-                ItemManager.Instance.useActivateItem(1);
+                if (Input.GetKeyDown(item2Key))
+                {
+                    ItemManager.Instance.useActivateItem(1);
+                }
             }
 
             if (Input.GetKeyDown(KeyCode.Escape))
@@ -135,6 +145,7 @@ namespace Player
             isDead = true;
             playerMovement.Freeze();
             sizeHandler.enabled = false;
+            canControll = false;
         }
         
         public void AddBullet(BulletClip clip)
@@ -146,6 +157,15 @@ namespace Player
         public bool CanDestroyObstacle()
         {
             return sizeHandler.currentSize >= destroyObstacleSize;
+        }
+
+        public IEnumerator stun(float time)
+        {
+            _animator.SetTrigger("dizzy");
+            canControll = false;
+            yield return new WaitForSeconds(time);
+            _animator.SetTrigger("Idle");
+            canControll |= isDead ? false : true; 
         }
     }
 }
