@@ -68,7 +68,9 @@ public class ReimuBattle : MonoBehaviour
             shield = 1;
             shield_sprite.SetActive(true);
             movePeriod -= powerup_decrease_time*(int)(MapManager.Instance.nowRoomCount / powerup_distance);
+            Math.Max(1, movePeriod);
             chargePeriod -= powerup_decrease_time*(int)(MapManager.Instance.nowRoomCount / powerup_distance);
+            Math.Max(1, chargePeriod);
         }
         IsRunning = true;
         reimuSprite.SetActive(true);
@@ -157,18 +159,23 @@ public class ReimuBattle : MonoBehaviour
     
     //if shield cause error call egg
     [Button]
-    public void OnHit()
+    public void OnHit(int damage = 1)
     {
         if (shield<0)ErrorManager.Error("shield is negative");
-        if (shield==0)StartCoroutine(OnHitCoroutine());
         if(shield > 0)
         {
-            shield--;
-            if(shield == 0)
+            shield-=damage;
+            if (shield <= 0)
             {
                 shield_sprite.SetActive(false);
             }
+            if (shield < 0)
+            {
+                shield = 0;
+                StartCoroutine(OnHitCoroutine());
+            }
         }
+        else if (shield == 0) StartCoroutine(OnHitCoroutine());
     }
 
     private IEnumerator OnHitCoroutine(float dis = 40)

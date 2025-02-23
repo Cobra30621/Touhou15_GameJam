@@ -8,10 +8,10 @@ namespace Reimu
         [Required]
         [SerializeField] private ReimuBattle _reimuBattle;
 
-        public bool OnHit()
+        public bool OnHit(int damage = 1)
         {
             if (_reimuBattle.isHit) return false;
-            _reimuBattle.OnHit();
+            _reimuBattle.OnHit(damage);
             return true;
         }
         

@@ -19,20 +19,11 @@ public class reimupenny : BaseItem
         }
         if (reimu.GetComponent<ReimuBattle>().IsRunning)
         {
-            reimusprite.GetComponent<ReimuHitTrigger>().OnHit();
+            reimusprite.GetComponent<ReimuHitTrigger>().OnHit(20);
         }
-        StartCoroutine(Reimuslow());
 
         return true;
     }
 
-    //create iemurator contdown for existtime
-    IEnumerator Reimuslow()
-    {
-        isusing = true;
-        reimu.GetComponent<ReimuMovement>().speedFactor = speedFactor;
-        yield return new WaitForSeconds(existtime);
-        reimu.GetComponent<ReimuMovement>().speedFactor = 1f;
-        ItemComplete();
-    }
+
 }
