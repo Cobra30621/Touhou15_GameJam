@@ -44,13 +44,14 @@ namespace Player
             adjustSpeedForce();
 
             // 移動控制
-            moveInput = Input.GetAxis("Horizontal");
+            if (PlayerController.Instance.canControll) moveInput = Input.GetAxis("Horizontal");
+            else moveInput = 0;
             rb.velocity = new Vector2(moveInput * moveSpeed, rb.velocity.y);
 
             CheckGrounded();
 
             // 跳躍控制
-            if (enableJump &&( isGrounded||infjump) && (Input.GetButton("Jump") || Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W)))
+            if (PlayerController.Instance.canControll&&enableJump &&( isGrounded||infjump) && (Input.GetButton("Jump") || Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W)))
             {
                 enableJump = false;
                 StartCoroutine(JumpCooldown());
@@ -69,7 +70,7 @@ namespace Player
             }
 
             // 更新動畫狀態
-            if (moveInput == 0)
+            if (moveInput == 0 && PlayerController.Instance.canControll)
             {
                 idleTimer += Time.deltaTime; // 增加計時器
             }

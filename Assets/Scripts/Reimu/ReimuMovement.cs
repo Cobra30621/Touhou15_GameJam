@@ -16,6 +16,9 @@ public class ReimuMovement : MonoBehaviour
     public float speedFactor = 1.0f;
 
     private Animator _animator;
+    public bool ismove = true,shoot_cool = false;
+    public float shoot_cool_time = 1f;
+    public GameObject shooter;
 
     void Start()
     {
@@ -23,13 +26,14 @@ public class ReimuMovement : MonoBehaviour
         playerSpeedFactor = 0.0004f;
 
         _animator = GetComponent<Animator>();
-        
+        ismove = true;
         StartMode();
     }
 
     [Button]
     public void StartMode(float dis = startDistance)
     {
+        ismove = true;
         distance = dis;
         _animator.SetTrigger("Init");
     }
@@ -46,11 +50,25 @@ public class ReimuMovement : MonoBehaviour
             distance = 0;
             ActivateReimuBattle();
         }
+
+        if(ismove)
+        {
+            if (!shoot_cool)
+            {
+                shoot_cool = true;
+            }
+        }
     }
     
+    private void shoot()
+    {
+
+    }
+
     [Button]
     private void ActivateReimuBattle()
     {
+        ismove = false;
         reimuBattle.StartMode();
     }
 
