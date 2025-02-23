@@ -4918,6 +4918,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2123465771483035906, guid: 8cf865552f9259949ae88d56e2326b16, type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2123465771483035906, guid: 8cf865552f9259949ae88d56e2326b16, type: 3}
       propertyPath: ShapeModule.type
       value: 0
       objectReference: {fileID: 0}

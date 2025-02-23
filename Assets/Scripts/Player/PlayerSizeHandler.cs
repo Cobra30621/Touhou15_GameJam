@@ -34,7 +34,7 @@ namespace Player
         
         
         [SerializeField] private ParticleFeedback smallerFeedback;
-        [SerializeField] private ParticleFeedback elinPilloFeedback;
+        [SerializeField] private ParticleSystem freeSizeFeedback;
 
 
         private void Start()
@@ -102,9 +102,11 @@ namespace Player
         public void SetSizeFreeze(bool value)
         {
             sizefreeze = value;
+            
+            freeSizeFeedback.gameObject.SetActive(value);
             if (value)
             {
-                elinPilloFeedback.Play(transform, true);
+                freeSizeFeedback.Play();
             }
             
         }
