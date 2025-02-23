@@ -93,13 +93,15 @@ public class ReimuBattle : MonoBehaviour
         print("Charge Attack");
         yield return StartCoroutine(ChargeAttack());
         reimuCollider.enabled = false;
-        print("Die");
         chargeBar.SetActive(false);
+        
+        var playerPos = reimu.transform.InverseTransformPoint(PlayerController.Instance.transform.position);
+        yield return StartCoroutine(SmoothMoveCoroutine(endPosition, playerPos
+            , dashPeriod));
+        
         PlayerController.Instance.Die();
-        yield return StartCoroutine(SmoothMoveCoroutine(endPosition, 
-            reimu.transform.InverseTransformPoint(PlayerController.Instance.transform.position), dashPeriod));
         yield return StartCoroutine(SmoothMoveCoroutine(reimu.transform.InverseTransformPoint(PlayerController.Instance.transform.position),
-            reimu.transform.InverseTransformPoint(PlayerController.Instance.transform.position) + new Vector3(5f,0f,0f), dashPeriod));
+            playerPos+ new Vector3(5f,0f,0f), dashPeriod));
     }
 
 

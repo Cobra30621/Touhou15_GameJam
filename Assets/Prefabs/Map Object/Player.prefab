@@ -256,6 +256,7 @@ MonoBehaviour:
   spriteRenderer: {fileID: 6738054205909406371}
   _animator: {fileID: 0}
   UsingItemDisplayPos: {fileID: 5937439885466853006}
+  deadFeedback: {fileID: 8241320966140145900}
   moveLeftKey: 97
   moveRightKey: 100
   jumpKey: 119
@@ -467,7 +468,7 @@ GameObject:
   - component: {fileID: 3566821119607717434}
   - component: {fileID: 8241320966140145900}
   m_Layer: 0
-  m_Name: elin Feeckback
+  m_Name: dead Feeckback
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
