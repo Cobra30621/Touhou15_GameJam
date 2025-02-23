@@ -11,7 +11,6 @@ namespace Weapon
     public class PlayerWeaponUI : MonoBehaviour
     {
         [SerializeField] private GameObject bulletIconPrefab;
-        [SerializeField] private Transform bulletContainer;
 
         private void Start()
         {
