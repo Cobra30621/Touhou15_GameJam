@@ -31,25 +31,25 @@ namespace Weapon
             Destroy(gameObject);
         }
 
-        public virtual void Initialize(Vector2 dir, Sprite bulletSprite,float speed = 5)
+        public virtual void Initialize(Vector2 dir, Sprite bulletSprite,float speed = 5,bool need_rotate = false)
         {
-            _init(dir, speed);
+            _init(dir, speed,need_rotate);
             if (spriteRenderer != null && bulletSprite != null)
             {
                 spriteRenderer.sprite = bulletSprite;
             }
         }
 
-        private void _init(Vector2 dir,float speed)
+        private void _init(Vector2 dir,float speed, bool need_rotate )
         {
             this.speed = speed;
             direction = dir.normalized;
-            transform.rotation = Quaternion.FromToRotation(Vector3.up, direction);
+            if(need_rotate) transform.rotation = Quaternion.FromToRotation(Vector3.up, direction);
         }
         
-        public virtual void Initialize(Vector2 dir,float speed = 5)
+        public virtual void Initialize(Vector2 dir,float speed = 5, bool need_rotate = false)
         {
-            _init(dir, speed);
+            _init(dir, speed, need_rotate);
         }
 
         protected virtual void Update()

@@ -46,6 +46,7 @@ namespace Weapon
 
         public float bulletSpeed = 5f;
 
+        public bool need_rotate = false;
 
         private bool isShooting;
 
@@ -116,7 +117,7 @@ namespace Weapon
                 dir = customDirection; // 假設有一個 Vector3 變數 customDirection 用來定義自定義方向
             }
             
-            shooter.Fire(bulletCount, spreadAngle, dir, bulletSpeed);
+            shooter.Fire(bulletCount, spreadAngle, dir, bulletSpeed,need_rotate);
             //fireCooldown = fireRate;
         }
     }
