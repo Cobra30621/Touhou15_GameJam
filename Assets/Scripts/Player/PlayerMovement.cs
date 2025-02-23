@@ -28,6 +28,8 @@ namespace Player
         public float moveInput;
         
         public bool infjump = false;
+        
+        public ParticleSystem infJumpEffect;
 
         public float speed_adjust = 0f, force_adjust = 0f;
         
@@ -101,6 +103,14 @@ namespace Player
             // Debug 用
             Debug.DrawRay(checkPosition, Vector2.down * 0.1f, Color.green);
 
+        }
+        
+        public void SetInfJump(bool enable)
+        {
+            infjump = enable;
+            infJumpEffect.gameObject.SetActive(enable);
+            
+            infJumpEffect.Play();
         }
         
         

@@ -59,6 +59,7 @@ namespace Player
             {
                 check_growthRate();    
                 currentSize += growthRate * smallInterval; 
+                
                 smallerFeedback.Play(transform, true);
                 growthTimer = 0f; // 重置计时器
             }

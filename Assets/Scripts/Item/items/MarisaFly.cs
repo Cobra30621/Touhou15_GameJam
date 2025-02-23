@@ -21,10 +21,10 @@ public class MarisaFly : BaseItem
     IEnumerator fly()
     {
         print("MarisaFly");
-        PlayerController.Instance.playerMovement.infjump = true;
+        PlayerController.Instance.playerMovement.SetInfJump(true);
         isusing = true;
         yield return new WaitForSeconds(existtime);
-        PlayerController.Instance.playerMovement.infjump = false;
+        PlayerController.Instance.playerMovement.SetInfJump(false);
         ItemComplete();
     }
 }
