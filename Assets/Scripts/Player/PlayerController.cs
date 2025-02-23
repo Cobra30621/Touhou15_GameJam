@@ -6,6 +6,7 @@ using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Events;
 using Weapon;
+using Core;
 
 namespace Player
 {
@@ -79,6 +80,18 @@ namespace Player
                 if (Input.GetKeyDown(item2Key))
                 {
                     ItemManager.Instance.useActivateItem(1);
+                }
+            }
+
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                if (Time.timeScale == 1f)
+                {
+                    GameManager.Instance.PauseGame();
+                }
+                else
+                {
+                    GameManager.Instance.ResumeGame();
                 }
             }
         }

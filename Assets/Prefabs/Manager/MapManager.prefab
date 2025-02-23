@@ -106,6 +106,7 @@ MonoBehaviour:
   currentStage:
     StageName: 0
     RequiredRoomCount: 0
+  all_room: 0
   roomPrefabs: []
   roomsSpawnedInCurrentStage: 0
   currentCharacterArrivalRoomId: 0
@@ -155,7 +156,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isStoryMode: 0
-  startBackground: {fileID: 7476541815221252844, guid: a4962812e5c846f418f11fa571be89e8, type: 3}
+  startBackground: {fileID: 7476541815221252844, guid: 77ddf22cfc9001c4b9c64e917522d826, type: 3}
   processBackground: {fileID: 7476541815221252844, guid: a4962812e5c846f418f11fa571be89e8, type: 3}
   startPosition: {x: 1, y: -5, z: 1}
   nextBackgroundPosition: {x: 0, y: 0, z: 0}
