@@ -165,8 +165,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   reimuSprite: {fileID: 3922270474749319503}
   reimu: {fileID: 3532198937772473971}
-  movePeriod: 300
-  chargePeriod: 10
+  movePeriod: 6
+  chargePeriod: 8
   dashPeriod: 0.5
   isMove: 0
   startPosition: {x: -10.08, y: 5.19, z: 0}
