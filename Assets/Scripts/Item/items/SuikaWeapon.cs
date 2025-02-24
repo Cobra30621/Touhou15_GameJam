@@ -6,22 +6,29 @@ using Weapon;
 
 public class SuikaWeapon : BaseItem
 {
-    public GameObject bulletPrefab;
-
+    [SerializeField] int active_num = 0;
+    [SerializeField] private float existtime = 5f;
+    [SerializeField] private BulletClip bullet;
     public override bool use()
     {
-        GameObject bulletObj = Instantiate(bulletPrefab, PlayerController.Instance.playerWeapon.shooter.GetFirePoint(), Quaternion.identity);
-        var playerPos = PlayerController.Instance.transform.position;
-
-        Bullet bullet = bulletObj.GetComponent<Bullet>();
-
-        var direction = PlayerController.Instance.LeftDirection ? new Vector2(-1, 0) : new Vector2(1, 0);
-
-        Vector2 dir = Quaternion.Euler(0, 0, 0) * direction;
-
-        bullet.Initialize(dir);
-
+        PlayerController.Instance.AddBullet(bullet);
+        StartCoroutine(adddamage());
         return true;
+    }
+    IEnumerator adddamage()
+    {
+        active_num++;
+        PlayerController.Instance.playerWeapon.damage = 2;
+        isusing = true;
+        yield return new WaitForSeconds(existtime);
+        active_num--;
+        
+        if (active_num == 0)
+        {
+            PlayerController.Instance.playerWeapon.damage = 1;
+            ItemComplete();
+            isusing = false;
+        }
     }
 
 }

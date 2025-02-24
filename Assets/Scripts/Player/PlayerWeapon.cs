@@ -11,6 +11,7 @@ namespace Player
         [SerializeField] public Shooter shooter;
         [SerializeField] private float bulletSpeed = 5f;
 
+        [SerializeField] public int damage = 1;
 
         public KeyCode shootKey;
         public int bulletCount = 1;  

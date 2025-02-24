@@ -3,6 +3,7 @@ using Reimu;
 
 namespace Weapon
 {
+    using Player;
     using UnityEngine;
 
     public class PlayerBullet : Bullet
@@ -19,7 +20,7 @@ namespace Weapon
             {
                 Debug.Log("Bullet Hit Reimu！");
                 var hitTrigger = collision.gameObject.GetComponent<ReimuHitTrigger>();
-                hitTrigger.OnHit();
+                hitTrigger.OnHit(PlayerController.Instance.playerWeapon.damage);
                 OnHit();
             }
 

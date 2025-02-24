@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7944733547555215140}
   - component: {fileID: 247788698021707174}
   - component: {fileID: 1515194755157633505}
+  - component: {fileID: 2455724175201854504}
   m_Layer: 0
   m_Name: itemlist
   m_TagString: Untagged
@@ -112,6 +113,23 @@ MonoBehaviour:
   speedFactor: 0.4
   reimu: {fileID: 0}
   reimusprite: {fileID: 0}
+--- !u!114 &2455724175201854504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 502443380118583802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9924f745abe0d944581672810fe668a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isusing: 0
+  active_num: 0
+  existtime: 5
+  bullet:
+    Sprite: {fileID: 21300000, guid: 61817a5305280d04e9f1c6dc4c326cb2, type: 3}
 --- !u!1 &1890647182692032222
 GameObject:
   m_ObjectHideFlags: 0
