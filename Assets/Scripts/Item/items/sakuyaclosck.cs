@@ -14,7 +14,7 @@ public class sakuyaclock : BaseItem
         {
             return false;
         }
-        if(reimu.GetComponent<ReimuBattle>().IsRunning)StartCoroutine(outscreentimestop());
+        if(!reimu.GetComponent<ReimuBattle>().IsRunning)StartCoroutine(outscreentimestop());
         
         return true;
     }

@@ -705,6 +705,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: ItemManager
       objectReference: {fileID: 0}
+    - target: {fileID: 2455724175201854504, guid: fbf73bb4888ea964d8430c4e90abce8f, type: 3}
+      propertyPath: bullet.Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 61817a5305280d04e9f1c6dc4c326cb2, type: 3}
+    - target: {fileID: 7985596394690993333, guid: fbf73bb4888ea964d8430c4e90abce8f, type: 3}
+      propertyPath: reimu
+      value: 
+      objectReference: {fileID: 285924948}
     - target: {fileID: 8397983607288262861, guid: fbf73bb4888ea964d8430c4e90abce8f, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.9704385
