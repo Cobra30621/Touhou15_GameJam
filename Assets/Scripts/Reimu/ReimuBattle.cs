@@ -21,8 +21,8 @@ public class ReimuBattle : MonoBehaviour
 
     [SerializeField] private Vector3 startPosition;
     [SerializeField] private Vector3 endPosition;
-    [SerializeField] private GameObject chargeBar;
-    [SerializeField] private GameObject weapon;
+    [SerializeField] public GameObject chargeBar;
+    [SerializeField] public GameObject weapon;
     [SerializeField] private BoxCollider2D reimuCollider;
 
     private ReimuMovement _reimuMovement;
@@ -34,9 +34,9 @@ public class ReimuBattle : MonoBehaviour
     
     public bool isHit = false;
 
-    private bool isCharge = false;
+    public bool isCharge = false;
 
-    private Coroutine actionCoroutine;
+    public Coroutine actionCoroutine;
 
     [Required]
     [SerializeField] private ParticleFeedback defeatFeedback;
@@ -124,7 +124,7 @@ public class ReimuBattle : MonoBehaviour
     }
 
 
-    private IEnumerator SmoothMoveCoroutine(Vector3 startPosition, Vector3 endPosition, float duration)
+    public IEnumerator SmoothMoveCoroutine(Vector3 startPosition, Vector3 endPosition, float duration)
     {
         float elapsedTime = 0;
         while (elapsedTime < duration)

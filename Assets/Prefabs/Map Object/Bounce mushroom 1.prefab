@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8350288264791797335}
   - component: {fileID: 3815163350057780952}
   - component: {fileID: 1350881324500560638}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Bounce mushroom 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
