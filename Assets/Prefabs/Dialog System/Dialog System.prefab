@@ -74,8 +74,7 @@ MonoBehaviour:
     height: 859
   selectedBlocks:
   - {fileID: 3521022086072210345}
-  selectedCommands:
-  - {fileID: 9027953928698801912}
+  selectedCommands: []
   variables: []
   description: 
   stepPause: 0
@@ -683,7 +682,7 @@ GameObject:
   - component: {fileID: 7185167256372403182}
   - component: {fileID: 942657396519218616}
   m_Layer: 0
-  m_Name: Reimu
+  m_Name: Reimu Character
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -944,7 +943,7 @@ GameObject:
   - component: {fileID: 5920236448231461310}
   - component: {fileID: 8797413468290264904}
   m_Layer: 0
-  m_Name: Suika
+  m_Name: Suika Character
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
