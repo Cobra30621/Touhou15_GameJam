@@ -70,6 +70,7 @@ public class BeforeBoss : MonoBehaviour
 
         PlayerController.Instance.transform.position = bossRoomLocation;
         PlayerController.Instance.sizeHandler.enabled = true;
+        MainCanvas.Instance.EnableCanvas(true);
         PlayerController.Instance.sizeHandler.currentSize = 1;
         PlayerController.Instance.canControll = true;
         PlayerController.Instance.playerWeapon.enabled = true;

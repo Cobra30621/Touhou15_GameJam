@@ -23,6 +23,7 @@ public class ReimuBoss : MonoBehaviour
 
     public void GoBack() {
         PlayerController.Instance.transform.position = GameObject.Find("bossRoom").GetComponent<bossRoomController>().positionBeforeBoss;
+        StopAllCoroutines();
         gameObject.SetActive(false);
     }
 
