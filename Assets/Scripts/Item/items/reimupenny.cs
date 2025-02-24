@@ -17,12 +17,16 @@ public class reimupenny : BaseItem
         {
             return false;
         }
-        if (reimu.GetComponent<ReimuBattle>().IsRunning)
+        if  (reimu.GetComponent<ReimuBattle>().enabled )
         {
-            reimusprite.GetComponent<ReimuHitTrigger>().OnHit(20);
+            if(reimu.GetComponent<ReimuBattle>().IsRunning)reimusprite.GetComponent<ReimuHitTrigger>().OnHit(20);
+        }
+        else
+        {
+            if (!reimu.GetComponent<ReimuBoss>().isHit) reimusprite.GetComponent<ReimuHitTrigger>().OnHit(20);
         }
 
-        return true;
+            return true;
     }
 
 
