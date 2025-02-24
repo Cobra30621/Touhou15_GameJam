@@ -14,9 +14,9 @@ public class spell3Controller : MonoBehaviour
     public IEnumerator SpellStart()
     {
         reimuboss = GameObject.Find("Reimu").GetComponent<ReimuBoss>();
+        StartCoroutine(reimuboss.SmoothMoveCoroutine(reimuboss.reimuSprite.transform.position, SpellPosition[0].transform.position, moveDuration));
         while (true)
         {
-
             SpellPosition[id].SetActive(true);
             yield return new WaitForSeconds(shootDuration);
             SpellPosition[id].SetActive(false);

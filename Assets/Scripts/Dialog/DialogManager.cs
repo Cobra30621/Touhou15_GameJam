@@ -26,12 +26,14 @@ namespace Dialog
         [Button]
         public void PlayStory()
         {
+            GameObject.Find("bossRoom").GetComponent<bossRoomController>().isReady = false;
             flowchart.ExecuteBlock("main Story");
         }
 
         [Button]
         public void CompleteStory()
         {
+            GameObject.Find("bossRoom").GetComponent<bossRoomController>().isReady = true;
             // TODO : call enter battle
             Debug.Log("Call Enter Battle");
         }
