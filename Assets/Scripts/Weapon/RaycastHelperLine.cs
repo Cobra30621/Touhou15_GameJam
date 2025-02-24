@@ -16,6 +16,7 @@ namespace Weapon
         public float gapLength = 0.1f; // 虛線的間隔
         public bool isRightDirection = true; // true：往右發射, false：往左發射
 
+        [SerializeField]
         private LineRenderer lineRenderer;
 
         void Start()
@@ -27,10 +28,8 @@ namespace Weapon
             }
 
             // 初始化 LineRenderer
-            lineRenderer = gameObject.AddComponent<LineRenderer>();
             lineRenderer.startWidth = 0.05f;
             lineRenderer.endWidth = 0.05f;
-            lineRenderer.material = new Material(Shader.Find("Sprites/Default")); // 確保可見
             lineRenderer.startColor = lineColor;
             lineRenderer.endColor = lineColor;
             lineRenderer.useWorldSpace = true;
