@@ -11,6 +11,7 @@ public class BeforeBoss : MonoBehaviour
     public GameObject reimuSprite;
     public Vector3 startPosition;
     public Vector3 endPosition;
+    public Vector3 bossRoomLocation;
 
     // Start is called before the first frame update
     void Start()
@@ -43,7 +44,8 @@ public class BeforeBoss : MonoBehaviour
         reimu.GetComponent<ReimuBattle>().chargeBar.SetActive(false);
         reimu.GetComponent<ReimuBattle>().isCharge = false;
         reimu.GetComponent<ReimuBattle>().weapon.SetActive(false);
-        if (reimu.GetComponent<ReimuMovement>().ismove) {
+        if (reimu.GetComponent<ReimuMovement>().ismove)
+        {
             StartCoroutine(reimu.GetComponent<ReimuBattle>().SmoothMoveCoroutine(startPosition, endPosition, 2f));
         }
         else
@@ -54,6 +56,16 @@ public class BeforeBoss : MonoBehaviour
         // 對話框
 
         // 靈夢演出
+
+        PlayerController.Instance.transform.position = bossRoomLocation;
+        PlayerController.Instance.sizeHandler.currentSize = 1;
+        PlayerController.Instance.canControll = true;
+        reimu.GetComponent<ReimuBoss>().enabled = true;
+
+
+
+
+
 
     }
 }
