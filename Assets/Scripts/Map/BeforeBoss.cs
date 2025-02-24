@@ -1,7 +1,9 @@
 using Player;
 using System.Collections;
 using System.Collections.Generic;
+using Dialog;
 using TMPro;
+using UI;
 using UnityEngine;
 
 public class BeforeBoss : MonoBehaviour
@@ -32,30 +34,32 @@ public class BeforeBoss : MonoBehaviour
 
     void BeforeBossShow()
     {
-        GameObject.FindObjectOfType<Canvas>().enabled = false;
+        MainCanvas.Instance.EnableCanvas(false);
         PlayerController.Instance.sizeHandler.enabled = false;
         PlayerController.Instance.canControll = false;
         PlayerController.Instance.playerMovement.leftDirection = true;
         PlayerController.Instance._animator.SetBool("Walking", false);
         reimuOutShooter.SetActive(false);
         reimuSprite.SetActive(true);
+        
         reimu.GetComponent<ReimuMovement>().enabled = false;
-        reimu.GetComponent<ReimuBattle>().StopAllCoroutines();
-        reimu.GetComponent<ReimuBattle>().chargeBar.SetActive(false);
-        reimu.GetComponent<ReimuBattle>().isCharge = false;
-        reimu.GetComponent<ReimuBattle>().weapon.SetActive(false);
+        var reimuBattle = reimu.GetComponent< ReimuBattle>();
+        reimuBattle.StopAllCoroutines();
+        reimuBattle.chargeBar.SetActive(false);
+        reimuBattle.isCharge = false;
+        reimuBattle.weapon.SetActive(false);
         if (reimu.GetComponent<ReimuMovement>().ismove)
         {
-            StartCoroutine(reimu.GetComponent<ReimuBattle>().SmoothMoveCoroutine(startPosition, endPosition, 2f));
+            StartCoroutine(reimuBattle.SmoothMoveCoroutine(startPosition, endPosition, 2f));
         }
         else
         {
-            StartCoroutine(reimu.GetComponent<ReimuBattle>().SmoothMoveCoroutine(reimuSprite.transform.localPosition, endPosition, 2f));
+            StartCoroutine(reimuBattle.SmoothMoveCoroutine(reimuSprite.transform.localPosition, endPosition, 2f));
         }
 
-        // ¹ï¸Ü®Ø
+        // ï¿½ï¿½Ü®ï¿½
 
-        // ÆF¹Úºt¥X
+        // ï¿½Fï¿½Úºtï¿½X
 
         PlayerController.Instance.transform.position = bossRoomLocation;
         PlayerController.Instance.sizeHandler.enabled = true;
@@ -64,9 +68,9 @@ public class BeforeBoss : MonoBehaviour
         reimu.GetComponent<ReimuBattle>().enabled = false;
         reimu.GetComponent<ReimuBoss>().enabled = true;
 
-
-
-
+        reimuBattle.CloseAllFeedback();
+        PlayerController.Instance.CloseAllFeedbacks();
+        DialogManager.Instance.PlayStory();
 
 
     }

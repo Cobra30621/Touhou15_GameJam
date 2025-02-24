@@ -34,11 +34,14 @@ namespace Player
         
 
         public float speed_adjust = 0f, force_adjust = 0f;
+
         
         [Required]
         public ParticleSystem infJumpEffect;
         [Required]
         public ParticleSystem speedUpEffect;
+
+        public bool isdash = false;
         
         void Start()
         {
@@ -55,10 +58,12 @@ namespace Player
             nowSize = playersize.currentSize;
             adjustSpeedForce();
 
+
             // 移動控制
             if (PlayerController.Instance.canControll) moveInput = Input.GetAxis("Horizontal");
             else moveInput = 0;
-            rb.velocity = new Vector2(moveInput * moveSpeed, rb.velocity.y);
+            if(!isdash)rb.velocity = new Vector2(moveInput * moveSpeed, rb.velocity.y);
+            else rb.velocity = new Vector2(dashspeed*(leftDirection?-1:1), 0);
 
             CheckGrounded();
 
@@ -156,6 +161,22 @@ namespace Player
         public float GetVelocityX()
         {
             return rb.velocity.x;
+        }
+
+        int dashspeed = 0;
+
+        public void dash(float speed)
+        {
+            float dir = leftDirection ? -1 : 1;
+            rb.velocity = new Vector2(speed*dir, 0);
+            dashspeed = (int)speed;
+            rb.gravityScale = 0;
+        }
+        public void stopdash()
+        {
+            rb.velocity = new Vector2(0, 0);
+            rb.gravityScale = 1;
+            dashspeed = 0;
         }
     }
 }

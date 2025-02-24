@@ -8,7 +8,7 @@ namespace Core
     public class GameManager : MonoBehaviour
     {
         public static GameManager Instance { get; private set; }
-        private int score;
+        public int score;
         private float timer;
 
         public GameMode GameMode;
@@ -80,9 +80,14 @@ namespace Core
         }
 
         [Button]
-        public void EnterBadEnd()
+        public void EnterBadEnd(int score = 0)
         {
-            sceneMannger.ChangeScene(SceneType.BadEnd);
+            this.score = score;
+            if (GameMode == GameMode.Story)sceneMannger.ChangeScene(SceneType.BadEnd);
+            else
+            {
+                sceneMannger.ChangeScene(SceneType.EndInf);
+            }
         }
 
     }

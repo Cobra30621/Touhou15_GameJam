@@ -9,7 +9,8 @@ public enum SceneType
     Game_inf,
     Game_story,
     BadEnd,
-    GoodEnd
+    GoodEnd,
+    EndInf
 }
 public class sceneMannger : MonoBehaviour
 {
@@ -20,7 +21,8 @@ public class sceneMannger : MonoBehaviour
         {SceneType.Game_inf, "Game-inf" },
         { SceneType.Game_story, "Game-story" },
         {   SceneType.BadEnd, "Bad-end"},
-        {   SceneType.GoodEnd, "Good-end"}
+        {   SceneType.GoodEnd, "Good-end"},
+        { SceneType.EndInf,"End-inf"}
     };
     public static void ChangeScene(SceneType sceneType)
     {

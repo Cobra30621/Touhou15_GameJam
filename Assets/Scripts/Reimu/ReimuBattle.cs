@@ -120,7 +120,7 @@ public class ReimuBattle : MonoBehaviour
         PlayerController.Instance.PlayExplosionFeedback();
         
         yield return new WaitForSeconds(2f);
-        GameManager.Instance.EnterBadEnd();
+        GameManager.Instance.EnterBadEnd((int)PlayerController.Instance.transform.position.x);
     }
 
 
@@ -240,6 +240,11 @@ public class ReimuBattle : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
         reimuSprite.SetActive(true);
         StartCoroutine(ReimuActionCoroutine());
+    }
+
+    public void CloseAllFeedback()
+    {
+        chargingFeedback.gameObject.SetActive(false);
     }
 
 }

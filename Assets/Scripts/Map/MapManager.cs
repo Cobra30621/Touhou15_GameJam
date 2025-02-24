@@ -268,5 +268,10 @@ namespace Map
                 CheckAndGenerateRoom();
             }
         }
+
+        public void EnterBossRoom()
+        {
+            
+        }
     }
 }

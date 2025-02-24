@@ -13,5 +13,6 @@
         reimupenny = 7,
         suikaWeapon = 8,
         shield = 9,
+        youmusword = 10,
     }
 }

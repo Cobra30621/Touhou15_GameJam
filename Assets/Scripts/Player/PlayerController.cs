@@ -57,7 +57,9 @@ namespace Player
 
         public UnityEvent<List<BulletClip>> OnBulletClipChanged = new UnityEvent<List<BulletClip>>();
 
+        [SerializeField] private GameObject dash_colider;
         public bool LeftDirection => playerMovement.leftDirection;
+
 
         
         private void Awake()
@@ -168,11 +170,16 @@ namespace Player
             Debug.Log("Die");
             shield_sprite.SetActive(false);
             isDead = true;
-            allFeedbacks.SetActive(false);
+            CloseAllFeedbacks();
             deadFeedback.Play(transform, true);
             playerMovement.Freeze();
             sizeHandler.enabled = false;
             canControll = false;
+        }
+
+        public void CloseAllFeedbacks()
+        {
+            allFeedbacks.SetActive(false);
         }
 
         public void PlayExplosionFeedback()
@@ -207,6 +214,18 @@ namespace Player
             shield =1;
             shield_sprite.SetActive(true);
             return true;
+        }
+
+        public void dash(float speed,float invsibletime)
+        {
+            SetInvincible(invsibletime);
+            playerMovement.dash(speed);
+            dash_colider.SetActive(true);
+        }
+        public void stopdash()
+        {
+            playerMovement.stopdash();
+            dash_colider.SetActive(false);
         }
     }
 }
