@@ -71,6 +71,7 @@ public class BeforeBoss : MonoBehaviour
         PlayerController.Instance.canControll = true;
         reimu.GetComponent<ReimuBattle>().enabled = false;
         reimu.GetComponent<ReimuBoss>().enabled = true;
+        reimu.GetComponent<ReimuBoss>().reimuSprite.transform.position = bossRoomLocation + new Vector3(-12.5f, 7f, 0);
 
 
 
