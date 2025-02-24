@@ -4,6 +4,7 @@ using Item;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Serialization;
+using System.Collections;
 
 namespace MapObject
 {
@@ -38,8 +39,17 @@ namespace MapObject
         [SerializeField]
         private Feedback.ParticleFeedback particleFeedback;
 
+        public bool respawn;
+        
+        [ShowIf("respawn")]
+        public float respawnTime = 5f;
+        
+        private bool isRespawning;
+        private Collider2D itemCollider;
+
         private void Awake()
         {
+            itemCollider = GetComponent<Collider2D>();
             Init();
         }
 
@@ -76,13 +86,33 @@ namespace MapObject
         [Button]
         private void GainItem()
         {
-            
             if (ItemManager.Instance.GainItem(itemInfo))
             {
                 Debug.Log($"Gain Item {itemInfo}");
                 particleFeedback.Play(transform);
-                Destroy(gameObject);
+                
+                if (respawn && !isRespawning)
+                {
+                    StartCoroutine(RespawnRoutine());
+                }
+                else
+                {
+                    Destroy(gameObject);
+                }
             }
+        }
+        
+        private IEnumerator RespawnRoutine()
+        {
+            isRespawning = true;
+            spriteRenderer.enabled = false;
+            itemCollider.enabled = false;
+            
+            yield return new WaitForSeconds(respawnTime);
+            
+            spriteRenderer.enabled = true;
+            itemCollider.enabled = true;
+            isRespawning = false;
         }
     }
 }
