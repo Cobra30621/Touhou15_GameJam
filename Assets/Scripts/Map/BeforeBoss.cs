@@ -36,6 +36,7 @@ public class BeforeBoss : MonoBehaviour
     {
         MainCanvas.Instance.EnableCanvas(false);
         PlayerController.Instance.sizeHandler.enabled = false;
+        PlayerController.Instance.playerWeapon.enabled = false;
         PlayerController.Instance.canControll = false;
         PlayerController.Instance.playerMovement.leftDirection = true;
         PlayerController.Instance._animator.SetBool("Walking", false);
@@ -69,6 +70,8 @@ public class BeforeBoss : MonoBehaviour
         PlayerController.Instance.sizeHandler.enabled = true;
         PlayerController.Instance.sizeHandler.currentSize = 1;
         PlayerController.Instance.canControll = true;
+        PlayerController.Instance.playerWeapon.enabled = true;
+        reimuBattle.weapon.SetActive(true);
         reimu.GetComponent<ReimuBattle>().enabled = false;
         reimu.GetComponent<ReimuBoss>().enabled = true;
         reimu.GetComponent<ReimuBoss>().reimuSprite.transform.position = bossRoomLocation + new Vector3(-12.5f, 7f, 0);
