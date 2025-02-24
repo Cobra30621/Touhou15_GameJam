@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 1515194755157633505}
   - component: {fileID: 2455724175201854504}
   - component: {fileID: 7985596394690993333}
+  - component: {fileID: 2316239623160606581}
   m_Layer: 0
   m_Name: itemlist
   m_TagString: Untagged
@@ -146,6 +147,19 @@ MonoBehaviour:
   isusing: 0
   existtime: 5
   reimu: {fileID: 3532198937772473971, guid: ff23e9c48e470714fb594ef950d077fd, type: 3}
+--- !u!114 &2316239623160606581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 502443380118583802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9538225e85d788149a70c0e1510c141f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isusing: 0
 --- !u!1 &1890647182692032222
 GameObject:
   m_ObjectHideFlags: 0
