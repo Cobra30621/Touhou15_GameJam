@@ -402,6 +402,8 @@ MonoBehaviour:
   spellCardID: 0
   isHit: 0
   HP: 0
+  audioSource: {fileID: 0}
+  newClip: {fileID: 8300000, guid: e5a7226f11f864b4eaf2ae539b51cd5f, type: 3}
 --- !u!114 &4047059955418377361
 MonoBehaviour:
   m_ObjectHideFlags: 0

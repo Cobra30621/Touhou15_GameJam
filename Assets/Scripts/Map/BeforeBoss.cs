@@ -14,6 +14,14 @@ public class BeforeBoss : MonoBehaviour
     public Vector3 startPosition;
     public Vector3 endPosition;
     public Vector3 bossRoomLocation;
+    public AudioSource audioSource; // 在 Inspector 內指定
+    public AudioClip newClip;       // 新的音樂片段
+
+    void ChangeMusic()
+    {
+        audioSource.clip = newClip; // 替換音樂
+        audioSource.Play();         // 播放新的音樂
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -21,6 +29,7 @@ public class BeforeBoss : MonoBehaviour
         reimu = GameObject.Find("Reimu");
         reimuOutShooter = reimu.transform.Find("OutShooter").gameObject;
         reimuSprite = reimu.transform.Find("ReimuSprite").gameObject;
+        audioSource = GameObject.Find("Audio Source").GetComponent<AudioSource>();
 
     }
 
@@ -34,6 +43,7 @@ public class BeforeBoss : MonoBehaviour
 
     IEnumerator BeforeBossShow()
     {
+        ChangeMusic();
         gameObject.GetComponent<BoxCollider2D>().enabled = false;
         GameObject.Find("bossRoom").GetComponent<bossRoomController>().positionBeforeBoss = PlayerController.Instance.transform.position;
         MainCanvas.Instance.EnableCanvas(false);
