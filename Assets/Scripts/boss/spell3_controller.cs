@@ -5,7 +5,7 @@ using UnityEngine;
 public class spell3_controller : MonoBehaviour
 {
     public GameObject[] gameObjects;
-
+    public bosstesttmp boss;
     [SerializeField] float gap1, gap2;
     [SerializeField] int id=0;
     private void Start()
@@ -17,13 +17,13 @@ public class spell3_controller : MonoBehaviour
     {
         while (true)
         {
-            gameObjects[((id-1)+4)%4].SetActive(false);
-            yield return new WaitForSeconds(gap2);
             gameObjects[id].SetActive(true);
-            id++;
-            id %= 4;
             yield return new WaitForSeconds(gap1);
-            
+            gameObjects[id].SetActive(false);
+            StartCoroutine(boss.SmoothMoveCoroutine(gameObjects[id].transform.position, gameObjects[(id + 1) % 4].transform.position, gap2));
+            id =(id+1)%4;
+            yield return new WaitForSeconds(gap2);
+
         }
     }
 }
