@@ -168,11 +168,16 @@ namespace Player
             Debug.Log("Die");
             shield_sprite.SetActive(false);
             isDead = true;
-            allFeedbacks.SetActive(false);
+            CloseAllFeedbacks();
             deadFeedback.Play(transform, true);
             playerMovement.Freeze();
             sizeHandler.enabled = false;
             canControll = false;
+        }
+
+        public void CloseAllFeedbacks()
+        {
+            allFeedbacks.SetActive(false);
         }
 
         public void PlayExplosionFeedback()

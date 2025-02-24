@@ -242,4 +242,9 @@ public class ReimuBattle : MonoBehaviour
         StartCoroutine(ReimuActionCoroutine());
     }
 
+    public void CloseAllFeedback()
+    {
+        chargingFeedback.gameObject.SetActive(false);
+    }
+
 }
