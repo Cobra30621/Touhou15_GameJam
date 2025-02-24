@@ -14,15 +14,8 @@ public class sakuyaclock : BaseItem
         {
             return false;
         }
-        StartCoroutine( PlayerController.Instance.SetInvincible(existtime));
-        if (!reimu.GetComponent<ReimuBattle>().isHit)
-        {
-            StartCoroutine(inscreentimestop());
-        }
-        else
-        {
-            StartCoroutine(outscreentimestop());
-        }
+        if(reimu.GetComponent<ReimuBattle>().IsRunning)StartCoroutine(outscreentimestop());
+        
         return true;
     }
 
@@ -35,15 +28,4 @@ public class sakuyaclock : BaseItem
         ItemComplete();
     }
 
-    //create iemurator contdown for existtime
-    IEnumerator inscreentimestop()
-    {
-        isusing = true;
-        reimu.GetComponent<ReimuBattle>().stopReimuAttack();
-        yield return new WaitForSeconds(existtime-2);
-        reimu.GetComponent<ReimuBattle>().reimuSprite.SetActive(false);
-        yield return new WaitForSeconds(2);
-        reimu.GetComponent<ReimuBattle>().startattack();
-        isusing = false;
-    }
 }
