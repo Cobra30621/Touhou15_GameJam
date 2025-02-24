@@ -34,6 +34,8 @@ public class BeforeBoss : MonoBehaviour
 
     IEnumerator BeforeBossShow()
     {
+        gameObject.GetComponent<BoxCollider2D>().enabled = false;
+        GameObject.Find("bossRoom").GetComponent<bossRoomController>().positionBeforeBoss = PlayerController.Instance.transform.position;
         MainCanvas.Instance.EnableCanvas(false);
         PlayerController.Instance.sizeHandler.enabled = false;
         PlayerController.Instance.playerWeapon.enabled = false;
@@ -60,9 +62,9 @@ public class BeforeBoss : MonoBehaviour
 
         reimuBattle.CloseAllFeedback();
         PlayerController.Instance.CloseAllFeedbacks();
-        DialogManager.Instance.PlayStory();
+        //DialogManager.Instance.PlayStory();
 
-        yield return new WaitUntil(() => GameObject.Find("bossRoom").GetComponent<bossRoomController>().isReady);
+        //yield return new WaitUntil(() => GameObject.Find("bossRoom").GetComponent<bossRoomController>().isReady);
 
         // 動畫演出
 
@@ -71,7 +73,6 @@ public class BeforeBoss : MonoBehaviour
         PlayerController.Instance.sizeHandler.currentSize = 1;
         PlayerController.Instance.canControll = true;
         PlayerController.Instance.playerWeapon.enabled = true;
-        reimuBattle.weapon.SetActive(true);
         reimu.GetComponent<ReimuBattle>().enabled = false;
         reimu.GetComponent<ReimuBoss>().enabled = true;
         reimu.GetComponent<ReimuBoss>().reimuSprite.transform.position = bossRoomLocation + new Vector3(-12.5f, 7f, 0);
