@@ -48,6 +48,8 @@ namespace Player
         [SerializeField] public bool isDead;
         [SerializeField] public bool canControll = true;
 
+        [SerializeField] private int shield = 0;
+        [SerializeField] private GameObject shield_sprite;
 
         public KeyCode item1Key = KeyCode.X;
         public KeyCode item2Key = KeyCode.C;
@@ -73,6 +75,7 @@ namespace Player
             playerWeapon = GetComponent<PlayerWeapon>();
             spriteRenderer = GetComponentInChildren<SpriteRenderer>();
             _animator = GetComponent<Animator>();   
+            shield = 0;
         }
 
         private void Update()
@@ -144,6 +147,16 @@ namespace Player
         public void TakeDamage(float damage)
         {
             if (isInvincible) { return; }
+            if(shield > 0)
+            {
+                shield--;
+                if(shield == 0)
+                {
+                    shield_sprite.SetActive(false);
+                }
+                StartCoroutine(SetInvincible());
+                return;
+            }
 
             sizeHandler.Resize(-damage);
             StartCoroutine(SetInvincible());
@@ -153,6 +166,7 @@ namespace Player
         public void Die()
         {
             Debug.Log("Die");
+            shield_sprite.SetActive(false);
             isDead = true;
             allFeedbacks.SetActive(false);
             deadFeedback.Play(transform, true);
@@ -185,6 +199,14 @@ namespace Player
             yield return new WaitForSeconds(time);
             _animator.SetTrigger("Idle");
             canControll |= isDead ? false : true; 
+        }
+
+        public bool AddShield()
+        {
+            if (shield >= 1) return false;
+            shield =1;
+            shield_sprite.SetActive(true);
+            return true;
         }
     }
 }

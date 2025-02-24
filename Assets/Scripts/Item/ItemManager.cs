@@ -58,7 +58,8 @@ public class ItemManager : MonoBehaviour
             {ItemType.elinPillo, itemlist.GetComponent<elinPillo>()},
             {ItemType.ayaSpeedUp, itemlist.GetComponent<ayaspeedup>()},
             {ItemType.suikaWeapon, itemlist.GetComponent<SuikaWeapon>()},
-            {ItemType.reimupenny, itemlist.GetComponent<reimupenny>()  }
+            {ItemType.reimupenny, itemlist.GetComponent<reimupenny>()  },
+            {ItemType.shield, itemlist.GetComponent<shield>()}
         };
 
     }
