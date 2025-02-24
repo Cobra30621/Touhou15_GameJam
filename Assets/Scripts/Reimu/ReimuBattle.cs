@@ -50,6 +50,7 @@ public class ReimuBattle : MonoBehaviour
 
     [SerializeField] private GameObject shield_sprite;
 
+    public GameObject chargebar_back;
     void Start()
     {
         _reimuMovement = GetComponent<ReimuMovement>();
@@ -107,7 +108,8 @@ public class ReimuBattle : MonoBehaviour
         yield return StartCoroutine(ChargeAttack());
         reimuCollider.enabled = false;
         chargeBar.SetActive(false);
-        
+        chargebar_back.SetActive(false);
+
         var playerPos = reimu.transform.InverseTransformPoint(PlayerController.Instance.transform.position);
         yield return StartCoroutine(SmoothMoveCoroutine(endPosition, playerPos
             , dashPeriod));
@@ -142,9 +144,10 @@ public class ReimuBattle : MonoBehaviour
         isCharge = true;
         targety = Camera.main.transform.position.y;
         PlayChargingFeedback(true);
+        chargebar_back.SetActive(true);
         chargeBar.SetActive(true);
         Vector3 initialScale = new Vector3(0, chargeBar.transform.localScale.y, chargeBar.transform.localScale.z);
-        Vector3 targetScale = new Vector3(0.5f, initialScale.y, initialScale.z);
+        Vector3 targetScale = new Vector3(1f, initialScale.y, initialScale.z);
         float elapsedTime = 0;
 
         while (elapsedTime < chargePeriod)
@@ -183,6 +186,7 @@ public class ReimuBattle : MonoBehaviour
         isHit = true;
         StopCoroutine(actionCoroutine);
         chargeBar.SetActive(false);
+        chargebar_back.SetActive(false);
         weapon.SetActive(false);
         _animator.SetTrigger("Dizziness");
         
@@ -222,6 +226,7 @@ public class ReimuBattle : MonoBehaviour
         Gizmos.DrawSphere(Camera.main.transform.position + endPosition, 0.1f); // 繪製 endPosition 的球體
     }
 
+    
     public void stopReimuAttack()
     {
         isCharge = false;
