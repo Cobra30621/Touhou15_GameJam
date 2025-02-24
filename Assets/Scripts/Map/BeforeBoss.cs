@@ -28,11 +28,11 @@ public class BeforeBoss : MonoBehaviour
     {
         if (collider.CompareTag("Player"))
         {
-            BeforeBossShow();
+            StartCoroutine(BeforeBossShow());
         }
     }
 
-    void BeforeBossShow()
+    IEnumerator BeforeBossShow()
     {
         MainCanvas.Instance.EnableCanvas(false);
         PlayerController.Instance.sizeHandler.enabled = false;
@@ -50,16 +50,20 @@ public class BeforeBoss : MonoBehaviour
         reimuBattle.weapon.SetActive(false);
         if (reimu.GetComponent<ReimuMovement>().ismove)
         {
-            StartCoroutine(reimuBattle.SmoothMoveCoroutine(startPosition, endPosition, 2f));
+            yield return StartCoroutine(reimuBattle.SmoothMoveCoroutine(startPosition, endPosition, 2f));
         }
         else
         {
-            StartCoroutine(reimuBattle.SmoothMoveCoroutine(reimuSprite.transform.localPosition, endPosition, 2f));
+            yield return StartCoroutine(reimuBattle.SmoothMoveCoroutine(reimuSprite.transform.localPosition, endPosition, 2f));
         }
 
-        // ��ܮ�
+        reimuBattle.CloseAllFeedback();
+        PlayerController.Instance.CloseAllFeedbacks();
+        DialogManager.Instance.PlayStory();
 
-        // �F�ںt�X
+        yield return new WaitUntil(() => GameObject.Find("bossRoom").GetComponent<bossRoomController>().isReady);
+
+        // 動畫演出
 
         PlayerController.Instance.transform.position = bossRoomLocation;
         PlayerController.Instance.sizeHandler.enabled = true;
@@ -68,9 +72,6 @@ public class BeforeBoss : MonoBehaviour
         reimu.GetComponent<ReimuBattle>().enabled = false;
         reimu.GetComponent<ReimuBoss>().enabled = true;
 
-        reimuBattle.CloseAllFeedback();
-        PlayerController.Instance.CloseAllFeedbacks();
-        DialogManager.Instance.PlayStory();
 
 
     }

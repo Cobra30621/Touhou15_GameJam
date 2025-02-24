@@ -65,11 +65,9 @@ public class ReimuBoss : MonoBehaviour
         float elapsedTime = 0;
         while (elapsedTime < duration)
         {
-            reimuSprite.transform.position = Vector3.Lerp(
-                transform.position + startPosition, transform.position + endPosition, elapsedTime / duration);
+            reimuSprite.transform.position = Vector3.Lerp(startPosition, endPosition, elapsedTime / duration);
             elapsedTime += Time.deltaTime;
             yield return null;
         }
-        reimuSprite.transform.position = transform.position + endPosition;
     }
 }

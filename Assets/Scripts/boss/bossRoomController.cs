@@ -5,6 +5,7 @@ using UnityEngine;
 public class bossRoomController : MonoBehaviour
 {
     public spell3Controller spell3;
+    public bool isReady = false;
     // Start is called before the first frame update
     void Start()
     {
