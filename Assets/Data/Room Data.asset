@@ -25,7 +25,7 @@ MonoBehaviour:
     - {fileID: 6471238153555602598, guid: 0b7f009b2b792b24e9ac315f16b39e2c, type: 3}
     - {fileID: 6471238153555602598, guid: 8f883c48d642d5c4bb502137bd77482f, type: 3}
     - {fileID: 6471238153555602598, guid: 57d097ec790b3794f95828e5bf7fb200, type: 3}
-    - {fileID: 6471238153555602598, guid: fbc17d249ca2f26449a977277327b487, type: 3}
+    - {fileID: 7023373846466837866, guid: b1e8fa8dbfa55474f8f1b8a061568214, type: 3}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []

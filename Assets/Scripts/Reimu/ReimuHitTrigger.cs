@@ -7,6 +7,7 @@ namespace Reimu
     {
         [Required]
         [SerializeField] private ReimuBattle _reimuBattle;
+        [SerializeField] private ReimuBoss _reimuBoss;
 
         public bool OnHit(int damage = 1)
         {
@@ -18,8 +19,8 @@ namespace Reimu
             }
             else
             {
-                //if(_reimuboss.isHit) return false;
-                //_reimuboss.OnHit(1);
+                if (_reimuBoss.isHit) return false;
+                StartCoroutine(_reimuBoss.OnHitCoroutine());
                 return true;
             }
         }

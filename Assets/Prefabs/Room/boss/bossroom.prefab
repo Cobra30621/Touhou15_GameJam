@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 174b51817569c654bb6da5bc0cc87b3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shooter: {fileID: 0}
+  shooter: {fileID: 1352298075565486903}
   bulletClip:
     Sprite: {fileID: 0}
   angle: 0
@@ -116,7 +116,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 174b51817569c654bb6da5bc0cc87b3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shooter: {fileID: 0}
+  shooter: {fileID: 2617567269784265889}
   bulletClip:
     Sprite: {fileID: 0}
   angle: 0
@@ -187,7 +187,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 174b51817569c654bb6da5bc0cc87b3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shooter: {fileID: 0}
+  shooter: {fileID: 3903376542131892955}
   bulletClip:
     Sprite: {fileID: 0}
   angle: 0
@@ -264,6 +264,7 @@ MonoBehaviour:
   - {fileID: 3804657558962432314}
   - {fileID: 5708776932143134507}
   - {fileID: 7815721019799962140}
+  - {fileID: 5708776932143134507}
   id: 0
   reimuboss: {fileID: 0}
   shootDuration: 9
@@ -25626,8 +25627,30 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5733818743759127038, guid: 884cc2fad341c8c4f831b0473ed9f0f9, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8713639013304313019}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2560628551568178506, guid: 884cc2fad341c8c4f831b0473ed9f0f9, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5684584938199494935}
   m_SourcePrefab: {fileID: 100100000, guid: 884cc2fad341c8c4f831b0473ed9f0f9, type: 3}
+--- !u!1 &1963379789448342662 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2560628551568178506, guid: 884cc2fad341c8c4f831b0473ed9f0f9, type: 3}
+  m_PrefabInstance: {fileID: 4086591828584714700}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5684584938199494935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1963379789448342662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60ef3a3e38f3df54796c7afd640c7706, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spell3: {fileID: 2588415926201583318}
+  isReady: 0
 --- !u!4 &8585233464560914482 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5733818743759127038, guid: 884cc2fad341c8c4f831b0473ed9f0f9, type: 3}
