@@ -13,6 +13,8 @@ public class ReimuBoss : MonoBehaviour
     public float remainedTime;
     public GameObject reimuSprite;
 
+    public GameObject health;
+
     public bool isSpellCard1;
 
     public Coroutine currentRoutine;
@@ -25,12 +27,14 @@ public class ReimuBoss : MonoBehaviour
         PlayerController.Instance.transform.position = GameObject.Find("bossRoom").GetComponent<bossRoomController>().positionBeforeBoss;
         StopAllCoroutines();
         gameObject.SetActive(false);
+        enabled = false;
     }
 
     public IEnumerator OnHitCoroutine()
     {
         isHit = true;
         HP -= 1;
+        health.GetComponent<ShowHealth>().UpdateHealth(HP);
         if (HP == 0)
         {
             StopCoroutine(currentRoutine);
@@ -60,6 +64,7 @@ public class ReimuBoss : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        health.SetActive(true);
         spellCardID = 1;
         currentRoutine = StartCoroutine(StartSpellCardTime1());
     }
@@ -86,6 +91,7 @@ public class ReimuBoss : MonoBehaviour
     public IEnumerator StartSpellCardTime3()
     {
         HP = 3;
+        health.GetComponent<ShowHealth>().UpdateHealth(HP);
         isSpellCard1 = true;
         yield return new WaitForSeconds(spellCardTime1);
         isSpellCard1 = false;
@@ -97,12 +103,14 @@ public class ReimuBoss : MonoBehaviour
     public IEnumerator StartSpellCardTime2()
     {
         HP = 3;
+        health.GetComponent<ShowHealth>().UpdateHealth(HP);
         yield return null;
     }
 
     public IEnumerator StartSpellCardTime1()
     {
         HP = 3;
+        health.GetComponent<ShowHealth>().UpdateHealth(HP);
         GameObject.Find("bossRoom").GetComponent<bossRoomController>().spell3.enabled = true;
         StartCoroutine(GameObject.Find("bossRoom").GetComponent<bossRoomController>().spell3.SpellStart());
         yield return new WaitForSeconds(spellCardTime3);

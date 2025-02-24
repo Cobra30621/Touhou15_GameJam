@@ -19,8 +19,14 @@ public class Distance : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (GameObject.Find("Reimu") == null)
+        {
+            distanceText.enabled = false;
+            ReimuIcon.enabled = false;
+            return;
+        }
         float distance = reimuMovement.GetDistance();
-        if (distance == 0f)
+        if (distance == 0f || GameObject.Find("Reimu").GetComponent<ReimuBoss>().enabled)
         {
             distanceText.enabled = false;
             ReimuIcon.enabled = false;
