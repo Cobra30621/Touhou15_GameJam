@@ -137,7 +137,7 @@ namespace Player
 
         public bool CanDestroyObstacle()
         {
-            return currentSize >= destroyObstacleSize;
+            return (currentSize >= destroyObstacleSize)||PlayerController.Instance.playerMovement.isdash;
         }
     }
 }

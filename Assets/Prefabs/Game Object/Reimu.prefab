@@ -260,6 +260,7 @@ MonoBehaviour:
   reimuCollider: {fileID: 5735188284921105958}
   IsRunning: 0
   isHit: 0
+  isCharge: 0
   defeatFeedback: {fileID: 5626681824359526237}
   chargingFeedback: {fileID: 1571327120518171031}
   shield: 0
