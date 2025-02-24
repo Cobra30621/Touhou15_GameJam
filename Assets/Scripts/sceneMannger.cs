@@ -1,3 +1,4 @@
+using Core;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -31,6 +32,14 @@ public class sceneMannger : MonoBehaviour
     }
     public static void ChangeScene(string sceneType)
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene(sceneType);
+        if(sceneType == "Game-inf")
+        {
+            GameManager.Instance.GameMode = Map.Data.GameMode.Endless;
+        }
+        else if (sceneType == "Game-story")
+        {
+            GameManager.Instance.GameMode = Map.Data.GameMode.Story;
+        }
+            UnityEngine.SceneManagement.SceneManager.LoadScene(sceneType);
     }
 }
