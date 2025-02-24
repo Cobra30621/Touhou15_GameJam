@@ -401,8 +401,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d387eb0f3f7d5354a9d484224e654e96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minSize: 0.4
-  maxSize: 5
+  minSize: 1
+  maxSize: 4.7
   growthRatelist:
   - -0.01
   - -0.03
