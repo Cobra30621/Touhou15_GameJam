@@ -17,10 +17,10 @@ namespace Weapon
         
         void OnTriggerEnter2D(Collider2D collision)
         {
-            if (collision.gameObject.CompareTag("Player"))
+            if (collision.gameObject.CompareTag("playerHitbox"))
             {
                 Debug.Log("Player 被擊中！");
-                var controller = collision.gameObject.GetComponent<PlayerController>();
+                var controller = PlayerController.Instance;
                 
                 if (!PlayerCanIgnoreDamage(controller))
                 {
