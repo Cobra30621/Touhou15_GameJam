@@ -62,8 +62,10 @@ public class BeforeBoss : MonoBehaviour
         // �F�ںt�X
 
         PlayerController.Instance.transform.position = bossRoomLocation;
+        PlayerController.Instance.sizeHandler.enabled = true;
         PlayerController.Instance.sizeHandler.currentSize = 1;
         PlayerController.Instance.canControll = true;
+        reimu.GetComponent<ReimuBattle>().enabled = false;
         reimu.GetComponent<ReimuBoss>().enabled = true;
 
         reimuBattle.CloseAllFeedback();
