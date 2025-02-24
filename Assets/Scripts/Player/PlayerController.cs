@@ -57,7 +57,9 @@ namespace Player
 
         public UnityEvent<List<BulletClip>> OnBulletClipChanged = new UnityEvent<List<BulletClip>>();
 
+        [SerializeField] private GameObject dash_colider;
         public bool LeftDirection => playerMovement.leftDirection;
+
 
         
         private void Awake()
@@ -212,6 +214,18 @@ namespace Player
             shield =1;
             shield_sprite.SetActive(true);
             return true;
+        }
+
+        public void dash(float speed,float invsibletime)
+        {
+            SetInvincible(invsibletime);
+            playerMovement.dash(speed);
+            dash_colider.SetActive(true);
+        }
+        public void stopdash()
+        {
+            playerMovement.stopdash();
+            dash_colider.SetActive(false);
         }
     }
 }

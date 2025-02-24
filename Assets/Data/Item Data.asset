@@ -61,3 +61,9 @@ MonoBehaviour:
     intValue: 0
     floatValue: 0
     sprite: {fileID: 21300000, guid: 0e6a97ffdb5ae2242a36c8557b215848, type: 3}
+  - itemType: 10
+    title: 
+    description: 
+    intValue: 0
+    floatValue: 0
+    sprite: {fileID: 21300000, guid: bd601729d716d974db7131b7a0897130, type: 3}
