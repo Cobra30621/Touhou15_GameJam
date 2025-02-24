@@ -164,11 +164,14 @@ namespace Player
             StartCoroutine(SetInvincible());
         }
 
+
+        public GameObject effect;
         [Button]
         public void Die()
         {
             Debug.Log("Die");
             shield_sprite.SetActive(false);
+            effect.SetActive(false);
             isDead = true;
             CloseAllFeedbacks();
             deadFeedback.Play(transform, true);
