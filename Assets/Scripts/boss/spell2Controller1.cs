@@ -29,6 +29,7 @@ public class spell2Controller : MonoBehaviour
     public IEnumerator SpellStart()
     {
         reimuboss = GameObject.Find("Reimu").GetComponent<ReimuBoss>();
+        reimuboss.GetComponent<Animator>().SetTrigger("Init");
         while (true)
         {
             Vector3 leftPosition = SpellPosition[0].transform.position;

@@ -20,13 +20,15 @@ public class spell1Controller : MonoBehaviour
     public IEnumerator SpellStart()
     {
         reimuboss = GameObject.Find("Reimu").GetComponent<ReimuBoss>();
+        reimuboss.GetComponent<Animator>().SetTrigger("Init");
         yield return StartCoroutine(reimuboss.SmoothMoveCoroutine(reimuboss.reimuSprite.transform.position, SpellPosition[0].transform.position, moveDuration));
         while (true)
         {
+            reimuboss.GetComponent<Animator>().SetTrigger("HandsUp");
             SpellPosition[id].SetActive(true);
             yield return new WaitForSeconds(shootDuration);
             SpellPosition[id].SetActive(false);
-            reimuboss.GetComponent<Animator>().SetTrigger("Idle");
+            reimuboss.GetComponent<Animator>().SetTrigger("Init");
             Debug.Log(SpellPosition[id].transform.position);
             Debug.Log(SpellPosition[(id + 1) % 4].transform.position);
             StartCoroutine(reimuboss.SmoothMoveCoroutine(SpellPosition[id].transform.position, SpellPosition[(id + 1) % 4].transform.position, moveDuration));
