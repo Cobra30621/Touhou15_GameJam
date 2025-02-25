@@ -404,7 +404,10 @@ MonoBehaviour:
   HP: 0
   audioSource: {fileID: 0}
   newClip: {fileID: 8300000, guid: e5a7226f11f864b4eaf2ae539b51cd5f, type: 3}
+  timefreeze: 0
   beautifulEffect: {fileID: 7281546465771961250}
+  bomb: {fileID: 0}
+  rei: {fileID: 0}
 --- !u!114 &4047059955418377361
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -452,6 +455,7 @@ MonoBehaviour:
   chargeBar: {fileID: 2117030670674053680}
   weapon: {fileID: 7565515216258311845}
   reimuCollider: {fileID: 5735188284921105958}
+  _animator: {fileID: 0}
   IsRunning: 0
   isHit: 0
   isCharge: 0
