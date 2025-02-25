@@ -1122,6 +1122,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 815954905}
     - target: {fileID: 8793822076127527142, guid: ff23e9c48e470714fb594ef950d077fd, type: 3}
+      propertyPath: rei
+      value: 
+      objectReference: {fileID: 285924948}
+    - target: {fileID: 8793822076127527142, guid: ff23e9c48e470714fb594ef950d077fd, type: 3}
       propertyPath: bomb
       value: 
       objectReference: {fileID: 1367909072}
