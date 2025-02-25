@@ -82,7 +82,7 @@ public class BeforeBoss : MonoBehaviour
         // 動畫演出
 
         reimu.GetComponent<ReimuBoss>().beautifulEffect.SetActive(true);
-        reimu.GetComponent<ReimuBoss>().reimuSprite.GetComponent<SpriteRenderer>().sprite = ReimuHandsup;
+        reimu.GetComponent<ReimuBoss>().GetComponent<Animator>().SetTrigger("HandsUp");
 
         yield return new WaitForSeconds(3f);
 

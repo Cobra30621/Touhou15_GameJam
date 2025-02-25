@@ -28,7 +28,7 @@ public class ReimuBattle : MonoBehaviour
     private ReimuMovement _reimuMovement;
 
     
-    private Animator _animator;
+    public Animator _animator;
 
     public bool IsRunning;
     
