@@ -14,9 +14,25 @@ public class sakuyaclock : BaseItem
         {
             return false;
         }
-        if(!reimu.GetComponent<ReimuBattle>().IsRunning)StartCoroutine(outscreentimestop());
-        
-        return true;
+        if (reimu.GetComponent<ReimuBattle>().enabled)
+        {
+            if(!reimu.GetComponent<ReimuBattle>().IsRunning)StartCoroutine(outscreentimestop());
+        }
+        else
+        {
+            if(!reimu.GetComponent<ReimuBoss>().isHit)StartCoroutine(stopspell());
+        }
+
+
+            return true;
+    }
+
+    IEnumerator stopspell()
+    {
+        reimu.GetComponent<ReimuBoss>().timefreeze = true;
+        yield return new WaitForSeconds(existtime);
+        reimu.GetComponent<ReimuBoss>().timefreeze = false;
+        ItemComplete();
     }
 
     IEnumerator outscreentimestop()

@@ -27,6 +27,8 @@ public class ReimuBoss : MonoBehaviour
     public AudioSource audioSource; // 在 Inspector 內指定
     public AudioClip newClip;       // 新的音樂片段
 
+    public bool timefreeze = false;
+
     void ChangeMusic()
     {
         audioSource.clip = newClip; // 替換音樂
@@ -88,7 +90,7 @@ public class ReimuBoss : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        remainedTime -= Time.deltaTime;
+        if(!timefreeze)remainedTime -= Time.deltaTime;
         MainCanvas.Instance.clock.text = remainedTime.ToString("F1");
         if (isHit)
         {
@@ -118,7 +120,10 @@ public class ReimuBoss : MonoBehaviour
         StartCoroutine(GameObject.Find("bossRoom").GetComponent<bossRoomController>().spell1.SpellStart());
         remainedTime = spellCardTime1;
         MainCanvas.Instance.DisplayClock(true);
-        yield return new WaitForSeconds(spellCardTime1);
+        while (remainedTime>0)
+        {
+            yield return null;
+        }
         MainCanvas.Instance.DisplayClock(false);
         GameManager.Instance.EnterBadEnd();
 
@@ -134,8 +139,11 @@ public class ReimuBoss : MonoBehaviour
         GameObject.Find("bossRoom").GetComponent<bossRoomController>().spell2.enabled = true;
         StartCoroutine(GameObject.Find("bossRoom").GetComponent<bossRoomController>().spell2.SpellStart());
         remainedTime = spellCardTime2;
-        MainCanvas.Instance.DisplayClock(true);
-        yield return new WaitForSeconds(spellCardTime2);
+        MainCanvas.Instance.DisplayClock(true); 
+        while (remainedTime > 0)
+        {
+            yield return null;
+        }
         MainCanvas.Instance.DisplayClock(false);
         GameManager.Instance.EnterBadEnd();
     }
@@ -149,7 +157,10 @@ public class ReimuBoss : MonoBehaviour
         StartCoroutine(GameObject.Find("bossRoom").GetComponent<bossRoomController>().spell3.SpellStart());
         remainedTime = spellCardTime3;
         MainCanvas.Instance.DisplayClock(true);
-        yield return new WaitForSeconds(spellCardTime3);
+        while (remainedTime > 0)
+        {
+            yield return null;
+        }
         MainCanvas.Instance.DisplayClock(false);
         GameManager.Instance.EnterBadEnd();
     }
