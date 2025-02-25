@@ -13,12 +13,14 @@ namespace UI
     {
         public static MainCanvas Instance;
         public TMPro.TextMeshProUGUI spellCardText;
+        public TMPro.TextMeshProUGUI clock;
+
 
         [SerializeField] private Canvas canvas;
 
         void Awake()
         {
-            if (Instance == null)  
+            if (Instance == null)
                 Instance = this;
         }
 
@@ -31,8 +33,21 @@ namespace UI
         {
             spellCardText.enabled = true;
             spellCardText.text = spellcardname;
-            yield return new WaitForSeconds(3f);
+            yield return new WaitForSeconds(5f);
             spellCardText.enabled = false;
+        }
+
+        public void DisplayClock(bool isShow)
+        {
+            if (isShow)
+            {
+                clock.enabled = true;
+            }
+            else
+            {
+                clock.enabled = false;
+
+            }
         }
     }
 }

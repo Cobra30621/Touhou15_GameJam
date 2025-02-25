@@ -50,17 +50,20 @@ public class ReimuBoss : MonoBehaviour
         health.GetComponent<ShowHealth>().UpdateHealth(HP);
         if (HP == 0)
         {
+            MainCanvas.Instance.DisplayClock(false);
             StopAllCoroutines();
             Cleaner();
             if (spellCardID == 1)
             {
                 spellCardID = 2;
+                yield return new WaitForSeconds(3f);
                 currentRoutine = StartCoroutine(StartSpellCardTime2());
             }
             else if (spellCardID == 2)
             {
-                GoBack();
+                
                 spellCardID = 3;
+                yield return new WaitForSeconds(3f);
                 currentRoutine = StartCoroutine(StartSpellCardTime3());
             }
             else if (spellCardID == 3)
@@ -84,6 +87,8 @@ public class ReimuBoss : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        remainedTime -= Time.deltaTime;
+        MainCanvas.Instance.clock.text = remainedTime.ToString("F1");
         if (isHit)
         {
         reimuSprite.GetComponent<SpriteRenderer>().enabled = !reimuSprite.GetComponent<SpriteRenderer>().enabled;
@@ -104,12 +109,16 @@ public class ReimuBoss : MonoBehaviour
 
     public IEnumerator StartSpellCardTime1()
     {
+        yield return new WaitForSeconds(3f);
         StartCoroutine(MainCanvas.Instance.ShowSpellCard("Spirit Sign \"Dream Seal -Spread-\""));
         HP = 3;
         health.GetComponent<ShowHealth>().UpdateHealth(HP);
         GameObject.Find("bossRoom").GetComponent<bossRoomController>().spell1.enabled = true;
         StartCoroutine(GameObject.Find("bossRoom").GetComponent<bossRoomController>().spell1.SpellStart());
+        remainedTime = spellCardTime1;
+        MainCanvas.Instance.DisplayClock(true);
         yield return new WaitForSeconds(spellCardTime1);
+        MainCanvas.Instance.DisplayClock(false);
         GameManager.Instance.EnterBadEnd();
 
     }
@@ -123,7 +132,10 @@ public class ReimuBoss : MonoBehaviour
         health.GetComponent<ShowHealth>().UpdateHealth(HP);
         GameObject.Find("bossRoom").GetComponent<bossRoomController>().spell2.enabled = true;
         StartCoroutine(GameObject.Find("bossRoom").GetComponent<bossRoomController>().spell2.SpellStart());
+        remainedTime = spellCardTime2;
+        MainCanvas.Instance.DisplayClock(true);
         yield return new WaitForSeconds(spellCardTime2);
+        MainCanvas.Instance.DisplayClock(false);
         GameManager.Instance.EnterBadEnd();
     }
 
@@ -134,7 +146,10 @@ public class ReimuBoss : MonoBehaviour
         health.GetComponent<ShowHealth>().UpdateHealth(HP);
         GameObject.Find("bossRoom").GetComponent<bossRoomController>().spell3.enabled = true;
         StartCoroutine(GameObject.Find("bossRoom").GetComponent<bossRoomController>().spell3.SpellStart());
+        remainedTime = spellCardTime3;
+        MainCanvas.Instance.DisplayClock(true);
         yield return new WaitForSeconds(spellCardTime3);
+        MainCanvas.Instance.DisplayClock(false);
         GameManager.Instance.EnterBadEnd();
     }
 
