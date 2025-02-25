@@ -3,6 +3,7 @@ using Fungus;
 using Player;
 using System.Collections;
 using System.Collections.Generic;
+using UI;
 using UnityEngine;
 
 public class ReimuBoss : MonoBehaviour
@@ -33,6 +34,8 @@ public class ReimuBoss : MonoBehaviour
     }
 
     public void GoBack() {
+        GameObject.Find("bossRoom").GetComponent<bossRoomController>().vcam.m_Lens.OrthographicSize = 7;
+        GameObject.Find("bossRoom").GetComponent<bossRoomController>().vcam.m_Lens.LensShift = new Vector3(0, 3, 0);
         PlayerController.Instance.transform.position = GameObject.Find("bossRoom").GetComponent<bossRoomController>().positionBeforeBoss;
         StopAllCoroutines();
         gameObject.SetActive(false);
@@ -47,24 +50,23 @@ public class ReimuBoss : MonoBehaviour
         health.GetComponent<ShowHealth>().UpdateHealth(HP);
         if (HP == 0)
         {
-            StopCoroutine(currentRoutine);
-            yield return StartCoroutine(Cleaner());
+            StopAllCoroutines();
+            Cleaner();
             if (spellCardID == 1)
             {
-                GoBack();
-                Debug.Log("COOL");
                 spellCardID = 2;
                 currentRoutine = StartCoroutine(StartSpellCardTime2());
             }
             else if (spellCardID == 2)
             {
+                GoBack();
                 spellCardID = 3;
                 currentRoutine = StartCoroutine(StartSpellCardTime3());
             }
             else if (spellCardID == 3)
             {
                 spellCardID = 0;
-                // currentRoutine = StartCoroutine(EndSpellCard());
+                GoBack();
             }
         }
         yield return new WaitForSeconds(2f);
@@ -92,33 +94,42 @@ public class ReimuBoss : MonoBehaviour
         }
     }
 
-    public IEnumerator Cleaner()
+    public void Cleaner()
     {
-        // clean code
-        yield return null;
+        GameObject.Find("bossRoom").GetComponent<bossRoomController>().spell1.Disable();
+        GameObject.Find("bossRoom").GetComponent<bossRoomController>().spell2.Disable();
+        GameObject.Find("bossRoom").GetComponent<bossRoomController>().spell3.Disable();
+
     }
 
-    public IEnumerator StartSpellCardTime3()
+    public IEnumerator StartSpellCardTime1()
     {
+        StartCoroutine(MainCanvas.Instance.ShowSpellCard("Spirit Sign \"Dream Seal -Spread-\""));
         HP = 3;
         health.GetComponent<ShowHealth>().UpdateHealth(HP);
-        isSpellCard1 = true;
+        GameObject.Find("bossRoom").GetComponent<bossRoomController>().spell1.enabled = true;
+        StartCoroutine(GameObject.Find("bossRoom").GetComponent<bossRoomController>().spell1.SpellStart());
         yield return new WaitForSeconds(spellCardTime1);
-        isSpellCard1 = false;
-        
+        GameManager.Instance.EnterBadEnd();
+
     }
 
 
 
     public IEnumerator StartSpellCardTime2()
     {
+        StartCoroutine(MainCanvas.Instance.ShowSpellCard("Innate Dream"));
         HP = 3;
         health.GetComponent<ShowHealth>().UpdateHealth(HP);
-        yield return null;
+        GameObject.Find("bossRoom").GetComponent<bossRoomController>().spell2.enabled = true;
+        StartCoroutine(GameObject.Find("bossRoom").GetComponent<bossRoomController>().spell2.SpellStart());
+        yield return new WaitForSeconds(spellCardTime2);
+        GameManager.Instance.EnterBadEnd();
     }
 
-    public IEnumerator StartSpellCardTime1()
+    public IEnumerator StartSpellCardTime3()
     {
+        StartCoroutine(MainCanvas.Instance.ShowSpellCard("Boundary \"Spiral Danmaku Barrier\""));
         HP = 3;
         health.GetComponent<ShowHealth>().UpdateHealth(HP);
         GameObject.Find("bossRoom").GetComponent<bossRoomController>().spell3.enabled = true;

@@ -10,7 +10,13 @@ public class spell3Controller : MonoBehaviour
     [SerializeField] private float shootDuration;
     [SerializeField] private float moveDuration;
 
-
+    public void Disable()
+    {
+        for (int i= 0; i < SpellPosition.Length; i++)
+        {
+            SpellPosition[i].SetActive(false);
+        }
+    }
     public IEnumerator SpellStart()
     {
         reimuboss = GameObject.Find("Reimu").GetComponent<ReimuBoss>();

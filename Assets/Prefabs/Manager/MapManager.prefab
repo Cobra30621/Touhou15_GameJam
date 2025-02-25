@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roomData: {fileID: 11400000, guid: c340ebf653e0e1941903769b159e875a, type: 2}
-  yOffset: -12
+  yOffset: -15
   currentSpawnId: 0
   currentX: 60
   activeRooms: []

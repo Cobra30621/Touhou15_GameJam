@@ -416,7 +416,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bbe9e8509e51994ea2fd2d2c393caf4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startDistance: 40
+  startDistance: 100
   distance: 300
   speed: 10
   playerSpeedFactor: 0.3

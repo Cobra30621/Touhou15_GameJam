@@ -11,6 +11,6 @@ public class inf_meter : MonoBehaviour
 
     private void Update()
     {
-        uiText.text = (int)(PlayerController.Instance.transform.position.x) + " M";
+        uiText.text = (int)(PlayerController.Instance.transform.position.x) + " m";
     }
 }

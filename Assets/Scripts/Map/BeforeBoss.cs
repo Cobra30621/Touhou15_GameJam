@@ -43,6 +43,8 @@ public class BeforeBoss : MonoBehaviour
 
     IEnumerator BeforeBossShow()
     {
+        GameObject.Find("bossRoom").GetComponent<bossRoomController>().vcam.m_Lens.OrthographicSize = 9;
+        GameObject.Find("bossRoom").GetComponent<bossRoomController>().vcam.m_Lens.LensShift = new Vector3(0,6,0);
         ChangeMusic();
         gameObject.GetComponent<BoxCollider2D>().enabled = false;
         GameObject.Find("bossRoom").GetComponent<bossRoomController>().positionBeforeBoss = PlayerController.Instance.transform.position;
@@ -72,9 +74,9 @@ public class BeforeBoss : MonoBehaviour
 
         reimuBattle.CloseAllFeedback();
         PlayerController.Instance.CloseAllFeedbacks();
-        //DialogManager.Instance.PlayStory();
+        DialogManager.Instance.PlayStory();
 
-        //yield return new WaitUntil(() => GameObject.Find("bossRoom").GetComponent<bossRoomController>().isReady);
+        yield return new WaitUntil(() => GameObject.Find("bossRoom").GetComponent<bossRoomController>().isReady);
 
         // 動畫演出
 
