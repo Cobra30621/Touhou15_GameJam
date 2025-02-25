@@ -22,6 +22,8 @@ public class spell2Controller : MonoBehaviour
         {
             SpellPosition[i].SetActive(false);
         }
+        shooter.SetActive(false);
+        shooter2.SetActive(false);
     }
 
     public IEnumerator SpellStart()

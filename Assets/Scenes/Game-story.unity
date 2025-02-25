@@ -948,6 +948,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 498457883097244399, guid: fbf73bb4888ea964d8430c4e90abce8f, type: 3}
+      propertyPath: size
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 764070512233702118, guid: fbf73bb4888ea964d8430c4e90abce8f, type: 3}
       propertyPath: reimu
       value: 
