@@ -778,6 +778,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4047059955418377361, guid: ff23e9c48e470714fb594ef950d077fd, type: 3}
+      propertyPath: isfreeze
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4311657342474889632, guid: ff23e9c48e470714fb594ef950d077fd, type: 3}
       propertyPath: m_GravityScale
       value: 0

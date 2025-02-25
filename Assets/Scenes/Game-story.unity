@@ -1046,6 +1046,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4047059955418377361, guid: ff23e9c48e470714fb594ef950d077fd, type: 3}
+      propertyPath: isfreeze
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4047059955418377361, guid: ff23e9c48e470714fb594ef950d077fd, type: 3}
       propertyPath: startDistance
       value: 100
       objectReference: {fileID: 0}
