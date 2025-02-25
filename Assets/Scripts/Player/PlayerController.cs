@@ -177,6 +177,7 @@ namespace Player
             deadFeedback.Play(transform, true);
             playerMovement.Freeze();
             sizeHandler.enabled = false;
+            playerWeapon.enabled = false;
             canControll = false;
         }
 
