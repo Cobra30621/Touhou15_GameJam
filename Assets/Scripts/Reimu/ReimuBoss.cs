@@ -27,6 +27,8 @@ public class ReimuBoss : MonoBehaviour
     public AudioSource audioSource; // 在 Inspector 內指定
     public AudioClip newClip;       // 新的音樂片段
 
+    public GameObject beautifulEffect;
+
     void ChangeMusic()
     {
         audioSource.clip = newClip; // 替換音樂
@@ -107,6 +109,8 @@ public class ReimuBoss : MonoBehaviour
         GameObject.Find("bossRoom").GetComponent<bossRoomController>().spell3.Disable();
 
     }
+
+
 
     public IEnumerator StartSpellCardTime1()
     {

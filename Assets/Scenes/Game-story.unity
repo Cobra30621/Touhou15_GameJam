@@ -1057,6 +1057,18 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7281546465771961245, guid: ff23e9c48e470714fb594ef950d077fd, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7281546465771961245, guid: ff23e9c48e470714fb594ef950d077fd, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7281546465771961245, guid: ff23e9c48e470714fb594ef950d077fd, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7506936914255989384, guid: ff23e9c48e470714fb594ef950d077fd, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1097,22 +1109,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8780437195048240405, guid: ff23e9c48e470714fb594ef950d077fd, type: 3}
+      propertyPath: parent
+      value: 
+      objectReference: {fileID: 815954905}
     - target: {fileID: 8793822076127527142, guid: ff23e9c48e470714fb594ef950d077fd, type: 3}
       propertyPath: audioSource
       value: 
       objectReference: {fileID: 257312635}
-    - target: {fileID: 8793822076127527142, guid: ff23e9c48e470714fb594ef950d077fd, type: 3}
-      propertyPath: spellCardTime1
-      value: 90
-      objectReference: {fileID: 0}
-    - target: {fileID: 8793822076127527142, guid: ff23e9c48e470714fb594ef950d077fd, type: 3}
-      propertyPath: spellCardTime2
-      value: 90
-      objectReference: {fileID: 0}
-    - target: {fileID: 8793822076127527142, guid: ff23e9c48e470714fb594ef950d077fd, type: 3}
-      propertyPath: spellCardTime3
-      value: 90
-      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6744841403057310005, guid: ff23e9c48e470714fb594ef950d077fd, type: 3}
     m_RemovedGameObjects: []

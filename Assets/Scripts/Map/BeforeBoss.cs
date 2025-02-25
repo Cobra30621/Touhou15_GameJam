@@ -16,6 +16,7 @@ public class BeforeBoss : MonoBehaviour
     public Vector3 bossRoomLocation;
     public AudioSource audioSource; // 在 Inspector 內指定
     public AudioClip newClip;       // 新的音樂片段
+    public Sprite ReimuHandsup;
 
     void ChangeMusic()
     {
@@ -79,6 +80,11 @@ public class BeforeBoss : MonoBehaviour
         yield return new WaitUntil(() => GameObject.Find("bossRoom").GetComponent<bossRoomController>().isReady);
 
         // 動畫演出
+
+        reimu.GetComponent<ReimuBoss>().beautifulEffect.SetActive(true);
+        reimu.GetComponent<ReimuBoss>().reimuSprite.GetComponent<SpriteRenderer>().sprite = ReimuHandsup;
+
+        yield return new WaitForSeconds(3f);
 
         PlayerController.Instance.transform.position = bossRoomLocation;
         PlayerController.Instance.sizeHandler.enabled = true;
