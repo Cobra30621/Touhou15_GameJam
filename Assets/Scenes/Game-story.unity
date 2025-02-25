@@ -1124,7 +1124,7 @@ PrefabInstance:
     - target: {fileID: 8793822076127527142, guid: ff23e9c48e470714fb594ef950d077fd, type: 3}
       propertyPath: rei
       value: 
-      objectReference: {fileID: 285924948}
+      objectReference: {fileID: 1392015424}
     - target: {fileID: 8793822076127527142, guid: ff23e9c48e470714fb594ef950d077fd, type: 3}
       propertyPath: bomb
       value: 
@@ -1133,6 +1133,18 @@ PrefabInstance:
       propertyPath: audioSource
       value: 
       objectReference: {fileID: 257312635}
+    - target: {fileID: 8793822076127527142, guid: ff23e9c48e470714fb594ef950d077fd, type: 3}
+      propertyPath: spellCardTime1
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 8793822076127527142, guid: ff23e9c48e470714fb594ef950d077fd, type: 3}
+      propertyPath: spellCardTime2
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 8793822076127527142, guid: ff23e9c48e470714fb594ef950d077fd, type: 3}
+      propertyPath: spellCardTime3
+      value: 60
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6744841403057310005, guid: ff23e9c48e470714fb594ef950d077fd, type: 3}
     m_RemovedGameObjects: []
@@ -2773,7 +2785,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+  m_fontColor: {r: 0.6431373, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:

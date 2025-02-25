@@ -44,6 +44,7 @@ public class BeforeBoss : MonoBehaviour
 
     IEnumerator BeforeBossShow()
     {
+        GameObject.Find("progess background").SetActive(false);
         GameObject.Find("bossRoom").GetComponent<bossRoomController>().vcam.m_Lens.OrthographicSize = 9;
         GameObject.Find("bossRoom").GetComponent<bossRoomController>().vcam.m_Lens.LensShift = new Vector3(0,6,0);
         ChangeMusic();
