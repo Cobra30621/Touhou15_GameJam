@@ -1122,6 +1122,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 815954905}
     - target: {fileID: 8793822076127527142, guid: ff23e9c48e470714fb594ef950d077fd, type: 3}
+      propertyPath: bomb
+      value: 
+      objectReference: {fileID: 1367909072}
+    - target: {fileID: 8793822076127527142, guid: ff23e9c48e470714fb594ef950d077fd, type: 3}
       propertyPath: audioSource
       value: 
       objectReference: {fileID: 257312635}
@@ -1772,6 +1776,22 @@ PrefabInstance:
       propertyPath: spellCardText
       value: 
       objectReference: {fileID: 573340313}
+    - target: {fileID: 7487931444533781899, guid: b299696b2771cf7438f1d2e0c6710be3, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7487931444533781899, guid: b299696b2771cf7438f1d2e0c6710be3, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7487931444533781899, guid: b299696b2771cf7438f1d2e0c6710be3, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7487931444533781899, guid: b299696b2771cf7438f1d2e0c6710be3, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -2174,6 +2194,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1367909072 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5626681824359526237, guid: ff23e9c48e470714fb594ef950d077fd, type: 3}
+  m_PrefabInstance: {fileID: 536828969}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 946ad7d015af4e07ad5ab0454536d7b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1392015424 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3922270474749319503, guid: ff23e9c48e470714fb594ef950d077fd, type: 3}

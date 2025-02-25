@@ -1,6 +1,8 @@
 using Core;
+using Feedback;
 using Fungus;
 using Player;
+using Sirenix.OdinInspector;
 using System.Collections;
 using System.Collections.Generic;
 using UI;
@@ -31,21 +33,37 @@ public class ReimuBoss : MonoBehaviour
 
     public GameObject beautifulEffect;
 
+    public ParticleFeedback bomb;
+
     void ChangeMusic()
     {
         audioSource.clip = newClip; // 替換音樂
         audioSource.Play();         // 播放新的音樂
     }
 
+
+    [Button]
     public void GoBack() {
+        StopAllCoroutines();
+       StartCoroutine(biu());
+    }
+
+    public GameObject rei;
+
+    IEnumerator biu()
+    {
+        bomb.Play(reimuSprite.transform, true);
+        yield return new WaitForSeconds(1f);
+        rei.SetActive(false);
+        yield return new WaitForSeconds(1f);
         GameObject.Find("bossRoom").GetComponent<bossRoomController>().vcam.m_Lens.OrthographicSize = 7;
         GameObject.Find("bossRoom").GetComponent<bossRoomController>().vcam.m_Lens.LensShift = new Vector3(0, 3, 0);
         PlayerController.Instance.transform.position = GameObject.Find("bossRoom").GetComponent<bossRoomController>().positionBeforeBoss;
-        StopAllCoroutines();
-        gameObject.SetActive(false);
         ChangeMusic();
         enabled = false;
+        gameObject.SetActive(false);
     }
+
 
     public IEnumerator OnHitCoroutine()
     {

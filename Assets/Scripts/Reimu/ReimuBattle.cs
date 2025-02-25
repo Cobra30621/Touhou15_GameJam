@@ -71,7 +71,7 @@ public class ReimuBattle : MonoBehaviour
             movePeriod -= powerup_decrease_time*(int)(MapManager.Instance.nowRoomCount / powerup_distance);
             Math.Max(1, movePeriod);
             chargePeriod -= powerup_decrease_time*(int)(MapManager.Instance.nowRoomCount / powerup_distance);
-            Math.Max(1, chargePeriod);
+            Math.Max(1.5f, chargePeriod);
         }
         IsRunning = true;
         reimuSprite.SetActive(true);
