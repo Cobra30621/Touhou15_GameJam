@@ -86,6 +86,11 @@ public class BeforeBoss : MonoBehaviour
 
         yield return new WaitForSeconds(3f);
 
+        reimu.GetComponent<ReimuBoss>().beautifulEffect.SetActive(false);
+        reimu.GetComponent<Animator>().SetTrigger("Idle");
+
+
+
         PlayerController.Instance.transform.position = bossRoomLocation;
         PlayerController.Instance.sizeHandler.enabled = true;
         MainCanvas.Instance.EnableCanvas(true);

@@ -26,6 +26,7 @@ public class spell1Controller : MonoBehaviour
             SpellPosition[id].SetActive(true);
             yield return new WaitForSeconds(shootDuration);
             SpellPosition[id].SetActive(false);
+            reimuboss.GetComponent<Animator>().SetTrigger("Idle");
             Debug.Log(SpellPosition[id].transform.position);
             Debug.Log(SpellPosition[(id + 1) % 4].transform.position);
             StartCoroutine(reimuboss.SmoothMoveCoroutine(SpellPosition[id].transform.position, SpellPosition[(id + 1) % 4].transform.position, moveDuration));
