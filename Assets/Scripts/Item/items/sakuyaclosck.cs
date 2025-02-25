@@ -10,6 +10,7 @@ public class sakuyaclock : BaseItem
     [SerializeField] private GameObject reimu;
     public override bool use()
     {
+
         if (isusing)
         {
             return false;
@@ -38,7 +39,10 @@ public class sakuyaclock : BaseItem
     IEnumerator outscreentimestop()
     {
         isusing = true;
+        Debug.Log("Clock Test");
+        Debug.Log(reimu.GetComponent<ReimuMovement>().isfreeze);
         reimu.GetComponent<ReimuMovement>().isfreeze = true;
+        Debug.Log(reimu.GetComponent<ReimuMovement>().isfreeze);
         yield return new WaitForSeconds(existtime);
         reimu.GetComponent<ReimuMovement>().isfreeze = false;
         ItemComplete();
