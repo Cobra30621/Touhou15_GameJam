@@ -6,8 +6,9 @@ using UnityEngine;
 
 public class youmusword : BaseItem
 {
-    [SerializeField] private float existtime = 5f,exInvsibleTime;
-    [SerializeField] private float speed = 20f;
+    [SerializeField] private float existtime = 5f,existtime2 = 2f,exInvsibleTime;
+    [SerializeField] private float speed = 20f,speed2 = 9f;
+    [SerializeField] private GameObject reimu;
 
     public override bool use()
     {
@@ -15,13 +16,13 @@ public class youmusword : BaseItem
         {
             return false;
         }
-
-        StartCoroutine(dash());
+        if(reimu.GetComponent<ReimuBattle>().enabled)StartCoroutine(dash(speed));
+        else StartCoroutine(dash(speed2));
         return true;
     }
 
     //create iemurator contdown for existtime
-    IEnumerator dash()
+    IEnumerator dash(float speed)
     {
         print("dash");
         PlayerController.Instance.canControll = false;
