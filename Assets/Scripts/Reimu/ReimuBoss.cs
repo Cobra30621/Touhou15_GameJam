@@ -51,6 +51,7 @@ public class ReimuBoss : MonoBehaviour
         if (HP == 0)
         {
             MainCanvas.Instance.DisplayClock(false);
+            PlayerController.Instance.sizeHandler.Resize(0.3f);
             StopAllCoroutines();
             Cleaner();
             if (spellCardID == 1)
